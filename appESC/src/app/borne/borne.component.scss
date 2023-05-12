@@ -1,0 +1,170 @@
+/* Styles pour masquer la case à cocher */
+.stoggle {
+  margin-bottom: 10px;
+  background-color: white
+  ;
+}
+
+.toggle-title {
+ 
+  padding: 10px;
+}
+
+.toggle-title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+.form-check-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+    .form-check-input:checked + .form-check-label {
+      font-weight: bold;
+      color: var(--base-skin);
+    }
+    /* Styles pour diviser les cases à cocher en deux colonnes */
+  [data-type="location_type"] {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+  .advancedsearch-title {
+    text-align: center;
+  }
+
+  
+  //* icon horloge
+  .comment-form-email {
+    position: relative;
+}
+
+.comment-form-email i {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+}
+.comment-form-email i.flaticon-clock {
+    color: var(--base-skin);
+  
+}
+
+
+
+//dropdown
+
+  
+  .checkbox {
+    margin-bottom: 5px;
+   
+  }
+  
+  .customcheckbox-inner {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .customcheckbox-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+ 
+    border-radius: 4px;
+    text-align: center;
+    margin-right: 10px;
+  }
+  
+  .customcheckbox-text {
+    font-size: 14px;
+  }
+  
+  .checkbox input[type="checkbox"] {
+    display: none;
+  }
+  
+  .checkbox input[type="checkbox"] + .customcheckbox-icon {
+    display: inline-block;
+  }
+  
+  .checkbox input[type="checkbox"]:checked {
+    background-color: var(--base-skin);
+    border-color: var(--base-skin);
+    color: #fff;
+  }
+ 
+ 
+
+  
+  .checkbox input[type="checkbox"]:checked + .customcheckbox-icon + .customcheckbox-text {
+    font-weight: bold;
+    color: var(--base-skin);
+  }
+  
+  .checkbox input[type="checkbox"] + .customcheckbox-icon img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .checkbox input[type="checkbox"] + .customcheckbox-text {
+    margin-left: 5px;
+    font-weight: bold;
+  }
+  .center-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+  }
+  .center-title1 {
+    text-align: center;
+
+  }
+  .checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .checkbox-item {
+    flex-basis: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+   
+  }
+  
+  @media (max-width: 576px) {
+    .checkbox-item {
+        flex-basis: 100%;
+      }
+    
+  }
+  
+
+
+
+/* Styles pour masquer la case à cocher */
+.form-check-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+  .form-check-input:checked + .form-check-label {
+    font-weight: bold;
+    color: var(--base-skin);
+  }
+  /* Styles pour diviser les cases à cocher en deux colonnes */
+[data-type="location_type"] {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+.advancedsearch-title {
+  text-align: center;
+}
+
