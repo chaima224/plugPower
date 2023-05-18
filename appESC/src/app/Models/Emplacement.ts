@@ -1,0 +1,16 @@
+export enum Emplacement {
+  Entreprise = 'Entreprise',
+  Hôtel = 'Hôtel',
+  Particulier = 'Particulier',
+  Parking = 'Parking',
+  Gare = 'Gare',
+  Stationservice = 'Station-service',
+  Restaurant = 'Restaurant',
+  Voirie = 'Voirie',
+  Ecole = 'École',
+  Autoroute = 'Autoroute',
+  Autre = 'Autre',
+  Sharedplugs = 'Prises partagées',
+  Freechargers = 'Bornes gratuites',
+  Hideplugs = 'Prises cachées',
+}
