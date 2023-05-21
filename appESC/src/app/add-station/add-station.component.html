@@ -529,145 +529,146 @@
           <div class="row">
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Stations</h4>
-                  <p class="card-description">PlugPower</p>
-                  <form class="forms-sample">
-                    <div class="form-group">
-                      <label>Name</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="name"
-                        name="name"
-                        [(ngModel)]="station.name"
-                        placeholder="Name"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label>Type</label>
-                      <select
-                        class="form-control"
-                        id="emplacement"
-                        name="emplacement"
-                        [(ngModel)]="station.emplacement"
-                      >
-                        <option>Select an option</option>
-                        <option>Entreprise</option>
-                        <option>Hôtel</option>
-                        <option>Particulier</option>
-                        <option>Station-service</option>
-                        <option>Restaurant</option>
-                        <option>Ecole</option>
-                        <option>Voirie</option>
-                        <option>Autoroute</option>
-                        <option>Autre</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>Name of Borne </label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="listeDeBornes"
-                        placeholder="Borne"
-                        name="listeDeBornes"
-                        [(ngModel)]="station.listeDeBornes"
-                      />
-                    </div>
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Stations</h4>
+                    <p class="card-description">PlugPower</p>
+                    <form class="forms-sample" (ngSubmit)="onSubmit()">
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="name"
+                          placeholder="Name"
+                          [(ngModel)]="station.name"
+                          name="name"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="emplacement">Type</label>
+                        <select
+                          class="form-control"
+                          id="emplacement"
+                          [(ngModel)]="station.emplacement"
+                          name="emplacement"
+                        >
+                          <option>Select an option</option>
+                          <option>Entreprise</option>
+                          <option>Hôtel</option>
+                          <option>Particulier</option>
+                          <option>Station-service</option>
+                          <option>Restaurant</option>
+                          <option>Ecole</option>
+                          <option>Voirie</option>
+                          <option>Autoroute</option>
+                          <option>Autre</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="nomBornes">Name of Borne </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="nomBornes"
+                          placeholder="Borne"
+                          [(ngModel)]="station.nomBornes"
+                          name="nomBornes"
+                        />
+                      </div>
 
-                    <div class="form-group">
-                      <label>Journey</label>
-                      <select
-                        class="form-control"
-                        id="trajet"
-                        name="trajet"
-                        [(ngModel)]="station.trajet"
-                      >
-                        <option>Select an option</option>
-                        <option>Avoid highways</option>
-                        <option>Avoid tolls</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>Distance</label>
-                      <select
-                        class="form-control"
-                        id="distance"
-                        name="distance"
-                        [(ngModel)]="station.distance"
-                      >
-                        <option>Select an option</option>
-                        <option>10 KM</option>
-                        <option>20 KM</option>
-                        <option>40 KM</option>
-                      </select>
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-xl-6 col-md-12">
-                        <div class="form-group">
-                          <label>Latitude</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="latitude"
-                            name="latitude"
-                            placeholder="Latitude"
-                            [(ngModel)]="station.latitude"
-                          />
+                      <div class="form-group">
+                        <label for="trajet">Journey</label>
+                        <select
+                          class="form-control"
+                          id="trajet"
+                          [(ngModel)]="station.trajet"
+                          name="trajet"
+                        >
+                          <option>Select an option</option>
+                          <option>Avoid highways</option>
+                          <option>Avoid tolls</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="distance">Distance</label>
+                        <select
+                          class="form-control"
+                          id="distance"
+                          [(ngModel)]="station.distance"
+                          name="distance"
+                        >
+                          <option>Select an option</option>
+                          <option>10 KM</option>
+                          <option>20 KM</option>
+                          <option>40 KM</option>
+                        </select>
+                      </div>
+                      <div class="row mt-2">
+                        <div class="col-xl-6 col-md-12">
+                          <div class="form-group">
+                            <label for="latitude">Latitude</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="latitude"
+                              placeholder="Latitude"
+                              [(ngModel)]="station.latitude"
+                              name="latitude"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                          <div class="form-group">
+                            <label for="longitude">Longitude</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="longitude"
+                              placeholder="Longitude"
+                              [(ngModel)]="station.longitude"
+                              name="longitude"
+                            />
+                          </div>
                         </div>
                       </div>
-                      <div class="col-xl-6 col-md-12">
-                        <div class="form-group">
-                          <label>Longitude</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="longitude"
-                            name="longitude"
-                            placeholder="Longitude"
-                            [(ngModel)]="station.longitude"
-                          />
+                      <div class="row mt-2">
+                        <div class="col-xl-6 col-md-12">
+                          <div class="form-group">
+                            <label for="ouverture">Opening Time</label>
+                            <input
+                              type="datetime-local"
+                              class="form-control"
+                              id="ouverture"
+                              placeholder="Opening Time"
+                              [(ngModel)]="station.ouverture"
+                              name="ouverture"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-xl-6 col-md-12">
+                          <div class="form-group">
+                            <label for="fermeture">Closing Time</label>
+                            <input
+                              type="datetime-local"
+                              class="form-control"
+                              id="fermeture"
+                              placeholder="Closing Time"
+                              [(ngModel)]="station.fermeture"
+                              name="fermeture"
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="row mt-2">
-                      <div class="col-xl-6 col-md-12">
-                        <div class="form-group">
-                          <label>Opening Time</label>
-                          <input
-                            type="datetime-local"
-                            class="form-control"
-                            id="ouverture"
-                            placeholder="Opening Time"
-                            name="ouverture"
-                            [(ngModel)]="station.ouverture"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-xl-6 col-md-12">
-                        <div class="form-group">
-                          <label>Closing Time</label>
-                          <input
-                            type="datetime-local"
-                            class="form-control"
-                            id="fermeture"
-                            placeholder="Closing Time"
-                            name="fermeture"
-                            [(ngModel)]="station.fermeture"
-                          />
-                        </div>
-                      </div>
-                    </div>
 
-                    <button
-                      type="submit"
-                      class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor mr-2"
-                      (click)="addSation()"
-                    >
-                      Submit
-                    </button>
-                  </form>
+                      <button
+                        type="submit"
+                        class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor mr-2"
+                      >
+                        Add
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>

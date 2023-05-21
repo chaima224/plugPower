@@ -30,12 +30,14 @@ import { ListStationComponent } from './list-station/list-station.component';
 import { UpdateBorneModule } from './update-borne/update-borne.module';
 import { StationService } from './shared/services/station.service';
 import { MyInterceptor } from './shared/MyInterceptor';
+import { ListborneComponent } from './listborne/listborne.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingpageComponent,
     ListStationComponent,
+    ListborneComponent,
 
     /* LoginComponent,
     RegisterComponent,*/

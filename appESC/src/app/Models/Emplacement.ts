@@ -10,7 +10,7 @@ export enum Emplacement {
   Ecole = 'École',
   Autoroute = 'Autoroute',
   Autre = 'Autre',
-  Sharedplugs = 'Prises partagées',
-  Freechargers = 'Bornes gratuites',
-  Hideplugs = 'Prises cachées',
+  Sharedplugs = 'Hide privately shared plugs',
+  Freechargers = 'Free chargers only',
+  Hideplugs = 'Hide plugs that are not accessible 24/24h',
 }

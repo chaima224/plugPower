@@ -12,15 +12,18 @@ export class StationService {
 
   constructor(private http: HttpClient) {}
   getStationList(): Observable<Station[]> {
-    return this.http.get<Station[]>(`${this.baseUrl}`);
+    return this.http.get<Station[]>(`${this.baseUrl}/stations`);
+  }
+  getStationById(id: string): Observable<Station> {
+    return this.http.get<Station>(`${this.baseUrl}/${id}`);
   }
   saveStation(station: Station): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, station);
+    return this.http.post(`${this.baseUrl}/addStation`, station);
   }
-  updateStation(id: number, station: Station): Observable<Object> {
+  updateStation(id: string, station: Station): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, station);
   }
-  deleteStation(id: number): Observable<Object> {
+  deleteStation(id: string): Observable<Object> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
 }

@@ -9,6 +9,7 @@ import { UpdateStationComponent } from './update-station/update-station.componen
 import { AddBorneComponent } from './add-borne/add-borne.component';
 import { UpdateBorneComponent } from './update-borne/update-borne.component';
 import { ListStationComponent } from './list-station/list-station.component';
+import { ListborneComponent } from './listborne/listborne.component';
 
 const routes: Routes = [
   // {path: '' ,
@@ -21,7 +22,10 @@ const routes: Routes = [
     path: 'liststation',
     component: ListStationComponent,
   },
-
+  {
+    path: 'listborne',
+    component: ListborneComponent,
+  },
   {
     path: 'login',
     loadChildren: () =>
@@ -71,7 +75,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'updatestation',
+    path: 'updatestation/:id',
     loadChildren: () =>
       import('./update-station/update-station.module').then(
         (_) => _.UpdateStationModule
@@ -84,7 +88,7 @@ const routes: Routes = [
       import('./add-borne/add-borne.module').then((_) => _.AddBorneModule),
   },
   {
-    path: 'updateborne',
+    path: 'updateborne/:id',
     loadChildren: () =>
       import('./update-borne/update-borne.module').then(
         (_) => _.UpdateBorneModule

@@ -533,19 +533,26 @@
                 <div class="card-body">
                   <h4 class="card-title">Stations</h4>
                   <p class="card-description">PlugPower</p>
-                  <form class="forms-sample">
+                  <form class="forms-sample" (ngSubmit)="onSubmit()">
                     <div class="form-group">
-                      <label for="exampleInputName1">Name</label>
+                      <label for="name">Name</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="exampleInputName1"
+                        id="name"
                         placeholder="Name"
+                        [(ngModel)]="station.name"
+                        name="name"
                       />
                     </div>
                     <div class="form-group">
-                      <label for="exampleSelectGender">Type</label>
-                      <select class="form-control" id="exampleSelectGender">
+                      <label for="emplacement">Type</label>
+                      <select
+                        class="form-control"
+                        id="emplacement"
+                        [(ngModel)]="station.emplacement"
+                        name="emplacement"
+                      >
                         <option>Select an option</option>
                         <option>Entreprise</option>
                         <option>Hôtel</option>
@@ -559,52 +566,65 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword4">Name of Borne </label>
+                      <label for="nomBornes">Name of Borne </label>
                       <input
                         type="text"
                         class="form-control"
-                        id="exampleInputPassword4"
+                        id="nomBornes"
                         placeholder="Borne"
+                        [(ngModel)]="station.nomBornes"
+                        name="nomBornes"
                       />
                     </div>
 
                     <div class="form-group">
-                      <label for="exampleSelectGender">Journey</label>
-                      <select class="form-control" id="exampleSelectGender">
+                      <label for="trajet">Journey</label>
+                      <select
+                        class="form-control"
+                        id="trajet"
+                        [(ngModel)]="station.trajet"
+                        name="trajet"
+                      >
                         <option>Select an option</option>
                         <option>Avoid highways</option>
                         <option>Avoid tolls</option>
                       </select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleSelectGender">Distance</label>
-                      <select class="form-control" id="exampleSelectGender">
-                        <option>Select an option</option>
-                        <option>10 KM</option>
-                        <option>20 KM</option>
-                        <option>40 KM</option>
-                      </select>
+                      <label for="name">Distance</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="distance"
+                        placeholder="Distance"
+                        [(ngModel)]="station.distance"
+                        name="distance"
+                      />
                     </div>
                     <div class="row mt-2">
                       <div class="col-xl-6 col-md-12">
                         <div class="form-group">
-                          <label for="exampleInputPassword4">Latitude</label>
+                          <label for="latitude">Latitude</label>
                           <input
-                            type="text"
+                            type="number"
                             class="form-control"
-                            id="exampleInputPassword4"
+                            id="latitude"
                             placeholder="Latitude"
+                            [(ngModel)]="station.latitude"
+                            name="latitude"
                           />
                         </div>
                       </div>
                       <div class="col-xl-6 col-md-12">
                         <div class="form-group">
-                          <label for="exampleInputPassword4">Longitude</label>
+                          <label for="longitude">Longitude</label>
                           <input
-                            type="text"
+                            type="number"
                             class="form-control"
-                            id="exampleInputPassword4"
+                            id="longitude"
                             placeholder="Longitude"
+                            [(ngModel)]="station.longitude"
+                            name="longitude"
                           />
                         </div>
                       </div>
@@ -612,27 +632,27 @@
                     <div class="row mt-2">
                       <div class="col-xl-6 col-md-12">
                         <div class="form-group">
-                          <label for="exampleInputPassword4"
-                            >Opening Time</label
-                          >
+                          <label for="ouverture">Opening Time</label>
                           <input
                             type="datetime-local"
                             class="form-control"
-                            id="exampleInputPassword4"
+                            id="ouverture"
                             placeholder="Opening Time"
+                            [(ngModel)]="station.ouverture"
+                            name="ouverture"
                           />
                         </div>
                       </div>
                       <div class="col-xl-6 col-md-12">
                         <div class="form-group">
-                          <label for="exampleInputPassword4"
-                            >Closing Time</label
-                          >
+                          <label for="fermeture">Closing Time</label>
                           <input
                             type="datetime-local"
                             class="form-control"
-                            id="exampleInputPassword4"
+                            id="fermeture"
                             placeholder="Closing Time"
+                            [(ngModel)]="station.fermeture"
+                            name="fermeture"
                           />
                         </div>
                       </div>

@@ -527,31 +527,37 @@
                 <div class="card-body">
                   <h4 class="card-title">Bornes</h4>
                   <p class="card-description">PlugPower</p>
-                  <form class="forms-sample">
+                  <form class="forms-sample" (ngSubmit)="onSubmit()">
                     <div class="form-group">
-                      <label for="exampleInputName1">Name</label>
+                      <label>Name</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="exampleInputName1"
+                        id="name"
+                        name="name"
+                        [(ngModel)]="borne.name"
                         placeholder="Name of Plug"
                       />
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword4">Power</label>
+                      <label>Power</label>
                       <input
                         type="number"
                         class="form-control"
-                        id="exampleInputPassword4"
+                        id="puissance"
+                        name="puissance"
+                        [(ngModel)]="borne.puissance"
                         placeholder="Power"
                       />
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword4">Charging Time</label>
+                      <label>Charging Time</label>
                       <input
                         type="number"
                         class="form-control"
-                        id="exampleInputPassword4"
+                        id="tempsCharge"
+                        name="tempsCharge"
+                        [(ngModel)]="borne.tempsCharge"
                         placeholder="Charging Time"
                       />
                     </div>
@@ -559,8 +565,13 @@
                     <div class="row">
                       <div class="col-xl-6 col-md-12">
                         <div class="form-group">
-                          <label for="exampleSelectGender">Mode</label>
-                          <select class="form-control" id="exampleSelectGender">
+                          <label>Mode</label>
+                          <select
+                            class="form-control"
+                            id="mode"
+                            name="mode"
+                            [(ngModel)]="borne.mode"
+                          >
                             <option>Select an mode</option>
                             <option>SLOW</option>
                             <option>FAST</option>
@@ -569,8 +580,13 @@
                       </div>
                       <div class="col-xl-6 col-md-12">
                         <div class="form-group">
-                          <label for="exampleSelectGender">Connector</label>
-                          <select class="form-control" id="exampleSelectGender">
+                          <label>Connector</label>
+                          <select
+                            class="form-control"
+                            id="connecteur"
+                            name="connecteur"
+                            [(ngModel)]="borne.connecteur"
+                          >
                             <option>Select a Connector</option>
                             <option>Tesla Supercharger CCS</option>
                             <option>P17 rouge (industrielle)</option>
@@ -593,33 +609,18 @@
                       </div>
                     </div>
 
-                    <div class="row mt-3">
-                      <label> Availibility</label>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input mt-2"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckIndeterminate"
-                        />
-                        <label
-                          class="form-check-label"
-                          for="flexCheckIndeterminate"
+                    <div class="col-xl-6 col-md-12">
+                      <div class="form-group">
+                        <label>Availlibiity</label>
+                        <select
+                          class="form-control"
+                          id="connecteur"
+                          name="connecteur"
+                          [(ngModel)]="borne.disponibilite"
                         >
-                          Available
-                        </label>
-                        <input
-                          class="form-check-input mt-4"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckIndeterminate"
-                        />
-                        <label
-                          class="form-check-label mt-4"
-                          for="flexCheckIndeterminate"
-                        >
-                          Not Available
-                        </label>
+                          <option value="DISPONIBLE">Available</option>
+                          <option value="OCCUPEE">Not available</option>
+                        </select>
                       </div>
                     </div>
 

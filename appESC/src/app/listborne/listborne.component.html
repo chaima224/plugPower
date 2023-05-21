@@ -425,15 +425,23 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" routerLink="/liststation">
+                <span class="icon-bg"
+                  ><i class="mdi mdi-table-large menu-icon"></i
+                ></span>
+                <span class="menu-title">List Of Stations</span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a
                 class="nav-link"
-                routerLink="/liststation"
+                routerLink="/listborne"
                 style="color: #33c92d"
               >
                 <span class="icon-bg"
                   ><i class="mdi mdi-table-large menu-icon"></i
                 ></span>
-                <span class="menu-title">List Of Stations</span>
+                <span class="menu-title">List Of Bornes</span>
               </a>
             </li>
             <li class="nav-item">
@@ -554,60 +562,47 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">List Of Stations</h3>
+              <h3 class="page-title">List Of Bornes</h3>
               <nav aria-label="breadcrumb"></nav>
             </div>
 
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">PlugPower's Stations</h4>
-                  <p class="card-description">PlugPower</p>
+                  <h4 class="card-title">Bornes</h4>
+                  <p class="card-description">Add plug</p>
                   <table class="table table-striped">
                     <thead>
                       <tr>
+                        <th>Id</th>
                         <th>Name</th>
-                        <th>Type</th>
-                        <th>Name of Borne</th>
-                        <th>Journey</th>
-                        <th>Distance</th>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
-                        <th>Opening Time</th>
-                        <th>Closing Time</th>
+                        <th>Puissance</th>
+                        <th>Temps de charge</th>
+                        <th>Mode</th>
+                        <th>Connecteur</th>
+                        <th>Disponibilite</th>
                         <th>Action</th>
                       </tr>
                     </thead>
+
                     <tbody>
-                      <tr *ngFor="let ev of station">
-                        <td>{{ ev.name }}</td>
-                        <td>{{ ev.emplacement }}</td>
-                        <td>
-                          <ul>
-                            <li *ngFor="let borne of ev.nomBornes">
-                              {{ borne }}
-                            </li>
-                          </ul>
-                        </td>
-                        <td>{{ ev.trajet }}</td>
-                        <td>{{ ev.distance }}</td>
-                        <td>{{ ev.latitude }}</td>
-                        <td>{{ ev.longitude }}</td>
-                        <td>{{ ev.ouverture }}</td>
-                        <td>{{ ev.fermeture }}</td>
+                      <tr *ngFor="let borne of bornes">
+                        <td>{{ borne.id }}</td>
+                        <td>{{ borne.name }}</td>
+                        <td>{{ borne.puissance }}</td>
+                        <td>{{ borne.tempsCharge }}</td>
+                        <td>{{ borne.mode }}</td>
+                        <td>{{ borne.connecteur }}</td>
+                        <td>{{ borne.disponibilite }}</td>
                         <td>
                           <button
-                            (click)="updateStation(ev.id)"
+                            (click)="updateBorne(borne.id)"
                             class="btn btn-primary"
-                          >
-                            Update
-                          </button>
+                          ></button>
                           <button
-                            (click)="deleteStation(ev.id)"
-                            class="btn btn-danger ml-10"
-                          >
-                            Delete
-                          </button>
+                            (click)="deleteBorne(borne.id)"
+                            class="btn btn-danger"
+                          ></button>
                         </td>
                       </tr>
                     </tbody>

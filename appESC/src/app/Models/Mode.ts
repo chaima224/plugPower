@@ -1,4 +1,4 @@
 export enum Mode {
-  LENT = "lent",
-  RAPIDE = "rapide",
+  LENT = 'SLOW',
+  RAPIDE = 'FAST',
 }

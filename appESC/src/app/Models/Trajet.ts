@@ -1,4 +1,4 @@
 export enum Trajet {
-  EVITER_PEAGES = 'eviter_peages',
-  EVITER_AUTOROUTES = 'eviter_autoroutes',
+  EVITER_PEAGES = 'Avoid highways',
+  EVITER_AUTOROUTES = 'Avoid tolls',
 }

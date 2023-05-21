@@ -1,4 +1,4 @@
 export enum Disponibilite {
-  DISPONIBLE = "disponible",
-  OCCUPE = "occupe",
+  DISPONIBLE = 'Available',
+  OCCUPEE = 'Not Available',
 }
