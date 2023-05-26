@@ -3,6 +3,7 @@ import { Borne } from '../Models/Borne';
 import { BorneService } from '../shared/services/borne.service';
 import { Router } from '@angular/router';
 import { data } from 'jquery';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listborne',
@@ -27,6 +28,21 @@ export class ListborneComponent implements OnInit {
   deleteBorne(id: string) {
     this.borneService.deleteBorne(id).subscribe((data) => {
       this.getBorne();
+    });
+  }
+  confirmDelete(BorneId: string): void {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this plug!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#dc3545',
+      cancelButtonColor: '#6c757d',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteBorne(BorneId);
+      }
     });
   }
 }

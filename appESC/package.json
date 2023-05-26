@@ -22,6 +22,7 @@
     "angular-revolution": "^1.0.1",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
+    "helmet": "^7.0.0",
     "jquery": "^3.6.4",
     "jQuery": "^1.7.4",
     "layer": "^0.1.0",
@@ -30,6 +31,7 @@
     "rs": "^0.0.1",
     "rxjs": "~7.5.0",
     "slider": "^1.0.4",
+    "sweetalert2": "^11.7.5",
     "tslib": "^2.3.0",
     "uuid": "^9.0.0",
     "zone.js": "~0.11.4"

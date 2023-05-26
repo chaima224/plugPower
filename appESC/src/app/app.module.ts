@@ -31,6 +31,7 @@ import { UpdateBorneModule } from './update-borne/update-borne.module';
 import { StationService } from './shared/services/station.service';
 import { MyInterceptor } from './shared/MyInterceptor';
 import { ListborneComponent } from './listborne/listborne.component';
+import { UIBorneComponent } from './uiborne/uiborne.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ListborneComponent } from './listborne/listborne.component';
     LandingpageComponent,
     ListStationComponent,
     ListborneComponent,
+    UIBorneComponent,
 
     /* LoginComponent,
     RegisterComponent,*/

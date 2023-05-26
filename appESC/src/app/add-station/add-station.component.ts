@@ -14,12 +14,14 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class AddStationComponent implements OnInit {
   station: Station = new Station();
+  borneInput: string = '';
   constructor(private stationService: StationService, private router: Router) {}
 
   ngOnInit(): void {}
-  addSation() {
+  addStation() {
+    this.station.nomBornes.push(this.borneInput);
+    this.borneInput = '';
     this.stationService.saveStation(this.station).subscribe((data) => {
-      console.log(data);
       this.goToStationList();
     });
   }
@@ -27,6 +29,6 @@ export class AddStationComponent implements OnInit {
     this.router.navigate(['/liststation']);
   }
   onSubmit() {
-    this.addSation();
+    this.addStation();
   }
 }

@@ -7,7 +7,7 @@ export class Borne {
   name!: string;
   puissance!: number;
   tempsCharge!: number;
-  connecteur!: Connecteur;
-  mode!: Mode;
+  connecteur!: string;
+  mode!: string;
   disponibilite!: Disponibilite;
 }

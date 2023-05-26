@@ -10,6 +10,7 @@ import { AddBorneComponent } from './add-borne/add-borne.component';
 import { UpdateBorneComponent } from './update-borne/update-borne.component';
 import { ListStationComponent } from './list-station/list-station.component';
 import { ListborneComponent } from './listborne/listborne.component';
+import { UIBorneComponent } from './uiborne/uiborne.component';
 
 const routes: Routes = [
   // {path: '' ,
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'listborne',
     component: ListborneComponent,
+  },
+  {
+    path: 'UtilisateurBorne',
+    component: UIBorneComponent,
   },
   {
     path: 'login',

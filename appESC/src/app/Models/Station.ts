@@ -9,8 +9,9 @@ export class Station {
   latitude!: number;
   ouverture!: Date;
   fermeture!: Date;
-  nomBornes!: string[];
+  nomBornes: string[] = [];
   emplacement!: string;
   trajet!: string;
   distance!: number;
+  moyNote?: number;
 }
