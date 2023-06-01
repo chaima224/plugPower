@@ -423,20 +423,20 @@
             </a>
           </li>
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/liststation" class="dropdown-toggle">
               <span class="micon dw dw-library"></span
               ><span class="mtext">List of Stations</span>
             </a>
           </li>
 
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/addborne" class="dropdown-toggle">
               <span class="micon dw dw-right-arrow1"></span
               ><span class="mtext">Add Borne </span>
             </a>
           </li>
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/listborne" class="dropdown-toggle">
               <span class="micon dw dw-library"></span
               ><span class="mtext">List of Bornes</span>
             </a>
@@ -517,7 +517,7 @@
                 <th>Time of charging</th>
                 <th>Mode</th>
                 <th>Connector</th>
-                <th>Availibility</th>
+
                 <th class="datatable-nosort">Action</th>
               </tr>
             </thead>
@@ -531,7 +531,6 @@
                 <td>{{ borne.tempsCharge }}</td>
                 <td>{{ borne.mode }}</td>
                 <td>{{ borne.connecteur }}</td>
-                <td>{{ borne.disponibilite }}</td>
 
                 <td>
                   <i class="material-icons" (click)="updateBorne(borne.id)"

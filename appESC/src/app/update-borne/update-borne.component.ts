@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Borne } from '../Models/Borne';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BorneService } from '../shared/services/borne.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-borne',
@@ -27,8 +28,25 @@ export class UpdateBorneComponent implements OnInit {
   onSubmit() {
     this.borneService.updateBorne(this.id, this.borne).subscribe((data) => {
       this.goToBorneList();
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: 'success',
+        title: ' Plug Updated successfully',
+      });
     });
   }
+
   goToBorneList() {
     this.router.navigate(['/listborne']);
   }

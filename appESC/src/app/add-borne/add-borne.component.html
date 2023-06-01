@@ -1,21 +1,5 @@
 <head> </head>
 <body>
-  <div class="pre-loader">
-    <div class="pre-loader-box">
-      <div class="loader-logo">
-        <img
-          src="../../assets/assets/admin-dashboard/vendors/images/deskapp-logo.svg"
-          alt=""
-        />
-      </div>
-      <div class="loader-progress" id="progress_div">
-        <div class="bar" id="bar1"></div>
-      </div>
-      <div class="percent" id="percent1">0%</div>
-      <div class="loading-text">Loading...</div>
-    </div>
-  </div>
-
   <div class="header1">
     <div class="header1-left">
       <div class="menu-icon dw dw-menu"></div>
@@ -420,7 +404,7 @@
       <div class="sidebar-menu">
         <ul id="accordion-menu">
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/admin" class="dropdown-toggle">
               <span class="micon dw dw-house-1"></span
               ><span class="mtext">Home</span>
             </a>
@@ -433,20 +417,20 @@
             </a>
           </li>
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/liststation" class="dropdown-toggle">
               <span class="micon dw dw-library"></span
               ><span class="mtext">List of Stations</span>
             </a>
           </li>
 
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/addborne" class="dropdown-toggle">
               <span class="micon dw dw-right-arrow1"></span
               ><span class="mtext">Add Borne </span>
             </a>
           </li>
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/listborne" class="dropdown-toggle">
               <span class="micon dw dw-library"></span
               ><span class="mtext">List of Bornes</span>
             </a>
@@ -515,14 +499,14 @@
               <p class="mb-30">Add a new Plug</p>
             </div>
           </div>
-          <form (ngSubmit)="onSubmit()">
+          <form>
             <div class="form-group row">
               <label class="col-sm-12 col-md-2 col-form-label">Name</label>
               <div class="col-sm-12 col-md-10">
                 <input
                   type="text"
                   class="form-control"
-                  id="name"
+                  id="nameInput"
                   name="name"
                   [(ngModel)]="borne.name"
                   placeholder="Name of Plug"
@@ -535,7 +519,7 @@
                 <input
                   type="number"
                   class="form-control"
-                  id="puissance"
+                  id="powerInput"
                   name="puissance"
                   [(ngModel)]="borne.puissance"
                   placeholder="Power"
@@ -550,7 +534,7 @@
                 <input
                   type="number"
                   class="form-control"
-                  id="tempsCharge"
+                  id="chargingTimeInput"
                   name="tempsCharge"
                   [(ngModel)]="borne.tempsCharge"
                   placeholder="Charging Time"
@@ -558,80 +542,56 @@
               </div>
             </div>
 
-            <div class="form-group row">
-              <label class="col-sm-12 col-md-2 col-form-label">Mode</label>
-              <div class="col-sm-12 col-md-10">
+            <div class="row">
+              <div class="col-xl-6 col-md-12">
+                <label for="borneMode">Mode</label>
                 <select
                   class="form-control"
-                  id="mode"
+                  id="borneMode"
                   name="mode"
                   [(ngModel)]="borne.mode"
                 >
-                  <option>Select an mode</option>
+                  <option>Select a mode</option>
                   <option>SLOW</option>
                   <option>FAST</option>
                 </select>
               </div>
-            </div>
-
-            <div class="row mt-2">
               <div class="col-xl-6 col-md-12">
-                <div class="form-group">
-                  <label for="latitude">Connector</label>
-                  <select
-                    class="form-control"
-                    id="connecteur"
-                    name="connecteur"
-                    [(ngModel)]="borne.connecteur"
-                  >
-                    <option>Select a Connector</option>
-                    <option>Tesla Supercharger CCS</option>
-                    <option>CHAdeMO</option>
-                    <option>Tesla</option>
-                    <option>Tesla2</option>
-                    <option>P17</option>
-                    <option>Marechal</option>
-                    <option>IEC309DC</option>
-                    <option>Type3A</option>
-                    <option>TypeD</option>
-                    <option>Marechal</option>
-                    <option>Type 3A</option>
-                    <option>TeslaHPWC</option>
-                    <option>ChinaPart2</option>
-                    <option>DomestiqueUK</option>
-                    <option>ComboCCSUSA</option>
-                    <option>TeslaUSA</option>
-                    <option>TYPE1</option>
-                    <option>TYPE2</option>
-                    <option>CHT25</option>
-                  </select>
-                </div>
+                <label for="borneConnector">Connector</label>
+                <select
+                  class="form-control"
+                  id="borneConnector"
+                  name="connecteur"
+                  [(ngModel)]="borne.connecteur"
+                >
+                  <option>Select a Connector</option>
+                  <option>Tesla Supercharger CCS</option>
+                  <option>CHAdeMO</option>
+                  <option>Tesla</option>
+                  <option>Tesla2</option>
+                  <option>P17</option>
+                  <option>Marechal</option>
+                  <option>IEC309DC</option>
+                  <option>Type3A</option>
+                  <option>TypeD</option>
+                  <option>Marechal</option>
+                  <option>Type 3A</option>
+                  <option>TeslaHPWC</option>
+                  <option>ChinaPart2</option>
+                  <option>DomestiqueUK</option>
+                  <option>ComboCCSUSA</option>
+                  <option>TeslaUSA</option>
+                  <option>TYPE1</option>
+                  <option>TYPE2</option>
+                  <option>CHT25</option>
+                </select>
               </div>
-              <div class="col-xl-6 col-md-12">
-                <div class="form-group">
-                  <label for="longitude">Availibiity</label>
-                  <select
-                    class="form-control"
-                    id="connecteur"
-                    name="connecteur"
-                    [(ngModel)]="borne.disponibilite"
-                  >
-                    <option value="DISPONIBLE">Available</option>
-                    <option value="OCCUPEE">Not available</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-12 col-md-2 col-form-label"
-                >Availibiity</label
-              >
-              <div class="col-sm-12 col-md-10"></div>
             </div>
 
             <button
               type="submit"
-              class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor mr-2"
+              class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor mr-2 mt-10"
+              (click)="validateForm()"
             >
               Save
             </button>
@@ -660,4 +620,6 @@
       </div>
     </div>
   </div>
+  <!-- js -->
+  <script src="../../assets/assets/admin-dashboard/vendors/scripts/core.js"></script>
 </body>

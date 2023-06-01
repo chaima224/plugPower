@@ -10,4 +10,5 @@ export class Borne {
   connecteur!: string;
   mode!: string;
   disponibilite!: Disponibilite;
+  description!: string;
 }

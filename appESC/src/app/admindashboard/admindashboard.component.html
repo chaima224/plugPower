@@ -1,6 +1,7 @@
 <head> </head>
 <body>
-  <div class="pre-loader">
+  <!--
+    <div class="pre-loader">
     <div class="pre-loader-box">
       <div class="loader-logo">
         <img
@@ -15,6 +16,7 @@
       <div class="loading-text">Loading...</div>
     </div>
   </div>
+  -->
 
   <div class="header1">
     <div class="header1-left">
@@ -433,31 +435,27 @@
             </a>
           </li>
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/liststation" class="dropdown-toggle">
               <span class="micon dw dw-library"></span
               ><span class="mtext">List of Stations</span>
             </a>
           </li>
 
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/addborne" class="dropdown-toggle">
               <span class="micon dw dw-right-arrow1"></span
               ><span class="mtext">Add Borne </span>
             </a>
           </li>
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/listborne" class="dropdown-toggle">
               <span class="micon dw dw-library"></span
               ><span class="mtext">List of Bornes</span>
             </a>
           </li>
 
           <li>
-            <a
-              href="https://dropways.github.io/deskapp-free-single-page-website-template/"
-              target="_blank"
-              class="dropdown-toggle no-arrow"
-            >
+            <a routerLink="/" target="_blank" class="dropdown-toggle no-arrow">
               <span class="micon dw dw-paper-plane1"></span>
               <span class="mtext"
                 >Landing Page
@@ -484,7 +482,9 @@
           <div class="col-md-8">
             <h4 class="font-20 weight-500 mb-10 text-capitalize">
               Welcome back
-              <div class="weight-600 font-30 text-blue">Johnny Brown!</div>
+              <div class="weight-600 font-30 text-blue">
+                {{ user.username }}
+              </div>
             </h4>
             <p class="font-18 max-width-600">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde hic

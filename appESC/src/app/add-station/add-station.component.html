@@ -1,4 +1,3 @@
-<head> </head>
 <body>
   <div class="header1">
     <div class="header1-left">
@@ -404,7 +403,7 @@
       <div class="sidebar-menu">
         <ul id="accordion-menu">
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/admin" class="dropdown-toggle">
               <span class="micon dw dw-house-1"></span
               ><span class="mtext">Home</span>
             </a>
@@ -417,20 +416,20 @@
             </a>
           </li>
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/liststation" class="dropdown-toggle">
               <span class="micon dw dw-library"></span
               ><span class="mtext">List of Stations</span>
             </a>
           </li>
 
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/addborne" class="dropdown-toggle">
               <span class="micon dw dw-right-arrow1"></span
               ><span class="mtext">Add Borne </span>
             </a>
           </li>
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/listborne" class="dropdown-toggle">
               <span class="micon dw dw-library"></span
               ><span class="mtext">List of Bornes</span>
             </a>
@@ -499,14 +498,14 @@
               <p class="mb-30">Add a new Station</p>
             </div>
           </div>
-          <form (ngSubmit)="onSubmit()">
+          <form>
             <div class="form-group row">
               <label class="col-sm-12 col-md-2 col-form-label">Name</label>
               <div class="col-sm-12 col-md-10">
                 <input
                   type="text"
                   class="form-control"
-                  id="name"
+                  id="stationNameInput"
                   placeholder="Name"
                   [(ngModel)]="station.name"
                   name="name"
@@ -518,7 +517,7 @@
               <div class="col-sm-12 col-md-10">
                 <select
                   class="form-control"
-                  id="emplacement"
+                  id="emplacementInput"
                   [(ngModel)]="station.emplacement"
                   name="emplacement"
                   placeholder="Select an option"
@@ -536,28 +535,23 @@
                 </select>
               </div>
             </div>
-            <div class="form-group row">
-              <label class="col-sm-12 col-md-2 col-form-label"
-                >Name of Borne</label
-              >
-              <div class="col-sm-12 col-md-10">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="nomBornes"
-                  placeholder="Borne"
-                  [(ngModel)]="borneInput"
-                  name="nomBornes"
-                />
-              </div>
+            <div class="form-group">
+              <label for="nomBornes">Name of Borne</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nomBorneInput"
+                placeholder="Borne"
+                [(ngModel)]="borneInput"
+                name="nomBornes"
+              />
             </div>
-
             <div class="form-group row">
               <label class="col-sm-12 col-md-2 col-form-label">Journey</label>
               <div class="col-sm-12 col-md-10">
                 <select
                   class="form-control"
-                  id="trajet"
+                  id="journeyInput"
                   [(ngModel)]="station.trajet"
                   name="trajet"
                 >
@@ -567,19 +561,7 @@
                 </select>
               </div>
             </div>
-            <div class="form-group row">
-              <label class="col-sm-12 col-md-2 col-form-label">Distance</label>
-              <div class="col-sm-12 col-md-10">
-                <input
-                  type="number"
-                  class="form-control"
-                  id="distance"
-                  placeholder="Distance"
-                  [(ngModel)]="station.distance"
-                  name="distance"
-                />
-              </div>
-            </div>
+
             <div class="row mt-2">
               <div class="col-xl-6 col-md-12">
                 <div class="form-group">
@@ -587,7 +569,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="latitude"
+                    id="latitudeInput"
                     placeholder="Latitude"
                     [(ngModel)]="station.latitude"
                     name="latitude"
@@ -600,7 +582,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    id="longitude"
+                    id="longitudeInput"
                     placeholder="Longitude"
                     [(ngModel)]="station.longitude"
                     name="longitude"
@@ -615,7 +597,7 @@
                   <input
                     type="datetime-local"
                     class="form-control"
-                    id="ouverture"
+                    id="ouvertureInput"
                     placeholder="Opening Time"
                     [(ngModel)]="station.ouverture"
                     name="ouverture"
@@ -628,7 +610,7 @@
                   <input
                     type="datetime-local"
                     class="form-control"
-                    id="fermeture"
+                    id="fermetureInput"
                     placeholder="Closing Time"
                     [(ngModel)]="station.fermeture"
                     name="fermeture"
@@ -639,6 +621,7 @@
             <button
               type="submit"
               class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor mr-2"
+              (click)="valideForm()"
             >
               ADD
             </button>

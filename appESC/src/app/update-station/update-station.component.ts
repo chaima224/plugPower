@@ -3,6 +3,7 @@ import { Station } from '../Models/Station';
 import { StationService } from '../shared/services/station.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-station',
@@ -30,6 +31,22 @@ export class UpdateStationComponent implements OnInit {
       .updateStation(this.id, this.station)
       .subscribe((data) => {
         this.goToStationList();
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          },
+        });
+
+        Toast.fire({
+          icon: 'success',
+          title: ' Station Updated successfully',
+        });
       });
   }
   goToStationList() {

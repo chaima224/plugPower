@@ -1534,7 +1534,7 @@ table.dataTable.dtr-inline.collapsed
   width: 280px;
   height: 100vh;
   z-index: 1000;
-  background: #0b132b;
+  background: #000000;
 }
 .left-side-bar .mCS-dark-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   background: #ecf0f4;

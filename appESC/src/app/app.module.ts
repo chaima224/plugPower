@@ -10,7 +10,7 @@ import {
   HttpClient,
   HttpClientModule,
 } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterModule } from './register/register.module';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { BorneModule } from './borne/borne.module';
@@ -59,6 +59,7 @@ import { UIBorneComponent } from './uiborne/uiborne.component';
     AddBorneModule,
     UpdateBorneModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
   ],
 
   providers: [
