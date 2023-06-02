@@ -1,10 +1,4 @@
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link
-    href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet"
-  />
-</head>
+<head> </head>
 <body>
   <div class="header1">
     <div class="header1-left">
@@ -410,7 +404,7 @@
       <div class="sidebar-menu">
         <ul id="accordion-menu">
           <li class="dropdown">
-            <a routerLink="/admin" class="dropdown-toggle">
+            <a href="javascript:;" class="dropdown-toggle">
               <span class="micon dw dw-house-1"></span
               ><span class="mtext">Home</span>
             </a>
@@ -423,20 +417,20 @@
             </a>
           </li>
           <li class="dropdown">
-            <a routerLink="/liststation" class="dropdown-toggle">
+            <a href="javascript:;" class="dropdown-toggle">
               <span class="micon dw dw-library"></span
               ><span class="mtext">List of Stations</span>
             </a>
           </li>
 
           <li class="dropdown">
-            <a routerLink="/addborne" class="dropdown-toggle">
+            <a href="javascript:;" class="dropdown-toggle">
               <span class="micon dw dw-right-arrow1"></span
               ><span class="mtext">Add Borne </span>
             </a>
           </li>
           <li class="dropdown">
-            <a routerLink="/listborne" class="dropdown-toggle">
+            <a href="javascript:;" class="dropdown-toggle">
               <span class="micon dw dw-library"></span
               ><span class="mtext">List of Bornes</span>
             </a>
@@ -501,80 +495,181 @@
         <div class="pd-20 card-box mb-30">
           <div class="clearfix">
             <div class="pull-left">
-              <h4 class="text-blue h4">PlugPower's Stations</h4>
-              <p class="mb-30">Stations</p>
+              <h4 class="text-blue h4">Stations</h4>
+              <p class="mb-30">Modify Station</p>
             </div>
           </div>
-        </div>
-
-        <div class="card-box mb-30">
-          <table class="data-table table nowrap">
-            <thead>
-              <tr>
-                <th class="table-plus datatable-nosort">Name</th>
-                <th>Type</th>
-                <th>Name of Borne(s)</th>
-                <th>Journey</th>
-                <th>Openin Time</th>
-                <th>Closing Time</th>
-                <th>Status</th>
-                <th class="datatable-nosort">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let ev of station">
-                <td class="table-plus">{{ ev.name }}</td>
-                <td>
-                  <h5 class="font-16">{{ ev.emplacement }}</h5>
-                </td>
-                <td>
-                  <ul>
-                    <li *ngFor="let borne of ev.nomBornes">
-                      {{ borne }}
-                    </li>
-                  </ul>
-                </td>
-                <td>{{ ev.trajet }}</td>
-                <td>{{ ev.ouverture }}</td>
-                <td>{{ ev.fermeture }}</td>
-                <td>{{ ev.status }}</td>
-                <td>
-                  <i
-                    style="font-size: 20px; margin-right: 10px"
-                    class="fa"
-                    (click)="approuveStation(ev.id)"
-                    >&#xf06e;</i
-                  >
-                  <i class="material-icons" (click)="updateStation(ev.id)"
-                    >&#xe254;</i
-                  >
-
-                  <i class="material-icons" (click)="confirmDelete(ev.id)"
-                    >&#xe872;</i
-                  >
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="collapse collapse-box" id="basic-form1">
-          <div class="code-box">
-            <div class="clearfix">
-              <a
-                href="javascript:;"
-                class="btn btn-primary btn-sm code-copy pull-left"
-                data-clipboard-target="#copy-pre"
-                ><i class="fa fa-clipboard"></i> Copy Code</a
+          <form>
+            <div class="form-group row">
+              <label class="col-sm-12 col-md-2 col-form-label">Name</label>
+              <div class="col-sm-12 col-md-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Name"
+                  [(ngModel)]="station.name"
+                  name="name"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-12 col-md-2 col-form-label">Type</label>
+              <div class="col-sm-12 col-md-10">
+                <select
+                  class="form-control"
+                  id="emplacement"
+                  [(ngModel)]="station.emplacement"
+                  name="emplacement"
+                  placeholder="Select an option"
+                >
+                  <option></option>
+                  <option>Entreprise</option>
+                  <option>Hôtel</option>
+                  <option>Particulier</option>
+                  <option>Station-service</option>
+                  <option>Restaurant</option>
+                  <option>Ecole</option>
+                  <option>Voirie</option>
+                  <option>Autoroute</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-12 col-md-2 col-form-label"
+                >Name of Borne</label
               >
-              <a
-                href="#basic-form1"
-                class="btn btn-primary btn-sm pull-right"
-                rel="content-y"
-                data-toggle="collapse"
-                role="button"
-                ><i class="fa fa-eye-slash"></i> Hide Code</a
-              >
+              <div class="col-sm-12 col-md-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nomBornes"
+                  placeholder="Borne"
+                  [(ngModel)]="station.nomBornes"
+                  name="nomBornes"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-12 col-md-2 col-form-label">Journey</label>
+              <div class="col-sm-12 col-md-10">
+                <select
+                  class="form-control"
+                  id="trajet"
+                  [(ngModel)]="station.trajet"
+                  name="trajet"
+                >
+                  <option>Select an option</option>
+                  <option>Avoid highways</option>
+                  <option>Avoid tolls</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-12 col-md-2 col-form-label">Distance</label>
+              <div class="col-sm-12 col-md-10">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="distance"
+                  placeholder="Distance"
+                  [(ngModel)]="station.distance"
+                  name="distance"
+                />
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-xl-6 col-md-12">
+                <div class="form-group">
+                  <label for="latitude">Latitude</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="latitude"
+                    placeholder="Latitude"
+                    [(ngModel)]="station.latitude"
+                    name="latitude"
+                  />
+                </div>
+              </div>
+              <div class="col-xl-6 col-md-12">
+                <div class="form-group">
+                  <label for="longitude">Longitude</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="longitude"
+                    placeholder="Longitude"
+                    [(ngModel)]="station.longitude"
+                    name="longitude"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-xl-6 col-md-12">
+                <div class="form-group">
+                  <label for="ouverture">Opening Time</label>
+                  <input
+                    type="datetime-local"
+                    class="form-control"
+                    id="ouverture"
+                    placeholder="Opening Time"
+                    [(ngModel)]="station.ouverture"
+                    name="ouverture"
+                  />
+                </div>
+              </div>
+              <div class="col-xl-6 col-md-12">
+                <div class="form-group">
+                  <label for="fermeture">Closing Time</label>
+                  <input
+                    type="datetime-local"
+                    class="form-control"
+                    id="fermeture"
+                    placeholder="Closing Time"
+                    [(ngModel)]="station.fermeture"
+                    name="fermeture"
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor mr-2"
+              (click)="onSubmit()"
+            >
+              Confirm
+            </button>
+            <button
+              type="submit"
+              class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill mr-2"
+              style="background-color: black"
+              (click)="confirmDelete(station.id)"
+            >
+              Cancel
+            </button>
+          </form>
+          <div class="collapse collapse-box" id="basic-form1">
+            <div class="code-box">
+              <div class="clearfix">
+                <a
+                  href="javascript:;"
+                  class="btn btn-primary btn-sm code-copy pull-left"
+                  data-clipboard-target="#copy-pre"
+                  ><i class="fa fa-clipboard"></i> Copy Code</a
+                >
+                <a
+                  href="#basic-form1"
+                  class="btn btn-primary btn-sm pull-right"
+                  rel="content-y"
+                  data-toggle="collapse"
+                  role="button"
+                  ><i class="fa fa-eye-slash"></i> Hide Code</a
+                >
+              </div>
             </div>
           </div>
         </div>

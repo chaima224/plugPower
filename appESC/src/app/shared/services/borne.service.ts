@@ -22,6 +22,9 @@ export class BorneService {
   updateBorne(id: string, borne: Borne): Observable<Object> {
     return this.http.put(`${this.baseApi}/${id}`, borne);
   }
+  approuveBorne(id: string, borne: Borne): Observable<Object> {
+    return this.http.put(`${this.baseApi}/${id}`, borne);
+  }
   deleteBorne(id: string): Observable<Object> {
     return this.http.delete(`${this.baseApi}/${id}`);
   }

@@ -499,7 +499,7 @@
               <p class="mb-30">Udpdate your Electrical Terminal</p>
             </div>
           </div>
-          <form (ngSubmit)="onSubmit()">
+          <form>
             <div class="form-group row">
               <label class="col-sm-12 col-md-2 col-form-label">Name</label>
               <div class="col-sm-12 col-md-10">
@@ -558,64 +558,43 @@
               </div>
             </div>
 
-            <div class="row mt-2">
-              <div class="col-xl-6 col-md-12">
-                <div class="form-group">
-                  <label for="latitude">Connector</label>
-                  <select
-                    class="form-control"
-                    id="connecteur"
-                    name="connecteur"
-                    [(ngModel)]="borne.connecteur"
-                  >
-                    <option>Select a Connector</option>
-                    <option>Tesla Supercharger CCS</option>
-                    <option>CHAdeMO</option>
-                    <option>Tesla</option>
-                    <option>Tesla2</option>
-                    <option>P17</option>
-                    <option>Marechal</option>
-                    <option>IEC309DC</option>
-                    <option>Type3A</option>
-                    <option>TypeD</option>
-                    <option>Marechal</option>
-                    <option>Type 3A</option>
-                    <option>TeslaHPWC</option>
-                    <option>ChinaPart2</option>
-                    <option>DomestiqueUK</option>
-                    <option>ComboCCSUSA</option>
-                    <option>TeslaUSA</option>
-                    <option>TYPE1</option>
-                    <option>TYPE2</option>
-                    <option>CHT25</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-xl-6 col-md-12">
-                <div class="form-group">
-                  <label for="longitude">Mode</label>
-                  <select
-                    class="form-control"
-                    id="connecteur"
-                    name="connecteur"
-                    [(ngModel)]="borne.disponibilite"
-                  >
-                    <option value="DISPONIBLE">Available</option>
-                    <option value="OCCUPEE">Not available</option>
-                  </select>
-                </div>
-              </div>
-            </div>
             <div class="form-group row">
-              <label class="col-sm-12 col-md-2 col-form-label"
-                >Availibiity</label
-              >
-              <div class="col-sm-12 col-md-10"></div>
+              <label class="col-sm-12 col-md-2 col-form-label">Connector</label>
+              <div class="col-sm-12 col-md-10">
+                <select
+                  class="form-control"
+                  id="connecteur"
+                  name="connecteur"
+                  [(ngModel)]="borne.connecteur"
+                >
+                  <option>Select a Connector</option>
+                  <option>Tesla Supercharger CCS</option>
+                  <option>CHAdeMO</option>
+                  <option>Tesla</option>
+                  <option>Tesla2</option>
+                  <option>P17</option>
+                  <option>Marechal</option>
+                  <option>IEC309DC</option>
+                  <option>Type3A</option>
+                  <option>TypeD</option>
+                  <option>Marechal</option>
+                  <option>Type 3A</option>
+                  <option>TeslaHPWC</option>
+                  <option>ChinaPart2</option>
+                  <option>DomestiqueUK</option>
+                  <option>ComboCCSUSA</option>
+                  <option>TeslaUSA</option>
+                  <option>TYPE1</option>
+                  <option>TYPE2</option>
+                  <option>CHT25</option>
+                </select>
+              </div>
             </div>
 
             <button
               type="submit"
               class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor mr-2"
+              (click)="onSubmit()"
             >
               Save Changes
             </button>

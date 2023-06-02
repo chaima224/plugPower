@@ -11,4 +11,5 @@ export class Borne {
   mode!: string;
   disponibilite!: Disponibilite;
   description!: string;
+  status!: string;
 }

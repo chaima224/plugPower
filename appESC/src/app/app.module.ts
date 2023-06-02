@@ -32,14 +32,18 @@ import { StationService } from './shared/services/station.service';
 import { MyInterceptor } from './shared/MyInterceptor';
 import { ListborneComponent } from './listborne/listborne.component';
 import { UIBorneComponent } from './uiborne/uiborne.component';
+import { landingpageModule } from './landingpage/landingpage.module';
+import { UIBorneModule } from './uiborne/uiborne.module';
+import { ApprouvedBorneComponent } from './approuved-borne/approuved-borne.component';
+import { ApprouvedBorneModule } from './approuved-borne/approuved-borne.module';
+import { ApprouvedStationComponent } from './approuved-station/approuved-station.component';
+import { ApprouvedStationModule } from './approuved-station/approuved-station.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingpageComponent,
     ListStationComponent,
     ListborneComponent,
-    UIBorneComponent,
 
     /* LoginComponent,
     RegisterComponent,*/
@@ -60,6 +64,10 @@ import { UIBorneComponent } from './uiborne/uiborne.component';
     UpdateBorneModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    landingpageModule,
+    UIBorneModule,
+    ApprouvedBorneModule,
+    ApprouvedStationModule,
   ],
 
   providers: [

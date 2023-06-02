@@ -14,4 +14,5 @@ export class Station {
   trajet!: string;
   distance!: number;
   moyNote?: number;
+  status!: string;
 }

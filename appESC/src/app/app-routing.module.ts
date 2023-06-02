@@ -15,10 +15,7 @@ import { UIBorneComponent } from './uiborne/uiborne.component';
 const routes: Routes = [
   // {path: '' ,
   //loadChildren: () => import('./landingpage/landingpage.module').then(_=>_.landingpageModule)},
-  {
-    path: '',
-    component: LandingpageComponent,
-  },
+
   {
     path: 'liststation',
     component: ListStationComponent,
@@ -27,10 +24,15 @@ const routes: Routes = [
     path: 'listborne',
     component: ListborneComponent,
   },
+
   {
-    path: 'UtilisateurBorne',
-    component: UIBorneComponent,
+    path: '',
+    loadChildren: () =>
+      import('./landingpage/landingpage.module').then(
+        (_) => _.landingpageModule
+      ),
   },
+
   {
     path: 'login',
     loadChildren: () =>
@@ -97,6 +99,25 @@ const routes: Routes = [
     loadChildren: () =>
       import('./update-borne/update-borne.module').then(
         (_) => _.UpdateBorneModule
+      ),
+  },
+  {
+    path: 'UtilisateurBorne',
+    loadChildren: () =>
+      import('./uiborne/uiborne.module').then((_) => _.UIBorneModule),
+  },
+  {
+    path: 'ApprouvedBorne/:id',
+    loadChildren: () =>
+      import('./approuved-borne/approuved-borne.module').then(
+        (_) => _.ApprouvedBorneModule
+      ),
+  },
+  {
+    path: 'ApprouvedStation/:id',
+    loadChildren: () =>
+      import('./approuved-station/approuved-station.module').then(
+        (_) => _.ApprouvedStationModule
       ),
   },
 ];

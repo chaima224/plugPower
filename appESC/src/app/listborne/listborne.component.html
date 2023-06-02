@@ -517,6 +517,7 @@
                 <th>Time of charging</th>
                 <th>Mode</th>
                 <th>Connector</th>
+                <th>Status</th>
 
                 <th class="datatable-nosort">Action</th>
               </tr>
@@ -531,8 +532,14 @@
                 <td>{{ borne.tempsCharge }}</td>
                 <td>{{ borne.mode }}</td>
                 <td>{{ borne.connecteur }}</td>
-
+                <td>{{ borne.status }}</td>
                 <td>
+                  <i
+                    style="font-size: 20px; margin-right: 10px"
+                    class="fa"
+                    (click)="approuveBorne(borne.id)"
+                    >&#xf06e;</i
+                  >
                   <i class="material-icons" (click)="updateBorne(borne.id)"
                     >&#xe254;</i
                   >

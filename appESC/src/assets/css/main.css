@@ -2990,6 +2990,7 @@ footer .g-map iframe {
     left: 0;
     right: 0;
     bottom: -25px;
+    
 }
 .breadcrumb-wrapper-inner.bread-white {
     background-color: var(--base-white) !important;

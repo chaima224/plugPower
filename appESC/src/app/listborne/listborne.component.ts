@@ -25,6 +25,9 @@ export class ListborneComponent implements OnInit {
   updateBorne(id: string) {
     this.router.navigate(['updateborne', id]);
   }
+  approuveBorne(id: string) {
+    this.router.navigate(['ApprouvedBorne', id]);
+  }
   deleteBorne(id: string) {
     this.borneService.deleteBorne(id).subscribe((data) => {
       this.getBorne();

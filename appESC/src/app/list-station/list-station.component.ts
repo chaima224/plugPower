@@ -25,6 +25,9 @@ export class ListStationComponent implements OnInit {
   updateStation(id: string) {
     this.router.navigate(['/updatestation', id]);
   }
+  approuveStation(id: string) {
+    this.router.navigate(['/ApprouvedStation', id]);
+  }
   deleteStation(id: string) {
     this.stationService.deleteStation(id).subscribe((data) => {
       this.getStation();

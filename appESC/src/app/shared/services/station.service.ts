@@ -23,6 +23,9 @@ export class StationService {
   updateStation(id: string, station: Station): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, station);
   }
+  approuveStation(id: string, station: Station): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/${id}`, station);
+  }
   deleteStation(id: string): Observable<Object> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
