@@ -29,4 +29,7 @@ export class StationService {
   deleteStation(id: string): Observable<Object> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
+  getapprouvedStation(): Observable<Station[]> {
+    return this.http.get<Station[]>(`${this.baseUrl}/stationsApprouved`);
+  }
 }

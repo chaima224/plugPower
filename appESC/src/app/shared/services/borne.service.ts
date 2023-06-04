@@ -28,4 +28,7 @@ export class BorneService {
   deleteBorne(id: string): Observable<Object> {
     return this.http.delete(`${this.baseApi}/${id}`);
   }
+  getapprouvedBorne(): Observable<Borne[]> {
+    return this.http.get<Borne[]>(`${this.baseApi}/bornes`);
+  }
 }

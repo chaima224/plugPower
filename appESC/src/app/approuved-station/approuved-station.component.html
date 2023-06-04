@@ -496,7 +496,7 @@
           <div class="clearfix">
             <div class="pull-left">
               <h4 class="text-blue h4">Stations</h4>
-              <p class="mb-30">Modify Station</p>
+              <p class="mb-30">Confirm the Station</p>
             </div>
           </div>
           <form>
@@ -510,6 +510,7 @@
                   placeholder="Name"
                   [(ngModel)]="station.name"
                   name="name"
+                  disabled
                 />
               </div>
             </div>
@@ -522,10 +523,11 @@
                   [(ngModel)]="station.emplacement"
                   name="emplacement"
                   placeholder="Select an option"
+                  disabled
                 >
                   <option></option>
                   <option>Entreprise</option>
-                  <option>Hôtel</option>
+                  <option>Hotel</option>
                   <option>Particulier</option>
                   <option>Station-service</option>
                   <option>Restaurant</option>
@@ -548,6 +550,7 @@
                   placeholder="Borne"
                   [(ngModel)]="station.nomBornes"
                   name="nomBornes"
+                  disabled
                 />
               </div>
             </div>
@@ -560,26 +563,15 @@
                   id="trajet"
                   [(ngModel)]="station.trajet"
                   name="trajet"
+                  disabled
                 >
                   <option>Select an option</option>
-                  <option>Avoid highways</option>
-                  <option>Avoid tolls</option>
+                  <option>Avoid Highways</option>
+                  <option>Avoid Tolls</option>
                 </select>
               </div>
             </div>
-            <div class="form-group row">
-              <label class="col-sm-12 col-md-2 col-form-label">Distance</label>
-              <div class="col-sm-12 col-md-10">
-                <input
-                  type="number"
-                  class="form-control"
-                  id="distance"
-                  placeholder="Distance"
-                  [(ngModel)]="station.distance"
-                  name="distance"
-                />
-              </div>
-            </div>
+
             <div class="row mt-2">
               <div class="col-xl-6 col-md-12">
                 <div class="form-group">
@@ -591,6 +583,7 @@
                     placeholder="Latitude"
                     [(ngModel)]="station.latitude"
                     name="latitude"
+                    disabled
                   />
                 </div>
               </div>
@@ -604,6 +597,7 @@
                     placeholder="Longitude"
                     [(ngModel)]="station.longitude"
                     name="longitude"
+                    disabled
                   />
                 </div>
               </div>
@@ -619,6 +613,7 @@
                     placeholder="Opening Time"
                     [(ngModel)]="station.ouverture"
                     name="ouverture"
+                    disabled
                   />
                 </div>
               </div>
@@ -632,6 +627,7 @@
                     placeholder="Closing Time"
                     [(ngModel)]="station.fermeture"
                     name="fermeture"
+                    disabled
                   />
                 </div>
               </div>

@@ -101,7 +101,7 @@
                           height="35"
                           width="155"
                           class="img-fluid auto_size"
-                          src="assets/images/logo-final-dark.svg"
+                          src="../../assets/images/logo-final-dark.svg"
                           alt="logo-img"
                         />
                       </a>
@@ -178,16 +178,21 @@
           <div class="row align-items-center">
             <div class="col-lg-12">
               <div class="page-title-heading">
-                <h2 class="title"></h2>
+                <h2 class="title">Plugs Details</h2>
               </div>
-              <div class="breadcrumb-wrapper-main" style="top: 525%">
+              <div class="breadcrumb-wrapper-main" style="top: 250%">
                 <div class="container">
                   <div class="breadcrumb-wrapper-inner bread-white">
                     <span>
                       <a href="index.html" class="home">&nbsp;&nbsp;Home</a>
                     </span>
+                    <span>
+                      <a href="our-team.html" class="home"
+                        >&nbsp;&nbsp;-&nbsp;&nbsp; Plugs</a
+                      >
+                    </span>
                     <span class="prt-bread-sep">&nbsp; - &nbsp;</span>
-                    <span>Our Plugs</span>
+                    <span>Plugs Details</span>
                   </div>
                 </div>
               </div>
@@ -198,68 +203,184 @@
     </div>
 
     <!--site-main start-->
-    <section class="prt-row bg-base-grey pb-70 clearfix">
-      <div class="container">
-        <div class="row">
-          <div
-            class="col-lg-4 col-md-6 col-12"
-            *ngFor="let station of stations"
-          >
-            <div class="featured-imagebox featured-imagebox-team style1">
-              <div class="prt-box-view-overlay">
-                <div class="featured-iconbox prt-media-link">
-                  <div class="media-block">
-                    <a (click)="getStationDetails(station.id)" class="media-btn"
-                      ><i class="ti ti-plus"></i
-                    ></a>
-                    <ul class="social-icons list-inline">
-                      <li class="social-facebook">
-                        <a href="https://www.facebook.com/themetechMount18"
-                          ><i class="ti ti-facebook"></i
-                        ></a>
-                      </li>
-                      <li class="social-twitter">
-                        <a href="https://twitter.com/themetechmount"
-                          ><i class="ti ti-twitter-alt"></i
-                        ></a>
-                      </li>
-                      <li class="social-instagram">
-                        <a
-                          href="https://in.pinterest.com/themetechmount/_created/"
-                          ><i class="ti ti-instagram"></i
-                        ></a>
-                      </li>
-                    </ul>
+    <div class="site-main">
+      <!--prt-row-->
+      <section class="prt-row bg-base-grey team-detail-section clearfix">
+        <div
+          class="prt-team-member-single-content-wrapper prt-team-member-view-default"
+        >
+          <div class="container">
+            <div class="row prt-team-member-single-content">
+              <div class="col-lg-8 m-auto">
+                <div
+                  class="row bg-base-white box-shadow pt-50 pb-30 pl-25 pr-25 res-575-pr-0 res-575-pl-0"
+                >
+                  <div class="col-xl-6 col-md-12">
+                    <!-- prt-featured-wrapper -->
+                    <div class="prt-featured-wrapper res-767-pr-0">
+                      <div class="featured-thumbnail">
+                        <img
+                          width="408"
+                          height="441"
+                          class="img-fluid border-rad_6"
+                          src="../../assets/images/blog/blog-6.jpg"
+                          alt="image"
+                        />
+                      </div>
+                    </div>
+                    <!-- prt-featured-wrapper end-->
                   </div>
-                </div>
-                <div class="featured-thumbnail">
-                  <img
-                    class="img-fluid"
-                    src="assets/images/services/services-328x259.jpg"
-                    alt="image"
-                  />
-                </div>
-              </div>
-              <div class="featured-content featured-content-team">
-                <div class="featured-title">
-                  <h3>
-                    <a href="team-details.html">{{ station.name }}</a>
-                  </h3>
-                </div>
-                <!--<div class="team-position">Senior Manager</div>-->
-                <div class="team-icon pt-25">
-                  <img
-                    src="assets/images/favicon.png "
-                    style="width: 10%; height: 10%"
-                  />
-                  <a href="mailto:info@gmail.com">Plug Power</a>
+                  <div class="col-xl-6 col-md-12">
+                    <div
+                      class="prt-team-member-content res-767-pb-40 pb-50 res-767-pt-40 res-1199-pt-30"
+                    >
+                      <div class="prt-team-member-single-list">
+                        <span class="prt-team-member-single-position"></span>
+                        <h2 class="prt-team-member-single-title">
+                          {{ borne.name }}
+                        </h2>
+                        <p>
+                          Communication throughout the waiting process has been
+                          timely and concise. Billy has been a star and answered
+                          all my questions.
+                        </p>
+                        <div class="prt-team-data">
+                          <div class="prt-team-details-wrapper">
+                            <ul class="prt-team-details-list clearfix">
+                              <li>
+                                <div class="prt-team-list-title">Power:</div>
+                                <div class="prt-team-list-value ml-10">
+                                  <a href="tel:(123)456-7890">
+                                    {{ borne.puissance }}</a
+                                  >
+                                </div>
+                              </li>
+                              <li>
+                                <div class="prt-team-list-title">
+                                  Charging Time:
+                                </div>
+                                <div class="prt-team-list-value ml-10">
+                                  <a
+                                    href="mailto:info@example.com"
+                                    tabindex="0"
+                                  >
+                                    {{ borne.tempsCharge }}</a
+                                  >
+                                </div>
+                              </li>
+                              <li>
+                                <div class="prt-team-list-title">
+                                  Type of Connector :
+                                </div>
+                                <div class="prt-team-list-value ml-10">
+                                  <a
+                                    href="mailto:info@example.com"
+                                    tabindex="0"
+                                  >
+                                    {{ borne.connecteur }}</a
+                                  >
+                                </div>
+                              </li>
+                              <li>
+                                <div class="prt-team-list-title">
+                                  Mode of Charging :
+                                </div>
+                                <div class="prt-team-list-value ml-10">
+                                  <a
+                                    href="mailto:info@example.com"
+                                    tabindex="0"
+                                  >
+                                    {{ borne.mode }}</a
+                                  >
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="prt-team-member-content-about">
+                    <h3>Description</h3>
+                    <p>
+                      {{ borne.description }}
+                    </p>
+                  </div>
+                  <div class="pt-30 pb-20">
+                    <h3>Our Working Topics</h3>
+                    <p>
+                      This business includes lot of risk &amp; think businesses
+                      should be a force for good. That’s why we support local
+                      good causes.Direct service to door in amid time..
+                    </p>
+                  </div>
+                  <div class="row">
+                    <div class="col-xl-6 col-md-12">
+                      <div class="prt-featured-wrapper res-767-pr-0">
+                        <div class="featured-thumbnail">
+                          <img
+                            class="img-fluid"
+                            src="../../assets/images/services/services-03-407x222.jpg"
+                            alt="image"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-md-12">
+                      <ul
+                        class="prt-list prt-list-style-icon d-grid prt-list-icon-color-skincolor res-1199-mt-30"
+                      >
+                        <li>
+                          <i class="fa fa-check-square"></i
+                          ><span class="prt-list-li-content"
+                            >Our mission is to put an electric charge.</span
+                          >
+                        </li>
+                        <li>
+                          <i class="fa fa-check-square"></i
+                          ><span class="prt-list-li-content"
+                            >Access control put an electric vehicle
+                            charge.</span
+                          >
+                        </li>
+                        <li>
+                          <i class="fa fa-check-square"></i
+                          ><span class="prt-list-li-content"
+                            >Free Support an electric vehicle charge.</span
+                          >
+                        </li>
+                        <li>
+                          <i class="fa fa-check-square"></i
+                          ><span class="prt-list-li-content"
+                            >On high-level decisions in unbiased</span
+                          >
+                        </li>
+                        <li>
+                          <i class="fa fa-check-square"></i
+                          ><span class="prt-list-li-content"
+                            >Electric cars are quiet, comfortable</span
+                          >
+                        </li>
+                        <li>
+                          <i class="fa fa-check-square"></i
+                          ><span class="prt-list-li-content"
+                            >Available 24 hours a day, 7 days a week</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div
+                    class="prt-horizontal_sep width-100 mt-10 mb-40 ml-20"
+                  ></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <!--prt-row end-->
+    </div>
     <!--site-main end-->
 
     <!-- footer start -->
@@ -388,18 +509,4 @@
     <!--back-to-top end-->
   </div>
   <!-- page end -->
-
-  <!-- Javascript -->
-  <script src="js/jquery-3.6.0.min.js"></script>
-  <script src="js/jquery-migrate-3.3.2.min.js"></script>
-  <script src="js/bootstrap.bundle.js"></script>
-  <script src="js/jquery-validate.js"></script>
-  <script src="js/jquery.prettyPhoto.js"></script>
-  <script src="js/slick.min.js"></script>
-  <script src="js/jquery-waypoints.js"></script>
-  <script src="js/numinate.min.js"></script>
-  <script src="js/imagesloaded.min.js"></script>
-  <script src="js/circle-progress.min.js"></script>
-  <script src="js/main.js"></script>
-  <!-- Javascript end-->
 </body>

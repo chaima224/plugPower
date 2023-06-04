@@ -74,6 +74,7 @@ export class ApprouvedStationComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.deleteStation(stationId);
+        this.router.navigate(['/liststation']);
       }
     });
   }
