@@ -42,7 +42,7 @@ export class ApprouvedBorneComponent implements OnInit {
 
       Toast.fire({
         icon: 'success',
-        title: ' Plug Updated successfully',
+        title: ' Plug Approuved',
       });
     });
   }

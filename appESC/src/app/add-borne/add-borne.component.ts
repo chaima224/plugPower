@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Connecteur } from '../Models/Connecteur';
 import { Mode } from '../Models/Mode';
-import { Disponibilite } from '../Models/Disponibilite';
+
 import { Borne } from '../Models/Borne';
 import { Router } from '@angular/router';
 import { BorneService } from '../shared/services/borne.service';

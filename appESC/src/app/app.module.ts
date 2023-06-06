@@ -42,6 +42,7 @@ import { CommonModule } from '@angular/common';
 
 import { StationDetailsComponent } from './station-details/station-details.component';
 import { BorneDetailsComponent } from './borne-details/borne-details.component';
+import { AddDisponibiliteComponent } from './add-disponibilite/add-disponibilite.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { BorneDetailsComponent } from './borne-details/borne-details.component';
 
     StationDetailsComponent,
      BorneDetailsComponent,
+     AddDisponibiliteComponent,
 
     /* LoginComponent,
     RegisterComponent,*/

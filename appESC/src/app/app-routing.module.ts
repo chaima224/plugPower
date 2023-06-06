@@ -14,6 +14,7 @@ import { UIBorneComponent } from './uiborne/uiborne.component';
 
 import { StationDetailsComponent } from './station-details/station-details.component';
 import { BorneDetailsComponent } from './borne-details/borne-details.component';
+import { AddDisponibiliteComponent } from './add-disponibilite/add-disponibilite.component';
 
 const routes: Routes = [
   // {path: '' ,
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'UtilisateurBorne',
     component: UIBorneComponent,
+  },
+  {
+    path: 'add-disponibilite',
+    component: AddDisponibiliteComponent,
   },
 
   {

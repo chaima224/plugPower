@@ -10,6 +10,7 @@ export class Station {
   ouverture!: Date;
   fermeture!: Date;
   nomBornes: string[] = [];
+  bornes: Borne[] = [];
   emplacement!: string;
   trajet!: string;
   distance!: number;

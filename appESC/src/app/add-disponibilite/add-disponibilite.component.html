@@ -1,10 +1,3 @@
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link
-    href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet"
-  />
-</head>
 <body>
   <div class="header1">
     <div class="header1-left">
@@ -410,7 +403,7 @@
       <div class="sidebar-menu">
         <ul id="accordion-menu">
           <li class="dropdown">
-            <a href="javascript:;" class="dropdown-toggle">
+            <a routerLink="/admin" class="dropdown-toggle">
               <span class="micon dw dw-house-1"></span
               ><span class="mtext">Home</span>
             </a>
@@ -443,7 +436,11 @@
           </li>
 
           <li>
-            <a routerLink="/" target="_blank" class="dropdown-toggle no-arrow">
+            <a
+              href="https://dropways.github.io/deskapp-free-single-page-website-template/"
+              target="_blank"
+              class="dropdown-toggle no-arrow"
+            >
               <span class="micon dw dw-paper-plane1"></span>
               <span class="mtext"
                 >Landing Page
@@ -497,80 +494,130 @@
         <div class="pd-20 card-box mb-30">
           <div class="clearfix">
             <div class="pull-left">
-              <h4 class="text-blue h4">PlugPower's Stations</h4>
-              <p class="mb-30">Stations</p>
+              <h4 class="text-blue h4">Disponibility</h4>
+              <p class="mb-30">Add a new Disponibility</p>
             </div>
           </div>
-        </div>
-
-        <div class="card-box mb-30">
-          <table class="data-table table nowrap">
-            <thead>
-              <tr>
-                <th class="table-plus datatable-nosort">Name</th>
-                <th>Type</th>
-                <th>Name of Borne(s)</th>
-                <th>Journey</th>
-                <th>Openin Time</th>
-                <th>Closing Time</th>
-                <th>Status</th>
-                <th class="datatable-nosort">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let ev of station">
-                <td class="table-plus">{{ ev.name }}</td>
-                <td>
-                  <h5 class="font-16">{{ ev.emplacement }}</h5>
-                </td>
-                <td>
-                  <ul>
-                    <li *ngFor="let borne of ev.nomBornes">
-                      {{ borne }}
-                    </li>
-                  </ul>
-                </td>
-                <td>{{ ev.trajet }}</td>
-                <td>{{ ev.ouverture }}</td>
-                <td>{{ ev.fermeture }}</td>
-                <td>{{ ev.status }}</td>
-                <td>
-                  <i
-                    style="font-size: 20px; margin-right: 10px"
-                    class="fa"
-                    (click)="approuveStation(ev.id)"
-                    >&#xf06e;</i
+          <form>
+            <div class="col-xl-6 col-md-12">
+              <div class="form-group row">
+                <label for="nomStation">Name Of Station</label>
+                <div class="col-sm-12 col-md-10">
+                  <select
+                    class="form-control"
+                    id="nomStationInput"
+                    name="nomStation"
+                    [(ngModel)]="disponibilite.station.id"
+                    (change)="onStationChange($event)"
                   >
-                  <i class="material-icons" (click)="updateStation(ev.id)"
-                    >&#xe254;</i
-                  >
+                    <option value="">Select an option</option>
+                    <option *ngFor="let st of station" [value]="st.id">
+                      {{ st.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-                  <i class="material-icons" (click)="confirmDelete(ev.id)"
-                    >&#xe872;</i
+            <div class="col-xl-6 col-md-12">
+              <div class="form-group row">
+                <label>Name Of Borne</label>
+                <div class="col-sm-12 col-md-10">
+                  <select
+                    class="form-control"
+                    id="nomBorneInput"
+                    name="nomBorne"
+                    [(ngModel)]="disponibilite.borne.id"
                   >
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                    <option value="">Select an option</option>
+                    <option
+                      *ngFor="let borne of selectedStation?.bornes"
+                      [value]="borne.id"
+                    >
+                      {{ borne.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-        <div class="collapse collapse-box" id="basic-form1">
-          <div class="code-box">
-            <div class="clearfix">
-              <a
-                href="javascript:;"
-                class="btn btn-primary btn-sm code-copy pull-left"
-                data-clipboard-target="#copy-pre"
-                ><i class="fa fa-clipboard"></i> Copy Code</a
-              >
-              <a
-                href="#basic-form1"
-                class="btn btn-primary btn-sm pull-right"
-                rel="content-y"
-                data-toggle="collapse"
-                role="button"
-                ><i class="fa fa-eye-slash"></i> Hide Code</a
-              >
+            <div class="col-xl-6 col-md-12">
+              <div id="etatInput">
+                <div (click)="setValue('Available', 'etat')">
+                  <input type="radio" id="available" name="availability" />
+                  <label for="available" style="margin-left: 10px"
+                    >Available</label
+                  >
+                </div>
+
+                <div (click)="setValue('Unavailable', 'etat')">
+                  <input type="radio" id="unavailable" name="availability" />
+                  <label for="unavailable" style="margin-left: 10px"
+                    >Unavailable</label
+                  >
+                </div>
+
+                <div (click)="setValue('Out of service', 'etat')">
+                  <input type="radio" id="out-of-service" name="availability" />
+                  <label for="out-of-service" style="margin-left: 10px"
+                    >Out of service</label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-xl-6 col-md-12">
+                <div class="form-group">
+                  <label>From</label>
+                  <input
+                    type="datetime-local"
+                    class="form-control"
+                    id="dateDebutInput"
+                    name="dateDebut"
+                    [(ngModel)]="disponibilite.dateDebut"
+                  />
+                </div>
+              </div>
+              <div class="col-xl-6 col-md-12">
+                <div class="form-group">
+                  <label for="fermeture">To</label>
+                  <input
+                    type="datetime-local"
+                    class="form-control"
+                    id="dateFinInput"
+                    name="dateFin"
+                    [(ngModel)]="disponibilite.dateFin"
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor mr-2"
+              (click)="valideForm()"
+            >
+              ADD
+            </button>
+          </form>
+          <div class="collapse collapse-box" id="basic-form1">
+            <div class="code-box">
+              <div class="clearfix">
+                <a
+                  href="javascript:;"
+                  class="btn btn-primary btn-sm code-copy pull-left"
+                  data-clipboard-target="#copy-pre"
+                  ><i class="fa fa-clipboard"></i> Copy Code</a
+                >
+                <a
+                  href="#basic-form1"
+                  class="btn btn-primary btn-sm pull-right"
+                  rel="content-y"
+                  data-toggle="collapse"
+                  role="button"
+                  ><i class="fa fa-eye-slash"></i> Hide Code</a
+                >
+              </div>
             </div>
           </div>
         </div>

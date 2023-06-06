@@ -1,5 +1,5 @@
 import { Connecteur } from './Connecteur';
-import { Disponibilite } from './Disponibilite';
+
 import { Mode } from './Mode';
 
 export class Borne {
@@ -9,7 +9,7 @@ export class Borne {
   tempsCharge!: number;
   connecteur!: string;
   mode!: string;
-  disponibilite!: Disponibilite;
+
   description!: string;
   status!: string;
 }

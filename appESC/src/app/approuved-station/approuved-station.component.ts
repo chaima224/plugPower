@@ -50,7 +50,7 @@ export class ApprouvedStationComponent implements OnInit {
 
         Toast.fire({
           icon: 'success',
-          title: ' Station Updated successfully',
+          title: ' Station Approuved ',
         });
       });
   }
