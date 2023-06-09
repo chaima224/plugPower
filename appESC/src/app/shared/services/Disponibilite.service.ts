@@ -13,4 +13,12 @@ export class DisponibiliteService {
   saveDisponibilite(disponibilite: Disponibilite): Observable<Object> {
     return this.http.post(`${this.Url}/dispo`, disponibilite);
   }
+
+  getDisponibiliteByStationAndBorne(
+    stationId: string,
+    borneId: string
+  ): Observable<Disponibilite> {
+    const url = `${this.Url}/${stationId}/${borneId}`;
+    return this.http.get<Disponibilite>(url);
+  }
 }

@@ -306,6 +306,21 @@
                       {{ borne.description }}
                     </p>
                   </div>
+                  <div *ngIf="disponibilite">
+                    <h2>Disponibilité</h2>
+
+                    <p>
+                      <strong>Date de début :</strong>
+                      {{ disponibilite.dateDebut }}
+                    </p>
+                    <p>
+                      <strong>Date de fin :</strong>
+                      {{ disponibilite.dateFin }}
+                    </p>
+                    <p><strong>État :</strong> {{ disponibilite.etat }}</p>
+                    <p></p>
+                  </div>
+
                   <div class="pt-30 pb-20">
                     <h3>Our Working Topics</h3>
                     <p>

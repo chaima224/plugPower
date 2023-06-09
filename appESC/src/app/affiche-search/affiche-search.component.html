@@ -1,0 +1,8 @@
+<div *ngIf="stations.length > 0">
+  <h2>Résultats de la recherche :</h2>
+  <div *ngFor="let station of stations">
+    <h3>{{ station.name }}</h3>
+    <p>{{ station.emplacement }}</p>
+    <!-- Affichez d'autres détails de la station selon vos besoins -->
+  </div>
+</div>

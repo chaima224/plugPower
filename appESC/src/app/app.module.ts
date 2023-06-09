@@ -41,8 +41,11 @@ import { ApprouvedStationModule } from './approuved-station/approuved-station.mo
 import { CommonModule } from '@angular/common';
 
 import { StationDetailsComponent } from './station-details/station-details.component';
-import { BorneDetailsComponent } from './borne-details/borne-details.component';
 import { AddDisponibiliteComponent } from './add-disponibilite/add-disponibilite.component';
+import { BdetailsComponent } from './bdetails/bdetails.component';
+
+import { SearchStationComponent } from './search-station/search-station.component';
+import { AfficheSearchComponent } from './affiche-search/affiche-search.component';
 
 @NgModule({
   declarations: [
@@ -52,8 +55,11 @@ import { AddDisponibiliteComponent } from './add-disponibilite/add-disponibilite
     UIBorneComponent,
 
     StationDetailsComponent,
-     BorneDetailsComponent,
-     AddDisponibiliteComponent,
+    AddDisponibiliteComponent,
+    BdetailsComponent,
+
+    SearchStationComponent,
+     AfficheSearchComponent,
 
     /* LoginComponent,
     RegisterComponent,*/

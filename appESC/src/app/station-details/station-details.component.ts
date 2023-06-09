@@ -3,6 +3,7 @@ import { Station } from '../Models/Station';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StationService } from '../shared/services/station.service';
 import { Borne } from '../Models/Borne';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-station-details',
@@ -13,10 +14,13 @@ export class StationDetailsComponent implements OnInit {
   stations: Station[] = [];
   id!: string;
   station: Station = new Station();
+  borne: Borne = new Borne();
+  bornes: Borne[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private stationService: StationService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -36,5 +40,18 @@ export class StationDetailsComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+  logout(): void {
+    // Call the logout method from the authentication service
+    this.authService.logoutUser();
+
+    // Additional tasks (optional)
+    // Example: Clear local storage or reset user-related variables
+    localStorage.clear();
+    this.router.navigate(['/']);
+    // ...
+  }
+  getBorneDetails(id: string) {
+    this.router.navigate(['/bornedetails', this.station.id, id]);
   }
 }

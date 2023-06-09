@@ -37,7 +37,7 @@ export class UIBorneComponent implements OnInit {
     );
   }
   getBorneDetails(id: string) {
-    this.router.navigate(['Borne-details', id]);
+    this.router.navigate(['/bornedetails', id]);
   }
   getStationDetails(id: string) {
     this.router.navigate(['Station-details', id]);

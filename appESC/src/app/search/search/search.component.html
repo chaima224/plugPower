@@ -296,14 +296,7 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-sm-12">
-                            <button
-                              class="submit prt-btn prt-btn-size-md prt-btn-shape-square prt-btn-style-fill prt-btn-color-skincolor w-100"
-                              type="submit"
-                            >
-                              Search
-                            </button>
-                          </div>
+                          <div class="col-sm-12"></div>
                         </div>
                       </form>
                     </div>
@@ -346,10 +339,28 @@
                     </div>
                     <div class="pt-30 pb-20">
                       <h3 style="position: center">
-                        Frequently Asked Questions
+                        Search for a station based on your criteria!
                       </h3>
                     </div>
-
+                    <div class="row">
+                      <div class="col">
+                        <p class="comment-form-author">
+                          <input
+                            placeholder="Power *"
+                            name="puissance"
+                            type="number"
+                            step="0.01"
+                            value=""
+                            size="30"
+                            aria-required="true"
+                            id="powerInput"
+                            [(ngModel)]="borne.puissance"
+                            required
+                            pattern="[0..9]+"
+                          />
+                        </p>
+                      </div>
+                    </div>
                     <div class="bg-base-white res-991-pl-0">
                       <div class="accordion mt_5">
                         <!-- toggle -->
@@ -357,41 +368,43 @@
                           class="toggle prt-toggle_style_classic style2 prt-toggle-title-bgcolor-grey"
                         >
                           <div class="toggle-title">
-                            <a
-                              routerLink="/search"
-                              [routerLinkActive]="['active']"
-                              >Charging plugs and speeds</a
-                            >
+                            <a href="#" class="active">Connector*</a>
                           </div>
-                          <div class="toggle-content">
-                            <h4
-                              class="advancedsearch-title"
-                              [class.center-title1]="true"
-                            >
-                              Types of plugs
-                            </h4>
+                          <div
+                            class="toggle-content show"
+                            style="display: none"
+                          >
                             <div data-type="connector_type">
+                              <!-- ... Contenu existant ... -->
+
                               <div class="row">
                                 <div class="col-xs-12 col-sm-6 checkbox-item">
                                   <div
                                     data-checkbox="connector-type"
-                                    class="checkbox customcheckbox is-active"
+                                    class="checkbox customcheckbox hidden is-active"
                                   >
                                     <label class="customcheckbox-inner">
                                       <input
-                                        class="connector-type-14"
+                                        class="connector-type-39"
                                         name="connector_type[]"
                                         type="checkbox"
-                                        value="14"
+                                        value="39"
                                       />
                                       <span class="customcheckbox-icon">
                                         <img
-                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/14/type2.svg"
-                                          alt="Type 2"
+                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/39/combo-ccs-tesla.svg"
+                                          alt="Tesla Supercharger CCS"
                                         />
                                       </span>
-                                      <span class="customcheckbox-text"
-                                        >Type 2</span
+                                      <span
+                                        class="customcheckbox-text"
+                                        (click)="
+                                          setValue(
+                                            'Tesla Supercharger CCS',
+                                            'connecteur'
+                                          )
+                                        "
+                                        >Tesla Superchar CCS</span
                                       >
                                     </label>
                                   </div>
@@ -399,123 +412,30 @@
                                 <div class="col-xs-12 col-sm-6 checkbox-item">
                                   <div
                                     data-checkbox="connector-type"
-                                    class="checkbox customcheckbox is-active"
+                                    class="checkbox customcheckbox hidden is-active"
                                   >
                                     <label class="customcheckbox-inner">
                                       <input
-                                        class="connector-type-6"
+                                        class="connector-type-38"
                                         name="connector_type[]"
                                         type="checkbox"
-                                        value="6"
+                                        value="38"
                                       />
                                       <span class="customcheckbox-icon">
                                         <img
-                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/6/schuko.svg"
-                                          alt="Domestique UE"
+                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/38/tesla-superchager-eu.svg"
+                                          alt="Tesla Supercharger Euro"
                                         />
                                       </span>
-                                      <span class="customcheckbox-text"
-                                        >Domestique UE</span
-                                      >
-                                    </label>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-xs-12 col-sm-6 checkbox-item">
-                                  <div
-                                    data-checkbox="connector-type"
-                                    class="checkbox customcheckbox is-active"
-                                  >
-                                    <label class="customcheckbox-inner">
-                                      <input
-                                        class="connector-type-15"
-                                        name="connector_type[]"
-                                        type="checkbox"
-                                        value="15"
-                                      />
-                                      <span class="customcheckbox-icon">
-                                        <img
-                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/15/type3c.svg"
-                                          alt="Type 3C"
-                                        />
-                                      </span>
-                                      <span class="customcheckbox-text"
-                                        >Type 3C</span
-                                      >
-                                    </label>
-                                  </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 checkbox-item">
-                                  <div
-                                    data-checkbox="connector-type"
-                                    class="checkbox customcheckbox is-active"
-                                  >
-                                    <label class="customcheckbox-inner">
-                                      <input
-                                        class="connector-type-26"
-                                        name="connector_type[]"
-                                        type="checkbox"
-                                        value="26"
-                                      />
-                                      <span class="customcheckbox-icon">
-                                        <img
-                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/26/combo-ccs-eu.svg"
-                                          alt="Combo CCS EU"
-                                        />
-                                      </span>
-                                      <span class="customcheckbox-text"
-                                        >Combo CCS EU</span
-                                      >
-                                    </label>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-xs-12 col-sm-6 checkbox-item">
-                                  <div
-                                    data-checkbox="connector-type"
-                                    class="checkbox customcheckbox is-active"
-                                  >
-                                    <label class="customcheckbox-inner">
-                                      <input
-                                        class="connector-type-16"
-                                        name="connector_type[]"
-                                        type="checkbox"
-                                        value="16"
-                                      />
-                                      <span class="customcheckbox-icon">
-                                        <img
-                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/16/type1.svg"
-                                          alt="Type 1"
-                                        />
-                                      </span>
-                                      <span class="customcheckbox-text"
-                                        >Type 1</span
-                                      >
-                                    </label>
-                                  </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-6 checkbox-item">
-                                  <div
-                                    data-checkbox="connector-type"
-                                    class="checkbox customcheckbox is-active"
-                                  >
-                                    <label class="customcheckbox-inner">
-                                      <input
-                                        class="connector-type-19"
-                                        name="connector_type[]"
-                                        type="checkbox"
-                                        value="19"
-                                      />
-                                      <span class="customcheckbox-icon">
-                                        <img
-                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/19/type4.svg"
-                                          alt="CHAdeMO"
-                                        />
-                                      </span>
-                                      <span class="customcheckbox-text"
-                                        >CHAdeMO</span
+                                      <span
+                                        class="customcheckbox-text"
+                                        (click)="
+                                          setValue(
+                                            'Tesla Supercharger Euro',
+                                            'connecteur'
+                                          )
+                                        "
+                                        >Tesla Supercharger Euro</span
                                       >
                                     </label>
                                   </div>
@@ -529,19 +449,26 @@
                                   >
                                     <label class="customcheckbox-inner">
                                       <input
-                                        class="connector-type-37"
+                                        class="connector-type-18"
                                         name="connector_type[]"
                                         type="checkbox"
-                                        value="37"
+                                        value="18"
                                       />
                                       <span class="customcheckbox-icon">
                                         <img
-                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/37/type2-cable-attached.svg"
-                                          alt="Type 2 (câble attaché)"
+                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/18/cee-r.svg"
+                                          alt="P17 rouge (industrielle)"
                                         />
                                       </span>
-                                      <span class="customcheckbox-text"
-                                        >Type 2 (câble attaché)</span
+                                      <span
+                                        class="customcheckbox-text"
+                                        (click)="
+                                          setValue(
+                                            '17 rouge(industrielle)',
+                                            'connecteur'
+                                          )
+                                        "
+                                        >P17 rouge(industrielle)</span
                                       >
                                     </label>
                                   </div>
@@ -553,474 +480,611 @@
                                   >
                                     <label class="customcheckbox-inner">
                                       <input
-                                        class="connector-type-17"
+                                        class="connector-type-31"
                                         name="connector_type[]"
                                         type="checkbox"
-                                        value="17"
+                                        value="31"
                                       />
                                       <span class="customcheckbox-icon">
                                         <img
-                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/17/cee-b.svg"
-                                          alt="P17 bleue (camping)"
+                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/31/marechal.svg"
+                                          alt="Marechal"
                                         />
                                       </span>
-                                      <span class="customcheckbox-text"
-                                        >P17 bleue (camping)</span
+                                      <span
+                                        class="customcheckbox-text"
+                                        (click)="
+                                          setValue('Marechal', 'connecteur')
+                                        "
+                                        >Marechal</span
                                       >
                                     </label>
                                   </div>
                                 </div>
                               </div>
+                              <div class="row">
+                                <div class="col-xs-12 col-sm-6 checkbox-item">
+                                  <div
+                                    data-checkbox="connector-type"
+                                    class="checkbox customcheckbox hidden is-active"
+                                  >
+                                    <label class="customcheckbox-inner">
+                                      <input
+                                        class="connector-type-32"
+                                        name="connector_type[]"
+                                        type="checkbox"
+                                        value="32"
+                                      />
+                                      <span class="customcheckbox-icon">
+                                        <img
+                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/32/iec-309-dc.svg"
+                                          alt="IEC-309-DC"
+                                        />
+                                      </span>
+                                      <span
+                                        class="customcheckbox-text"
+                                        (click)="
+                                          setValue('IEC309DC', 'connecteur')
+                                        "
+                                        >IEC309DC</span
+                                      >
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 checkbox-item">
+                                  <div
+                                    data-checkbox="connector-type"
+                                    class="checkbox customcheckbox hidden is-active"
+                                  >
+                                    <label class="customcheckbox-inner">
+                                      <input
+                                        class="connector-type-20"
+                                        name="connector_type[]"
+                                        type="checkbox"
+                                        value="20"
+                                      />
+                                      <span class="customcheckbox-icon">
+                                        <img
+                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/20/type3a.svg"
+                                          alt="Type 3A"
+                                        />
+                                      </span>
+                                      <span
+                                        class="customcheckbox-text"
+                                        (click)="
+                                          setValue('Type3A', 'connecteur')
+                                        "
+                                        >Type3A</span
+                                      >
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-xs-12 col-sm-6 checkbox-item">
+                                  <div
+                                    data-checkbox="connector-type"
+                                    class="checkbox customcheckbox hidden is-active"
+                                  >
+                                    <label class="customcheckbox-inner">
+                                      <input
+                                        class="connector-type-4"
+                                        name="connector_type[]"
+                                        type="checkbox"
+                                        value="4"
+                                      />
+                                      <span class="customcheckbox-icon">
+                                        <img
+                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/4/type-d.svg"
+                                          alt="TypeD"
+                                        />
+                                      </span>
+                                      <span
+                                        class="customcheckbox-text"
+                                        (click)="
+                                          setValue('TypeD', 'connecteur')
+                                        "
+                                        >TypeD</span
+                                      >
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 checkbox-item">
+                                  <div
+                                    data-checkbox="connector-type"
+                                    class="checkbox customcheckbox hidden is-active"
+                                  >
+                                    <label class="customcheckbox-inner">
+                                      <input
+                                        class="connector-type-22"
+                                        name="connector_type[]"
+                                        type="checkbox"
+                                        value="22"
+                                      />
+                                      <span class="customcheckbox-icon">
+                                        <img
+                                          src="https://api.chargemap.com/medias/v2/connector_types/icon/original/22/tesla-hpwc-roadster.svg"
+                                          alt="Tesla HPWC "
+                                        />
+                                      </span>
+                                      <span
+                                        class="customcheckbox-text"
+                                        (click)="
+                                          setValue('TeslaHPWC', 'connecteur')
+                                        "
+                                        >TeslaHPWC
+                                      </span>
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
                               <div
-                                class="toggle prt-toggle_style_classic style prt-toggle-title-bgcolor-grey"
+                                class="col-xs-12 col-sm-6 checkbox-item"
+                                style="padding: -10%"
                               >
                                 <div
-                                  class="toggle-title"
-                                  [class.center-title]="true"
+                                  data-checkbox="connector-type"
+                                  class="checkbox customcheckbox hidden is-active"
                                 >
-                                  <div href="#">More plugs</div>
+                                  <label class="customcheckbox-inner">
+                                    <input
+                                      class="connector-type-28"
+                                      name="connector_type[]"
+                                      type="checkbox"
+                                      value="28"
+                                    />
+                                    <span class="customcheckbox-icon">
+                                      <img
+                                        src="https://api.chargemap.com/medias/v2/connector_types/icon/original/28/china-gb-part-2.svg"
+                                        alt="China Part 2 "
+                                      />
+                                    </span>
+                                    <span
+                                      class="customcheckbox-text"
+                                      (click)="
+                                        setValue('ChinaPart2', 'connecteur')
+                                      "
+                                      >ChinaPart2
+                                    </span>
+                                  </label>
                                 </div>
-                                <div data-type="connector_type">
-                                  <!-- ... Contenu existant ... -->
-
-                                  <div
-                                    class="voir-plus-container"
-                                    [class]="divClass"
+                              </div>
+                              <div class="col-xs-12 col-sm-6 checkbox-item">
+                                <div
+                                  data-checkbox="connector-type"
+                                  class="checkbox customcheckbox hidden is-active"
+                                >
+                                  <label class="customcheckbox-inner">
+                                    <input
+                                      class="connector-type-7"
+                                      name="connector_type[]"
+                                      type="checkbox"
+                                      value="7"
+                                    />
+                                    <span class="customcheckbox-icon">
+                                      <img
+                                        src="https://api.chargemap.com/medias/v2/connector_types/icon/original/7/domestic-uk.svg"
+                                        alt="Domestique UK"
+                                      />
+                                    </span>
+                                    <span
+                                      class="customcheckbox-text"
+                                      (click)="
+                                        setValue('DomestiqueUK', 'connecteur')
+                                      "
+                                      >DomestiqueUK</span
+                                    >
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-6 checkbox-item">
+                                <div
+                                  data-checkbox="connector-type"
+                                  class="checkbox customcheckbox hidden is-active"
+                                >
+                                  <label class="customcheckbox-inner">
+                                    <input
+                                      class="connector-type-27"
+                                      name="connector_type[]"
+                                      type="checkbox"
+                                      value="27"
+                                    />
+                                    <span class="customcheckbox-icon">
+                                      <img
+                                        src="https://api.chargemap.com/medias/v2/connector_types/icon/original/27/combo-type-1.svg"
+                                        alt="Combo CCS USA"
+                                      />
+                                    </span>
+                                    <span
+                                      class="customcheckbox-text"
+                                      (click)="
+                                        setValue('Combo CCS USA', 'connecteur')
+                                      "
+                                      >ComboCCSUSA</span
+                                    >
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-6 checkbox-item">
+                                <div
+                                  data-checkbox="connector-type"
+                                  class="checkbox customcheckbox hidden is-active"
+                                >
+                                  <label class="customcheckbox-inner">
+                                    <input
+                                      class="connector-type-36"
+                                      name="connector_type[]"
+                                      type="checkbox"
+                                      value="36"
+                                    />
+                                    <span class="customcheckbox-icon">
+                                      <img
+                                        src="https://api.chargemap.com/medias/v2/connector_types/icon/original/36/tesla-hpwc-model-s.svg"
+                                        alt="TeslaUSA"
+                                      />
+                                    </span>
+                                    <span
+                                      class="customcheckbox-text"
+                                      (click)="
+                                        setValue('TeslaUSA', 'connecteur')
+                                      "
+                                      >TeslaUSA</span
+                                    >
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-6 checkbox-item">
+                                <div
+                                  data-checkbox="connector-type"
+                                  class="checkbox customcheckbox hidden is-active"
+                                >
+                                  <label class="customcheckbox-inner">
+                                    <input
+                                      class="connector-type-35"
+                                      name="connector_type[]"
+                                      type="checkbox"
+                                      value="35"
+                                    />
+                                    <span class="customcheckbox-icon">
+                                      <img
+                                        src="https://api.chargemap.com/medias/v2/connector_types/icon/original/35/t25.svg"
+                                        alt="CH T25"
+                                      />
+                                    </span>
+                                    <span
+                                      class="customcheckbox-text"
+                                      (click)="setValue('CHT25', 'connecteur')"
+                                      >CHT25</span
+                                    >
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-6 checkbox-item">
+                                <div
+                                  data-checkbox="connector-type"
+                                  class="checkbox customcheckbox hidden is-active"
+                                >
+                                  <label class="customcheckbox-inner">
+                                    <input
+                                      class="connector-type-12"
+                                      name="connector_type[]"
+                                      type="checkbox"
+                                      value="12"
+                                    />
+                                    <span class="customcheckbox-icon">
+                                      <img
+                                        src="https://api.chargemap.com/medias/v2/connector_types/icon/original/12/domestic-it.svg"
+                                        alt="Domestique IT"
+                                      />
+                                    </span>
+                                    <span
+                                      class="customcheckbox-text"
+                                      (click)="
+                                        setValue('DomestiqueIT', 'connecteur')
+                                      "
+                                      >DomestiqueIT</span
+                                    >
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-xs-12 col-sm-6 checkbox-item">
+                                <div
+                                  data-checkbox="connector-type"
+                                  class="checkbox customcheckbox hidden is-active"
+                                >
+                                  <label class="customcheckbox-inner">
+                                    <input
+                                      class="connector-type-10"
+                                      name="connector_type[]"
+                                      type="checkbox"
+                                      value="10"
+                                    />
+                                    <span class="customcheckbox-icon">
+                                      <img
+                                        src="https://api.chargemap.com/medias/v2/connector_types/icon/original/10/t13.svg"
+                                        alt="CH T13"
+                                      />
+                                    </span>
+                                    <span
+                                      class="customcheckbox-text"
+                                      (click)="setValue('CHT13', 'connecteur')"
+                                      >CHT13</span
+                                    >
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col-xs-12 col-sm-6 checkbox-item">
+                                <div
+                                  data-checkbox="connector-type"
+                                  class="checkbox customcheckbox hidden is-active"
+                                >
+                                  <label class="customcheckbox-inner">
+                                    <input
+                                      class="connector-type-23"
+                                      name="connector_type[]"
+                                      type="checkbox"
+                                      value="23"
+                                    />
+                                    <span class="customcheckbox-icon">
+                                      <img
+                                        src="https://api.chargemap.com/medias/v2/connector_types/icon/original/23/avcon.svg"
+                                        alt="Prise AVCON"
+                                      />
+                                    </span>
+                                    <span
+                                      class="customcheckbox-text"
+                                      (click)="
+                                        setValue('PriseAVCON', 'connecteur')
+                                      "
+                                      >PriseAVCON</span
+                                    >
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- toggle end -->
+                        <div
+                          class="toggle prt-toggle_style_classic style2 prt-toggle-title-bgcolor-grey"
+                        >
+                          <div class="toggle-title">
+                            <a href="#" class="active">Mode*</a>
+                          </div>
+                          <div class="toggle-content show">
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="mode"
+                                value="FAST"
+                                id="flexradiooption1"
+                                s
+                              />
+                              <label
+                                class="form-check-label"
+                                for="flexradiooption1"
+                                (click)="setValue('FAST', 'mode')"
+                                >FAST</label
+                              >
+                            </div>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="mode"
+                                value="SLOW"
+                                id="flexradiooption2"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="flexradiooption2"
+                                (click)="setValue('SLOW', 'mode')"
+                                >SLOW</label
+                              >
+                            </div>
+                          </div>
+                        </div>
+                        <!-- toggle -->
+                        <div
+                          class="toggle prt-toggle_style_classic style2 prt-toggle-title-bgcolor-grey"
+                        >
+                          <div
+                            class="toggle prt-toggle_style_classic style2 prt-toggle-title-bgcolor-grey"
+                          >
+                            <div class="toggle-title">
+                              <a href="#" class="active">Place type*</a>
+                            </div>
+                            <div
+                              class="toggle-content show"
+                              style="display: none"
+                            >
+                              <div data-type="location_type" class="clearfix">
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value="Entreprise"
+                                    id="flexCheckIndeterminate"
+                                    (click)="
+                                      setValue(' Entreprise', 'emplacement')
+                                    "
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="flexCheckIndeterminate"
                                   >
-                                    <div class="row">
-                                      <div
-                                        class="col-xs-12 col-sm-6 checkbox-item"
-                                      >
-                                        <div
-                                          data-checkbox="connector-type"
-                                          class="checkbox customcheckbox hidden is-active"
-                                        >
-                                          <label class="customcheckbox-inner">
-                                            <input
-                                              class="connector-type-39"
-                                              name="connector_type[]"
-                                              type="checkbox"
-                                              value="39"
-                                            />
-                                            <span class="customcheckbox-icon">
-                                              <img
-                                                src="https://api.chargemap.com/medias/v2/connector_types/icon/original/39/combo-ccs-tesla.svg"
-                                                alt="Tesla Supercharger CCS"
-                                              />
-                                            </span>
-                                            <span class="customcheckbox-text"
-                                              >Tesla Supercharger CCS</span
-                                            >
-                                          </label>
-                                        </div>
-                                      </div>
-                                      <div
-                                        class="col-xs-12 col-sm-6 checkbox-item"
-                                      >
-                                        <div
-                                          data-checkbox="connector-type"
-                                          class="checkbox customcheckbox hidden is-active"
-                                        >
-                                          <label class="customcheckbox-inner">
-                                            <input
-                                              class="connector-type-38"
-                                              name="connector_type[]"
-                                              type="checkbox"
-                                              value="38"
-                                            />
-                                            <span class="customcheckbox-icon">
-                                              <img
-                                                src="https://api.chargemap.com/medias/v2/connector_types/icon/original/38/tesla-superchager-eu.svg"
-                                                alt="Tesla Supercharger Euro"
-                                              />
-                                            </span>
-                                            <span class="customcheckbox-text"
-                                              >Tesla Supercharger Euro</span
-                                            >
-                                          </label>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div
-                                        class="col-xs-12 col-sm-6 checkbox-item"
-                                      >
-                                        <div
-                                          data-checkbox="connector-type"
-                                          class="checkbox customcheckbox hidden is-active"
-                                        >
-                                          <label class="customcheckbox-inner">
-                                            <input
-                                              class="connector-type-18"
-                                              name="connector_type[]"
-                                              type="checkbox"
-                                              value="18"
-                                            />
-                                            <span class="customcheckbox-icon">
-                                              <img
-                                                src="https://api.chargemap.com/medias/v2/connector_types/icon/original/18/cee-r.svg"
-                                                alt="P17 rouge (industrielle)"
-                                              />
-                                            </span>
-                                            <span class="customcheckbox-text"
-                                              >P17 rouge (industrielle)</span
-                                            >
-                                          </label>
-                                        </div>
-                                      </div>
-                                      <div
-                                        class="col-xs-12 col-sm-6 checkbox-item"
-                                      >
-                                        <div
-                                          data-checkbox="connector-type"
-                                          class="checkbox customcheckbox hidden is-active"
-                                        >
-                                          <label class="customcheckbox-inner">
-                                            <input
-                                              class="connector-type-31"
-                                              name="connector_type[]"
-                                              type="checkbox"
-                                              value="31"
-                                            />
-                                            <span class="customcheckbox-icon">
-                                              <img
-                                                src="https://api.chargemap.com/medias/v2/connector_types/icon/original/31/marechal.svg"
-                                                alt="Marechal"
-                                              />
-                                            </span>
-                                            <span class="customcheckbox-text"
-                                              >Marechal</span
-                                            >
-                                          </label>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div
-                                        class="col-xs-12 col-sm-6 checkbox-item"
-                                      >
-                                        <div
-                                          data-checkbox="connector-type"
-                                          class="checkbox customcheckbox hidden is-active"
-                                        >
-                                          <label class="customcheckbox-inner">
-                                            <input
-                                              class="connector-type-32"
-                                              name="connector_type[]"
-                                              type="checkbox"
-                                              value="32"
-                                            />
-                                            <span class="customcheckbox-icon">
-                                              <img
-                                                src="https://api.chargemap.com/medias/v2/connector_types/icon/original/32/iec-309-dc.svg"
-                                                alt="IEC-309-DC"
-                                              />
-                                            </span>
-                                            <span class="customcheckbox-text"
-                                              >IEC-309-DC</span
-                                            >
-                                          </label>
-                                        </div>
-                                      </div>
-                                      <div
-                                        class="col-xs-12 col-sm-6 checkbox-item"
-                                      >
-                                        <div
-                                          data-checkbox="connector-type"
-                                          class="checkbox customcheckbox hidden is-active"
-                                        >
-                                          <label class="customcheckbox-inner">
-                                            <input
-                                              class="connector-type-20"
-                                              name="connector_type[]"
-                                              type="checkbox"
-                                              value="20"
-                                            />
-                                            <span class="customcheckbox-icon">
-                                              <img
-                                                src="https://api.chargemap.com/medias/v2/connector_types/icon/original/20/type3a.svg"
-                                                alt="Type 3A"
-                                              />
-                                            </span>
-                                            <span class="customcheckbox-text"
-                                              >Type 3A</span
-                                            >
-                                          </label>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="row">
-                                      <div
-                                        class="col-xs-12 col-sm-6 checkbox-item"
-                                      >
-                                        <div
-                                          data-checkbox="connector-type"
-                                          class="checkbox customcheckbox hidden is-active"
-                                        >
-                                          <label class="customcheckbox-inner">
-                                            <input
-                                              class="connector-type-4"
-                                              name="connector_type[]"
-                                              type="checkbox"
-                                              value="4"
-                                            />
-                                            <span class="customcheckbox-icon">
-                                              <img
-                                                src="https://api.chargemap.com/medias/v2/connector_types/icon/original/4/type-d.svg"
-                                                alt="Type D"
-                                              />
-                                            </span>
-                                            <span class="customcheckbox-text"
-                                              >Type D</span
-                                            >
-                                          </label>
-                                        </div>
-                                      </div>
-                                      <div
-                                        class="col-xs-12 col-sm-6 checkbox-item"
-                                      >
-                                        <div
-                                          data-checkbox="connector-type"
-                                          class="checkbox customcheckbox hidden is-active"
-                                        >
-                                          <label class="customcheckbox-inner">
-                                            <input
-                                              class="connector-type-22"
-                                              name="connector_type[]"
-                                              type="checkbox"
-                                              value="22"
-                                            />
-                                            <span class="customcheckbox-icon">
-                                              <img
-                                                src="https://api.chargemap.com/medias/v2/connector_types/icon/original/22/tesla-hpwc-roadster.svg"
-                                                alt="Tesla HPWC "
-                                              />
-                                            </span>
-                                            <span class="customcheckbox-text"
-                                              >Tesla HPWC
-                                            </span>
-                                          </label>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div
-                                      class="col-xs-12 col-sm-6 checkbox-item"
-                                      style="padding: -10%"
-                                    >
-                                      <div
-                                        data-checkbox="connector-type"
-                                        class="checkbox customcheckbox hidden is-active"
-                                      >
-                                        <label class="customcheckbox-inner">
-                                          <input
-                                            class="connector-type-28"
-                                            name="connector_type[]"
-                                            type="checkbox"
-                                            value="28"
-                                          />
-                                          <span class="customcheckbox-icon">
-                                            <img
-                                              src="https://api.chargemap.com/medias/v2/connector_types/icon/original/28/china-gb-part-2.svg"
-                                              alt="China Part 2 "
-                                            />
-                                          </span>
-                                          <span class="customcheckbox-text"
-                                            >China Part 2
-                                          </span>
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <div
-                                      class="col-xs-12 col-sm-6 checkbox-item"
-                                    >
-                                      <div
-                                        data-checkbox="connector-type"
-                                        class="checkbox customcheckbox hidden is-active"
-                                      >
-                                        <label class="customcheckbox-inner">
-                                          <input
-                                            class="connector-type-7"
-                                            name="connector_type[]"
-                                            type="checkbox"
-                                            value="7"
-                                          />
-                                          <span class="customcheckbox-icon">
-                                            <img
-                                              src="https://api.chargemap.com/medias/v2/connector_types/icon/original/7/domestic-uk.svg"
-                                              alt="Domestique UK"
-                                            />
-                                          </span>
-                                          <span class="customcheckbox-text"
-                                            >Domestique UK</span
-                                          >
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div
-                                      class="col-xs-12 col-sm-6 checkbox-item"
-                                    >
-                                      <div
-                                        data-checkbox="connector-type"
-                                        class="checkbox customcheckbox hidden is-active"
-                                      >
-                                        <label class="customcheckbox-inner">
-                                          <input
-                                            class="connector-type-27"
-                                            name="connector_type[]"
-                                            type="checkbox"
-                                            value="27"
-                                          />
-                                          <span class="customcheckbox-icon">
-                                            <img
-                                              src="https://api.chargemap.com/medias/v2/connector_types/icon/original/27/combo-type-1.svg"
-                                              alt="Combo CCS USA"
-                                            />
-                                          </span>
-                                          <span class="customcheckbox-text"
-                                            >Combo CCS USA</span
-                                          >
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <div
-                                      class="col-xs-12 col-sm-6 checkbox-item"
-                                    >
-                                      <div
-                                        data-checkbox="connector-type"
-                                        class="checkbox customcheckbox hidden is-active"
-                                      >
-                                        <label class="customcheckbox-inner">
-                                          <input
-                                            class="connector-type-36"
-                                            name="connector_type[]"
-                                            type="checkbox"
-                                            value="36"
-                                          />
-                                          <span class="customcheckbox-icon">
-                                            <img
-                                              src="https://api.chargemap.com/medias/v2/connector_types/icon/original/36/tesla-hpwc-model-s.svg"
-                                              alt="Tesla USA"
-                                            />
-                                          </span>
-                                          <span class="customcheckbox-text"
-                                            >Tesla USA</span
-                                          >
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div
-                                      class="col-xs-12 col-sm-6 checkbox-item"
-                                    >
-                                      <div
-                                        data-checkbox="connector-type"
-                                        class="checkbox customcheckbox hidden is-active"
-                                      >
-                                        <label class="customcheckbox-inner">
-                                          <input
-                                            class="connector-type-35"
-                                            name="connector_type[]"
-                                            type="checkbox"
-                                            value="35"
-                                          />
-                                          <span class="customcheckbox-icon">
-                                            <img
-                                              src="https://api.chargemap.com/medias/v2/connector_types/icon/original/35/t25.svg"
-                                              alt="CH T25"
-                                            />
-                                          </span>
-                                          <span class="customcheckbox-text"
-                                            >CH T25</span
-                                          >
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <div
-                                      class="col-xs-12 col-sm-6 checkbox-item"
-                                    >
-                                      <div
-                                        data-checkbox="connector-type"
-                                        class="checkbox customcheckbox hidden is-active"
-                                      >
-                                        <label class="customcheckbox-inner">
-                                          <input
-                                            class="connector-type-12"
-                                            name="connector_type[]"
-                                            type="checkbox"
-                                            value="12"
-                                          />
-                                          <span class="customcheckbox-icon">
-                                            <img
-                                              src="https://api.chargemap.com/medias/v2/connector_types/icon/original/12/domestic-it.svg"
-                                              alt="Domestique IT"
-                                            />
-                                          </span>
-                                          <span class="customcheckbox-text"
-                                            >Domestique IT</span
-                                          >
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <div
-                                      class="col-xs-12 col-sm-6 checkbox-item"
-                                    >
-                                      <div
-                                        data-checkbox="connector-type"
-                                        class="checkbox customcheckbox hidden is-active"
-                                      >
-                                        <label class="customcheckbox-inner">
-                                          <input
-                                            class="connector-type-10"
-                                            name="connector_type[]"
-                                            type="checkbox"
-                                            value="10"
-                                          />
-                                          <span class="customcheckbox-icon">
-                                            <img
-                                              src="https://api.chargemap.com/medias/v2/connector_types/icon/original/10/t13.svg"
-                                              alt="CH T13"
-                                            />
-                                          </span>
-                                          <span class="customcheckbox-text"
-                                            >CH T13</span
-                                          >
-                                        </label>
-                                      </div>
-                                    </div>
-                                    <div
-                                      class="col-xs-12 col-sm-6 checkbox-item"
-                                    >
-                                      <div
-                                        data-checkbox="connector-type"
-                                        class="checkbox customcheckbox hidden is-active"
-                                      >
-                                        <label class="customcheckbox-inner">
-                                          <input
-                                            class="connector-type-23"
-                                            name="connector_type[]"
-                                            type="checkbox"
-                                            value="23"
-                                          />
-                                          <span class="customcheckbox-icon">
-                                            <img
-                                              src="https://api.chargemap.com/medias/v2/connector_types/icon/original/23/avcon.svg"
-                                              alt="Prise AVCON"
-                                            />
-                                          </span>
-                                          <span class="customcheckbox-text"
-                                            >Prise AVCON</span
-                                          >
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </div>
+                                    Entreprise
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value="Hotel"
+                                    id="checkboxHotel"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxHotel"
+                                    (click)="setValue('Hôtel', 'emplacement')"
+                                  >
+                                    Hôtel
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value=" Particulier"
+                                    id="checkboxparticulier"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxparticulier"
+                                    (click)="
+                                      setValue('Particulier ', 'emplacement')
+                                    "
+                                  >
+                                    Particulier
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value=" Parking"
+                                    id="checkboxparking"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxparking"
+                                    (click)="setValue('Parking', 'emplacement')"
+                                  >
+                                    Parking
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value="Gare"
+                                    id="checkboxgare"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxgare"
+                                    (click)="setValue('Gare ', 'emplacement')"
+                                  >
+                                    Gare
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value="Station-service"
+                                    id="checkboxstation"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxstation"
+                                    (click)="
+                                      setValue(
+                                        'Station-service ',
+                                        'emplacement'
+                                      )
+                                    "
+                                  >
+                                    Station-service
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value="Restaurant"
+                                    id="checkboxresto"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxresto"
+                                    (click)="
+                                      setValue('Restaurant ', 'emplacement')
+                                    "
+                                  >
+                                    Restaurant
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value="Voirie"
+                                    id="checkboxvoirie"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxvoirie"
+                                    (click)="setValue('Voirie ', 'emplacement')"
+                                  >
+                                    Voirie
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value="Ecole"
+                                    id="checkboxecole"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxecole"
+                                    (click)="setValue('Ecole ', 'emplacement')"
+                                  >
+                                    Ecole
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value="autoroute"
+                                    id="checkboxautoroute"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxautoroute"
+                                    (click)="
+                                      setValue('Autoroute ', 'emplacement')
+                                    "
+                                  >
+                                    Autoroute
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    value="autre"
+                                    id="checkboxautre"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxautre"
+                                    (click)="setValue('Autre ', 'emplacement')"
+                                  >
+                                    Autre
+                                  </label>
                                 </div>
                               </div>
                             </div>
@@ -1031,290 +1095,49 @@
                         <div
                           class="toggle prt-toggle_style_classic style2 prt-toggle-title-bgcolor-grey"
                         >
-                          <div class="toggle-title">
-                            <a
-                              routerLink="/search"
-                              [routerLinkActive]="['active']"
-                              >Filters</a
-                            >
-                          </div>
-                          <div class="toggle-content" style="display: none">
-                            <h4
-                              class="advancedsearch-title"
-                              [class.center-title1]="true"
-                            >
-                              Types of places
-                            </h4>
-                            <div data-type="location_type" class="clearfix">
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="flexCheckIndeterminate"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="flexCheckIndeterminate"
-                                >
-                                  Entreprise
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxHotel"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxHotel"
-                                >
-                                  Hôtel
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxparticulier"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxparticulier"
-                                >
-                                  Particulier
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxparking"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxparking"
-                                >
-                                  Parking
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxgare"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxgare"
-                                >
-                                  Gare
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxstation"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxstation"
-                                >
-                                  Station-service
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxresto"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxresto"
-                                >
-                                  Restaurant
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxvoirie"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxvoirie"
-                                >
-                                  Voirie
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxecole"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxecole"
-                                >
-                                  Ecole
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxautoroute"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxautoroute"
-                                >
-                                  Autoroute
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxautre"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxautre"
-                                >
-                                  Autre
-                                </label>
-                              </div>
+                          <div class="toggle">
+                            <div class="toggle-title">
+                              <a href="#" class="active">Journey*</a>
                             </div>
-                            <div>
-                              <h4
-                                class="advancedsearch-title searchoptions-title2-mobile"
-                              >
-                                Other options
-                              </h4>
-
-                              <div class="form-check mt-10">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxoption1"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxoption1"
-                                >
-                                  Hide privately shared plugs
-                                </label>
-                              </div>
-
-                              <div class="form-check mt-10">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxoption2"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxoption2"
-                                >
-                                  Free chargers only
-                                </label>
-                              </div>
-
-                              <div class="form-check mt-10">
-                                <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  value=""
-                                  id="checkboxoption3"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="checkboxoption3"
-                                >
-                                  Hide plugs that are not accessible 24/24h
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- toggle end -->
-                        <!-- toggle -->
-                        <div
-                          class="toggle prt-toggle_style_classic style2 prt-toggle-title-bgcolor-grey"
-                        >
-                          <div class="toggle-title">
-                            <a
-                              routerLink="/search"
-                              [routerLinkActive]="['active']"
-                              >Journey</a
+                            <div
+                              class="toggle-content show"
+                              style="display: none"
                             >
-                          </div>
-                          <div class="toggle-content" style="">
-                            <div class="form-check mt-10">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="checkboxoption4"
-                              />
-                              <label
-                                class="form-check-label"
-                                for="checkboxoption4"
-                              >
-                                Avoid highways
-                              </label>
-                            </div>
-                            <div class="form-check mt-10">
-                              <input
-                                class="form-check-input"
-                                type="checkbox"
-                                value=""
-                                id="checkboxoption5"
-                              />
-                              <label
-                                class="form-check-label"
-                                for="checkboxoption5"
-                              >
-                                Avoid tolls
-                              </label>
-                            </div>
+                              <div data-type="location_type" class="clearfix">
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    value="AvoidHighways"
+                                    id="flexCheckA"
+                                    name="journey-option"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="flexCheckA"
+                                    (click)="
+                                      setValue('AvoidHighways', 'trajet')
+                                    "
+                                    >Avoid Highways</label
+                                  >
+                                </div>
 
-                            <label
-                              for="search_range"
-                              class="control-label"
-                              style="padding-left: 25px"
-                              >Search distance</label
-                            >
-                            <div class="custom-select-wrapper">
-                              <select
-                                class="form-control"
-                                id="search_range"
-                                name="search_range"
-                                data-width="100%"
-                              >
-                                <option value="10">10km</option>
-                                <option value="20">20km</option>
-                                <option value="30">30km</option>
-                                <option value="40">40km</option>
-                              </select>
+                                <div class="form-check">
+                                  <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    value="AvoidTolls"
+                                    id="checkboxB"
+                                    name="journey-option"
+                                  />
+                                  <label
+                                    class="form-check-label"
+                                    for="checkboxB"
+                                    (click)="setValue('AvoidTolls', 'trajet')"
+                                    >Avoid Tolls</label
+                                  >
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>

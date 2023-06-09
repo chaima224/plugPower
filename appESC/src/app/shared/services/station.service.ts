@@ -32,4 +32,21 @@ export class StationService {
   getapprouvedStation(): Observable<Station[]> {
     return this.http.get<Station[]>(`${this.baseUrl}/stationsApprouved`);
   }
+  rechercheStations(
+    puissance?: number,
+    connecteur?: string,
+    mode?: string
+  ): Observable<Station[]> {
+    let url = `${this.baseUrl}/rechercheStation?`;
+    if (puissance) {
+      url += `puissance=${puissance}&`;
+    }
+    if (connecteur) {
+      url += `connecteur=${connecteur}&`;
+    }
+    if (mode) {
+      url += `mode=${mode}&`;
+    }
+    return this.http.get<Station[]>(url);
+  }
 }

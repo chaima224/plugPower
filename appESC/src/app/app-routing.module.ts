@@ -13,8 +13,10 @@ import { ListborneComponent } from './listborne/listborne.component';
 import { UIBorneComponent } from './uiborne/uiborne.component';
 
 import { StationDetailsComponent } from './station-details/station-details.component';
-import { BorneDetailsComponent } from './borne-details/borne-details.component';
 import { AddDisponibiliteComponent } from './add-disponibilite/add-disponibilite.component';
+import { BdetailsComponent } from './bdetails/bdetails.component';
+import { SearchStationComponent } from './search-station/search-station.component';
+import { AfficheSearchComponent } from './affiche-search/affiche-search.component';
 
 const routes: Routes = [
   // {path: '' ,
@@ -42,9 +44,18 @@ const routes: Routes = [
     component: StationDetailsComponent,
   },
   {
-    path: 'Borne-details/:id',
-    component: BorneDetailsComponent,
+    path: 'bornedetails/:idStation/:idBorne',
+    component: BdetailsComponent,
   },
+  {
+    path: 'searchStation',
+    component: SearchStationComponent,
+  },
+  {
+    path: 'resultSearch',
+    component: AfficheSearchComponent,
+  },
+
   {
     path: '',
     loadChildren: () =>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BorneDetailsComponent } from './borne-details.component';
+import { SearchStationComponent } from './search-station.component';
 
-describe('BorneDetailsComponent', () => {
-  let component: BorneDetailsComponent;
-  let fixture: ComponentFixture<BorneDetailsComponent>;
+describe('SearchStationComponent', () => {
+  let component: SearchStationComponent;
+  let fixture: ComponentFixture<SearchStationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BorneDetailsComponent ]
+      declarations: [ SearchStationComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BorneDetailsComponent);
+    fixture = TestBed.createComponent(SearchStationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

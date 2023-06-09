@@ -222,7 +222,7 @@
                 </div>
                 <div class="featured-content">
                   <div class="featured-title">
-                    <h2>Add a borne</h2>
+                    <h2>Search for a station based on your criteria!</h2>
                   </div>
                   <div class="featured-desc"></div>
                 </div>
@@ -230,17 +230,6 @@
               <div
                 class="prt-tabs prt-tab-style-02 res-575-pl-15 res-575-pr-15"
               >
-                <ul class="tabs">
-                  <li class="tab active"><a href="#">Informations</a></li>
-
-                  <li class="tab" id="descriptionTab">
-                    <a href="#">Description</a>
-                  </li>
-
-                  <li class="tab" id="tabLocation">
-                    <a href="#">Location</a>
-                  </li>
-                </ul>
                 <div class="content-tab">
                   <!-- content-inner -->
                   <div class="content-inner" style="display: none">
@@ -256,62 +245,25 @@
                               id="commentform"
                               class="row g-3"
                             >
-                              <div class="row mt-15">
-                                <div class="col-ml-4">
+                              <div class="row mt-50">
+                                <div class="row">
                                   <p class="comment-form-author">
                                     <input
-                                      id="nameInput"
-                                      class="form-control"
-                                      placeholder="Name Of Borne *"
-                                      name="name"
-                                      type="text"
+                                      placeholder="Power *"
+                                      name="puissance"
+                                      type="number"
                                       step="0.01"
                                       value=""
                                       size="30"
                                       aria-required="true"
-                                      [(ngModel)]="borne.name"
+                                      id="powerInput"
+                                      [(ngModel)]="borne.puissance"
                                       required
-                                      pattern="[A-Za-z\s]+"
-                                      touched
+                                      pattern="[0..9]+"
                                     />
                                   </p>
-                                  <div class="row">
-                                    <div class="col-xs-12 col-sm-6">
-                                      <p class="comment-form-author">
-                                        <input
-                                          placeholder="Power *"
-                                          name="puissance"
-                                          type="number"
-                                          step="0.01"
-                                          value=""
-                                          size="30"
-                                          aria-required="true"
-                                          id="powerInput"
-                                          [(ngModel)]="borne.puissance"
-                                          required
-                                          pattern="[0..9]+"
-                                        />
-                                      </p>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                      <p class="comment-form-author">
-                                        <input
-                                          id="chargingTimeInput"
-                                          placeholder="Charging Time*"
-                                          name="tempsCharge"
-                                          type="number"
-                                          step="0.01"
-                                          value=""
-                                          size="30"
-                                          aria-required="true"
-                                          [(ngModel)]="borne.tempsCharge"
-                                          required
-                                          pattern="[0..9]+"
-                                        />
-                                      </p>
-                                    </div>
-                                  </div>
                                 </div>
+
                                 <br />
                               </div>
                               <div class="row">
@@ -1001,6 +953,23 @@
                                       </div>
                                     </div>
                                   </div>
+                                  <div
+                                    class="prt-box-view-overlay prt-portfolio-box-view-overlay"
+                                  >
+                                    <!-- featured-thumbnail -->
+                                    <div
+                                      class="featured-thumbnail"
+                                      style="height: 310px"
+                                    >
+                                      <a href="#">
+                                        <img
+                                          class="img-fluid"
+                                          src="../../assets/images/portfolio/portfolio-7-768x512.jpg"
+                                          alt="image"
+                                      /></a>
+                                    </div>
+                                    <!-- featured-thumbnail end -->
+                                  </div>
                                 </div>
                               </div>
                               <!-- <div class="row">
@@ -1029,11 +998,9 @@
                                   <button
                                     class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor"
                                     type="submit"
-                                    (click)="
-                                      validateForm(); firstTabClicked = true
-                                    "
+                                    (click)="onSubmit()"
                                   >
-                                    Next
+                                    Search
                                   </button>
                                 </p>
                               </div>
@@ -1043,503 +1010,12 @@
                       </div>
                     </div>
                   </div>
-
-                  <!-- content-inner -->
-                  <div class="content-inner" style="display: none">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <!-- featured-imagebox -->
-                        <div
-                          class="featured-imagebox featured-imagebox-portfolio style3"
-                        >
-                          <!-- featured-thumbnail -->
-                          <div class="featured-thumbnail mb-5">
-                            <img
-                              class="img-fluid"
-                              src="assets/images/portfolio/portfolio-3-566x400.jpg"
-                              alt="image"
-                            />
-                          </div>
-                          <!-- featured-thumbnail end-->
-                          <div class="featured-content">
-                            <div class="featured-title">
-                              <h3>
-                                <a href="#" tabindex="0"
-                                  >Electric Car Charging <br />
-                                  Home</a
-                                >
-                              </h3>
-                            </div>
-                            <div class="border-box"></div>
-                            <div class="featured-iconbox prt-media-link">
-                              <a href="#"><i class="ti ti-plus"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- featured-imagebox -->
-                      </div>
-                      <div class="col-xl-6">
-                        <form
-                          action="#"
-                          method="post"
-                          id="commentform"
-                          class="comment-form"
-                        >
-                          <p class="comment-form-comment mt-3">
-                            <textarea
-                              id="descriptionInput"
-                              placeholder="description"
-                              name="description"
-                              cols="45"
-                              rows="4"
-                              aria-required="true"
-                              [(ngModel)]="borne.description"
-                              required
-                              pattern="[A-Za-z\s]+"
-                            ></textarea>
-                          </p>
-
-                          <p class="form-submit mt-40 mb-0">
-                            <button
-                              class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor"
-                              type="submit"
-                              (click)="validForm(); secondTabClicked = true"
-                            >
-                              Next
-                            </button>
-                          </p>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- content-inner end-->
-                  <!-- content-inner -->
-                  <div class="content-inner active">
-                    <div class="row">
-                      <article
-                        class="post prt-blog-single bg-base-white box-shadow pt-20 pb-50 pl-40 pr-40 clearfix"
-                      >
-                        <div class="prt-blog-classic-box-comment clearfix">
-                          <form
-                            action="#"
-                            method="post"
-                            id="commentform"
-                            class="comment-form"
-                          >
-                            <div class="row mt-15">
-                              <div class="col-ml-4">
-                                <p class="comment-form-author">
-                                  <input
-                                    id="stationNameInput"
-                                    placeholder="Place name *"
-                                    name="name"
-                                    type="text"
-                                    size="30"
-                                    aria-required="true"
-                                    [(ngModel)]="station.name"
-                                    required
-                                    minlength="3"
-                                    maxlength="10"
-                                  />
-                                </p>
-                              </div>
-                            </div>
-                            <br />
-
-                            <div class="row">
-                              <div class="col-xl-6 col-md-12">
-                                <div class="bg-base-white res-991-pl-0">
-                                  <div
-                                    class="accordion mt-15 mb-0"
-                                    id="emplacementInput"
-                                  >
-                                    <div
-                                      class="toggle prt-toggle_style_classic style2 prt-toggle-title-bgcolor-grey"
-                                    >
-                                      <div class="toggle-title">
-                                        <a href="#" class="active"
-                                          >Place type*</a
-                                        >
-                                      </div>
-                                      <div
-                                        class="toggle-content show"
-                                        style="display: none"
-                                      >
-                                        <div
-                                          data-type="location_type"
-                                          class="clearfix"
-                                        >
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value="Entreprise"
-                                              id="flexCheckIndeterminate"
-                                              (click)="
-                                                setValue(
-                                                  ' Entreprise',
-                                                  'emplacement'
-                                                )
-                                              "
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="flexCheckIndeterminate"
-                                            >
-                                              Entreprise
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value="Hotel"
-                                              id="checkboxHotel"
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="checkboxHotel"
-                                              (click)="
-                                                setValue('Hôtel', 'emplacement')
-                                              "
-                                            >
-                                              Hôtel
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value=" Particulier"
-                                              id="checkboxparticulier"
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="checkboxparticulier"
-                                              (click)="
-                                                setValue(
-                                                  'Particulier ',
-                                                  'emplacement'
-                                                )
-                                              "
-                                            >
-                                              Particulier
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value=" Parking"
-                                              id="checkboxparking"
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="checkboxparking"
-                                              (click)="
-                                                setValue(
-                                                  'Parking',
-                                                  'emplacement'
-                                                )
-                                              "
-                                            >
-                                              Parking
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value="Gare"
-                                              id="checkboxgare"
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="checkboxgare"
-                                              (click)="
-                                                setValue('Gare ', 'emplacement')
-                                              "
-                                            >
-                                              Gare
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value="Station-service"
-                                              id="checkboxstation"
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="checkboxstation"
-                                              (click)="
-                                                setValue(
-                                                  'Station-service ',
-                                                  'emplacement'
-                                                )
-                                              "
-                                            >
-                                              Station-service
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value="Restaurant"
-                                              id="checkboxresto"
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="checkboxresto"
-                                              (click)="
-                                                setValue(
-                                                  'Restaurant ',
-                                                  'emplacement'
-                                                )
-                                              "
-                                            >
-                                              Restaurant
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value="Voirie"
-                                              id="checkboxvoirie"
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="checkboxvoirie"
-                                              (click)="
-                                                setValue(
-                                                  'Voirie ',
-                                                  'emplacement'
-                                                )
-                                              "
-                                            >
-                                              Voirie
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value="Ecole"
-                                              id="checkboxecole"
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="checkboxecole"
-                                              (click)="
-                                                setValue(
-                                                  'Ecole ',
-                                                  'emplacement'
-                                                )
-                                              "
-                                            >
-                                              Ecole
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value="autoroute"
-                                              id="checkboxautoroute"
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="checkboxautoroute"
-                                              (click)="
-                                                setValue(
-                                                  'Autoroute ',
-                                                  'emplacement'
-                                                )
-                                              "
-                                            >
-                                              Autoroute
-                                            </label>
-                                          </div>
-                                          <div class="form-check">
-                                            <input
-                                              class="form-check-input"
-                                              type="checkbox"
-                                              value="autre"
-                                              id="checkboxautre"
-                                            />
-                                            <label
-                                              class="form-check-label"
-                                              for="checkboxautre"
-                                              (click)="
-                                                setValue(
-                                                  'Autre ',
-                                                  'emplacement'
-                                                )
-                                              "
-                                            >
-                                              Autre
-                                            </label>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-xl-6 col-md-12">
-                                <div class="bg-base-white res-991-pl-0">
-                                  <div
-                                    class="accordion mt-15 mb-0"
-                                    id="journeyInput"
-                                  >
-                                    <div
-                                      class="toggle prt-toggle_style_classic style2 prt-toggle-title-bgcolor-grey"
-                                    >
-                                      <div class="toggle">
-                                        <div class="toggle-title">
-                                          <a href="#" class="active"
-                                            >Journey*</a
-                                          >
-                                        </div>
-                                        <div
-                                          class="toggle-content show"
-                                          style="display: none"
-                                        >
-                                          <div
-                                            data-type="location_type"
-                                            class="clearfix"
-                                          >
-                                            <div class="form-check">
-                                              <input
-                                                class="form-check-input"
-                                                type="radio"
-                                                value="AvoidHighways"
-                                                id="flexCheckA"
-                                                name="journey-option"
-                                              />
-                                              <label
-                                                class="form-check-label"
-                                                for="flexCheckA"
-                                                (click)="
-                                                  setValue(
-                                                    'AvoidHighways',
-                                                    'trajet'
-                                                  )
-                                                "
-                                                >Avoid Highways</label
-                                              >
-                                            </div>
-
-                                            <div class="form-check">
-                                              <input
-                                                class="form-check-input"
-                                                type="radio"
-                                                value="AvoidTolls"
-                                                id="checkboxB"
-                                                name="journey-option"
-                                              />
-                                              <label
-                                                class="form-check-label"
-                                                for="checkboxB"
-                                                (click)="
-                                                  setValue(
-                                                    'AvoidTolls',
-                                                    'trajet'
-                                                  )
-                                                "
-                                                >Avoid Tolls</label
-                                              >
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="row">
-                              <div class="col-xl-6 col-md-12">
-                                <p class="comment-form-email">
-                                  <input
-                                    id="longitudeInput"
-                                    placeholder="Longitude*"
-                                    name="longitude"
-                                    type="number"
-                                    value=""
-                                    size="30"
-                                    aria-required="true"
-                                    [(ngModel)]="station.longitude"
-                                  />
-                                </p>
-                              </div>
-                              <div class="col-xl-6 col-md-12">
-                                <p class="comment-form-email">
-                                  <input
-                                    id="latitudeInput"
-                                    placeholder="Latitude*"
-                                    name="latitude"
-                                    type="number"
-                                    value=""
-                                    size="30"
-                                    aria-required="true"
-                                    [(ngModel)]="station.latitude"
-                                  />
-                                </p>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-xl-6 mb-2">
-                                <p class="comment-form-email">
-                                  <input
-                                    id="ouvertureInput"
-                                    placeholder="  Opening hours*"
-                                    name="ouverture"
-                                    type="datetime-local"
-                                    value=""
-                                    size="30"
-                                    aria-required="true"
-                                    [(ngModel)]="station.ouverture"
-                                  />
-                                </p>
-                              </div>
-                              <div class="col-xl-6 mb-2">
-                                <p class="comment-form-email">
-                                  <input
-                                    id="fermetureInput"
-                                    placeholder="  Closing time*"
-                                    name="fermeture"
-                                    type="datetime-local"
-                                    value=""
-                                    size="30"
-                                    aria-required="true"
-                                    [(ngModel)]="station.fermeture"
-                                  />
-                                </p>
-                              </div>
-                            </div>
-
-                            <div class="col-xl-6 col-md-8 mb-5">
-                              <p class="form-submit mt-40 mb-0">
-                                <button
-                                  class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor"
-                                  type="submit"
-                                  (click)="thirdTabClicked()"
-                                  [class.disabled]="
-                                    !firstTabClicked || !secondTabClicked
-                                  "
-                                >
-                                  Save
-                                </button>
-                              </p>
-                            </div>
-                          </form>
-                        </div>
-                      </article>
+                  <div *ngIf="stations.length > 0">
+                    <h2>Résultats de la recherche :</h2>
+                    <div *ngFor="let station of stations">
+                      <h3>{{ station.name }}</h3>
+                      <p>{{ station.emplacement }}</p>
+                      <!-- Affichez d'autres détails de la station selon vos besoins -->
                     </div>
                   </div>
                   <!-- content-inner end-->
