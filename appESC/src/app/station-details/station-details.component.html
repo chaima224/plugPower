@@ -116,29 +116,33 @@
                   <!-- menu -->
                   <nav class="main-menu menu-mobile ms-auto" id="menu">
                     <ul class="menu">
-                      <li class="mega-menu-item active">
-                        <a href="#" class="mega-menu-link">Home</a>
+                      <li class="mega-menu-item">
+                        <a routerLink="" class="mega-menu-link">Home</a>
                       </li>
                       <li class="mega-menu-item">
-                        <a href="#" class="mega-menu-link" routerLink="/map"
-                          >Card</a
-                        >
+                        <a class="mega-menu-link" routerLink="/map">Card</a>
                       </li>
                       <li class="mega-menu-item">
-                        <a class="mega-menu-link" routerLink="/search"
+                        <a class="mega-menu-link" routerLink="/searchStation"
                           >Advanced Search</a
                         >
                       </li>
                       <li class="mega-menu-item">
-                        <a routerLink="/UtilisateurBorne" class="mega-menu-link"
+                        <a class="mega-menu-link" routerLink="/UtilisateurBorne"
                           >List</a
                         >
                       </li>
-                      <li class="mega-menu-item">
-                        <a href="#" class="mega-menu-link">Blog</a>
+                      <li class="mega-menu-item active">
+                        <a class="mega-menu-link">Station's Details</a>
                       </li>
                       <li class="mega-menu-item">
-                        <a href="#" class="mega-menu-link">Contact Us</a>
+                        <a class="mega-menu-link">Portfolio</a>
+                      </li>
+                      <li class="mega-menu-item">
+                        <a class="mega-menu-link">Blog</a>
+                      </li>
+                      <li class="mega-menu-item">
+                        <a class="mega-menu-link">Contact Us</a>
                       </li>
                     </ul>
                   </nav>
@@ -147,7 +151,7 @@
                     <div class="header_btn">
                       <a
                         class="prt-btn prt-btn-size-sm prt-btn-shape-round prt-btn-style-fill prt-icon-btn-right prt-btn-color-skincolor mt-10 mr-2"
-                        (click)="logout()"
+                        s
                         >Logout</a
                       >
                     </div>
@@ -176,15 +180,16 @@
     <!--header end-->
 
     <!-- page-title -->
-    <div class="prt-page-title-row-3">
-      <div class="prt-page-title-row-inner-3">
+    <div class="prt-page-title-row-1">
+      <div class="prt-page-title-row-inner-1">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-12">
               <div class="page-title-heading">
                 <h2 class="title">Station's Details</h2>
               </div>
-              <div class="breadcrumb-wrapper-main" style="top: 250%">
+
+              <div class="breadcrumb-wrapper-main" style="top: 200%">
                 <div class="container">
                   <div class="breadcrumb-wrapper-inner">
                     <span>
@@ -203,212 +208,233 @@
 
     <!--site-main start-->
     <div class="site-main">
-      <!--grid-section-->
-      <section class="prt-row grid-section clearfix">
+      <!--about-section_1-->
+      <section class="prt-row about-section clearfix">
         <div class="container">
           <!-- row -->
-          <section class="prt-row clearfix mb_10">
-            <div class="container">
-              <!-- row -->
+          <div class="row">
+            <div class="col-xl-6 col-md-12">
+              <!-- prt_single_image-wrapper -->
+              <div class="prt_single_image-wrapper">
+                <img
+                  width="665"
+                  height="630"
+                  class="img-fluid"
+                  src="../../assets/images/single-img-10.jpg"
+                  alt="image"
+                />
+                <div class="featured-boxs">
+                  <div class="fid prt-fid inside style2 bg-base-skin">
+                    <div class="prt-fid-contents">
+                      <h4 class="prt-fid-inner">
+                        <span
+                          data-appear-animation="animateDigits"
+                          data-from="0"
+                          data-to="36"
+                          data-interval="1"
+                          data-before=""
+                          data-before-style="sup"
+                          data-after=""
+                          data-after-style="sub"
+                          class="numinate"
+                          >36</span
+                        ><span>k</span>
+                      </h4>
+                      <h3 class="prt-fid-title">Successful Projects</h3>
+                    </div>
+                  </div>
+                  <div class="fid prt-fid inside style3 bg-base-white">
+                    <div class="prt-fid-contents">
+                      <h4 class="prt-fid-inner">
+                        <span
+                          data-appear-animation="animateDigits"
+                          data-from="0"
+                          data-to="26"
+                          data-interval="1"
+                          data-before=""
+                          data-before-style="sup"
+                          data-after=""
+                          data-after-style="sub"
+                          class="numinate"
+                          >26</span
+                        ><span>k</span>
+                      </h4>
+                      <h3 class="prt-fid-title">Check charge status</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-md-12 align-self-center">
+              <div class="section-title res-1199-mt-30">
+                <div class="title-header">
+                  <h3>Station</h3>
+                  <h2 class="title">
+                    {{ station.name }}
+                  </h2>
+                </div>
+                <div class="title-desc">
+                  <p>
+                    Electric vehicles are the future of successful transport. We
+                    believe it should be easy to make the switch. We work with
+                    and can install the most brand of EV charger.
+                  </p>
+                </div>
+              </div>
+
               <div class="row">
-                <div class="col-lg-6">
-                  <div class="position-relative">
-                    <!-- featured-imagebox -->
-                    <article
-                      class="post prt-blog-single bg-base-white box-shadow pt-20 pb-50 pl-40 pr-40 clearfix"
+                <div class="prt-horizontal_sep width-100 mt-10 mb-30">
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div
+                      class="featured-icon-box icon-align-before-content icon-ver_align-top icon-flip-hover"
                     >
-                      <div
-                        class="featured-imagebox featured-imagebox-portfolio style3"
-                      >
-                        <!-- featured-thumbnail -->
+                      <div class="featured-icon">
+                        <div
+                          class="prt-icon prt-icon_element-onlytxt prt-icon_element-color-skincolor prt-icon_element-size-lg"
+                        >
+                          <i class="flaticon-clock"></i>
+                        </div>
+                      </div>
+                      <div class="featured-content">
+                        <div class="featured-title">
+                          <h3>Opening Hrs</h3>
+                        </div>
+                        <h3 class="fs-18 mb-0">{{ station.ouverture }}</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="prt-horizontal_sep width-100 mt-10 mb-30">
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div
+                      class="featured-icon-box icon-align-before-content icon-ver_align-top icon-flip-hover"
+                    >
+                      <div class="featured-icon">
+                        <div
+                          class="prt-icon prt-icon_element-onlytxt prt-icon_element-color-skincolor prt-icon_element-size-lg"
+                        >
+                          <i class="flaticon-clock"></i>
+                        </div>
+                      </div>
+                      <div class="featured-content">
+                        <div class="featured-title">
+                          <h3>Closing Hrs</h3>
+                        </div>
+                        <h3 class="fs-18 mb-0">{{ station.fermeture }}</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="prt-row image-section prt-bgimage-yes bg-img4 prt-bg bg-base-dark clearfix"
+      >
+        <div class="prt-row-wrapper-bg-layer prt-bg-layer"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="prt-play-icon-btn animated"></div>
+              <!-- section title -->
+              <div class="section-title">
+                <h2 class="title pt-40">
+                  Hundreds Of Customers Trust Our Services
+                </h2>
+              </div>
+              <!-- section title end -->
+            </div>
+            <div class="col-lg-6">
+              <ul
+                class="prt-list style3 prt-list-style-icon prt-list-icon-color-skincolor float-end"
+              >
+                <li>
+                  <i class="flaticon-right-arrow-1"></i
+                  ><span class="prt-list-li-content"
+                    >We’ve expert & certified staff</span
+                  >
+                </li>
+                <li>
+                  <i class="flaticon-right-arrow-1"></i
+                  ><span class="prt-list-li-content"
+                    >We only provide quality services</span
+                  >
+                </li>
+                <li>
+                  <i class="flaticon-right-arrow-1"></i
+                  ><span class="prt-list-li-content"
+                    >We offer you free estimates</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="prt-row team-section bg-base-grey clearfix">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-lg-12">
+              <div class="section-title">
+                <div class="title-header">
+                  <h3>Station's plugs</h3>
+                  <h2 class="title mb-25">Choice your Borne</h2>
+                </div>
+                <div class="title-desc">
+                  <p>
+                    Ensures the smoothest transition to EV charging at your
+                    workplace.They kept me informed on the cars progress and.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-9 col-lg-12">
+              <div
+                class="row slick_slider mt_15"
+                data-slick='{"slidesToShow": 3, "slidesToScroll": 1, "arrows":false, "dots":false, "autoplay":false, "infinite":true, "responsive": [{"breakpoint":992,"settings":{"slidesToShow": 2}}, {"breakpoint":778,"settings":{"slidesToShow": 2}}, {"breakpoint":575,"settings":{"slidesToShow": 1}}]}'
+              >
+                <div class="row">
+                  <div
+                    class="col-lg-3 col-md-6"
+                    *ngFor="let br of station.bornes"
+                  >
+                    <div
+                      class="featured-imagebox featured-imagebox-team style1"
+                    >
+                      <div class="prt-box-view-overlay">
+                        <div class="featured-iconbox prt-media-link">
+                          <div class="media-block">
+                            <a
+                              (click)="getBorneDetails(br.id)"
+                              class="media-btn"
+                            >
+                              <i class="ti ti-plus"></i>
+                            </a>
+                          </div>
+                        </div>
                         <div class="featured-thumbnail">
                           <img
                             class="img-fluid"
-                            src="../../assets/images/portfolio/portfolio-1-566x400.jpg"
+                            src="../../assets/images/services/services-03-407x222.jpg"
                             alt="image"
                           />
                         </div>
-                        <!-- featured-thumbnail end-->
-                        <div class="featured-content">
-                          <div class="featured-title">
-                            <h3>
-                              <a href="#" tabindex="0"
-                                >Zero contact <br />
-                                travel</a
-                              >
-                            </h3>
-                          </div>
-                          <div class="border-box"></div>
-                          <div class="featured-iconbox prt-media-link">
-                            <a href="#"><i class="ti ti-plus"></i></a>
-                          </div>
-                        </div>
                       </div>
-                      <div class="section-title mt-40">
-                        <div class="title-header">
-                          <h2 class="title">{{ station.name }}</h2>
+                      <div class="featured-content featured-content-team">
+                        <div class="featured-title">
+                          <h3>
+                            <a href="team-details.html">{{ br.name }}</a>
+                          </h3>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="post-meta">
-                            <b>Opening Time</b><br />
-                            <span class="prt-meta-line comment-links"
-                              ><i class="flaticon-calendar"></i
-                              >{{ station.ouverture }}</span
-                            >
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="post-meta">
-                            <b>Closing Time</b><br />
-                            <span class="prt-meta-line comment-links mt-40"
-                              ><i class="flaticon-calendar"></i
-                              >{{ station.fermeture }}</span
-                            >
-                          </div>
-                        </div>
-                      </div>
-                      <div class="team-icon pt-25" *ngFor="let br of bornes">
-                        <img
-                          src="assets/images/favicon.png "
-                          style="width: 10%; height: 10%"
-                        />
-                        <a
-                          href="mailto:info@gmail.com"
-                          (click)="getBorneDetails(br.id)"
-                          >Plug Power</a
-                        >
-                      </div>
-                      <div class="prt-blog-classic-box-comment clearfix mt-40">
-                        <div id="comments" class="comments-area">
-                          <div class="comment-respond">
-                            <h3 class="comment-reply-title">Leave a Reply</h3>
-                            <p class="comment-notes">
-                              Your Email Address Will Not Be Published. Required
-                              Fields Are Marked*
-                            </p>
-                            <form
-                              action="#"
-                              method="post"
-                              id="commentform"
-                              class="comment-form"
-                            >
-                              <p class="comment-form-author">
-                                <input
-                                  id="author"
-                                  placeholder="Name (required)"
-                                  name="author"
-                                  type="text"
-                                  value=""
-                                  size="30"
-                                  aria-required="true"
-                                />
-                              </p>
-                              <p class="comment-form-email">
-                                <input
-                                  id="email"
-                                  placeholder="Email (required)"
-                                  name="email"
-                                  type="text"
-                                  value=""
-                                  size="30"
-                                  aria-required="true"
-                                />
-                              </p>
-                              <p class="comment-form-comment">
-                                <textarea
-                                  id="comment"
-                                  placeholder="Comment"
-                                  name="comment"
-                                  cols="45"
-                                  rows="4"
-                                  aria-required="true"
-                                ></textarea>
-                              </p>
-
-                              <p class="comment-cookies">
-                                <input
-                                  id="comment-cookies-consent"
-                                  name="comment-cookies-consent"
-                                  type="checkbox"
-                                  value="yes"
-                                  class="me-1"
-                                />
-                                <label for="comment-cookies-consent"
-                                  >Save my name, email, and website in this
-                                  browser for the next time I comment.</label
-                                >
-                              </p>
-                              <p class="form-submit mt-40 mb-0">
-                                <button
-                                  class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor"
-                                  type="submit"
-                                >
-                                  Submit
-                                </button>
-                              </p>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  </div>
-                </div>
-                <div class="col-lg-6 pl-35 res-991-pl-15">
-                  <div class="entry-content">
-                    <div class="prt-box-desc-text">
-                      <div class="section-title mt-40">
-                        <div class="title-header">
-                          <h2 class="title">List of Plugs</h2>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 col-md-6">
-                          <!--featured-imagebox-->
-                          <div>
-                            <!-- Afficher les détails de la station ici -->
-
-                            <div
-                              class="featured-imagebox featured-imagebox-services style3"
-                              *ngFor="let br of station.bornes"
-                            >
-                              <div class="featured-content">
-                                <div class="featured-title">
-                                  <h3>
-                                    <a>
-                                      <div>
-                                        <div>
-                                          {{ br.name }}
-                                        </div>
-                                      </div>
-                                    </a>
-                                  </h3>
-                                </div>
-
-                                <a
-                                  class="prt-icon bottom_icon"
-                                  (click)="getBorneDetails(br.id)"
-                                >
-                                  <i class="flaticon-right-arrow-2"></i>
-                                </a>
-                              </div>
-
-                              <div class="prt-box-view-overlay border-rad_6">
-                                <!-- featured-thumbnail -->
-                                <div class="featured-thumbnail">
-                                  <img
-                                    class="img-fluid"
-                                    src="../../assets/images/services/servives-02.jpg"
-                                    alt="image"
-                                  />
-                                </div>
-                                <!-- featured-thumbnail end-->
-                              </div>
-                            </div>
-                          </div>
-
-                          <!-- featured-imagebox end-->
+                        <div class="team-position"></div>
+                        <div class="team-icon pt-25">
+                          <i class="flaticon-comment"></i>
+                          <a href="mailto:info@gmail.com">info@gmail.com</a>
                         </div>
                       </div>
                     </div>
@@ -416,13 +442,93 @@
                 </div>
               </div>
             </div>
-          </section>
+          </div>
         </div>
       </section>
-      <!--grid-section end-->
+
+      <div class="position-relative">
+        <article
+          class="post prt-blog-single bg-base-white box-shadow pt-20 pb-50 pl-40 pr-40 clearfix"
+        >
+          <div class="prt-blog-classic-box-comment clearfix mt-40">
+            <div id="comments" class="comments-area">
+              <div class="comment-respond">
+                <h3 class="comment-reply-title">Leave a Reply</h3>
+                <p class="comment-notes">
+                  Your Email Address Will Not Be Published. Required Fields Are
+                  Marked*
+                </p>
+                <form
+                  action="#"
+                  method="post"
+                  id="commentform"
+                  class="comment-form"
+                >
+                  <p class="comment-form-author">
+                    <input
+                      id="author"
+                      placeholder="Name (required)"
+                      name="author"
+                      type="text"
+                      value=""
+                      size="30"
+                      aria-required="true"
+                    />
+                  </p>
+                  <p class="comment-form-email">
+                    <input
+                      id="email"
+                      placeholder="Email (required)"
+                      name="email"
+                      type="text"
+                      value=""
+                      size="30"
+                      aria-required="true"
+                    />
+                  </p>
+                  <p class="comment-form-comment">
+                    <textarea
+                      id="comment"
+                      placeholder="Comment"
+                      name="comment"
+                      cols="45"
+                      rows="4"
+                      aria-required="true"
+                    ></textarea>
+                  </p>
+
+                  <p class="comment-cookies">
+                    <input
+                      id="comment-cookies-consent"
+                      name="comment-cookies-consent"
+                      type="checkbox"
+                      value="yes"
+                      class="me-1"
+                    />
+                    <label for="comment-cookies-consent"
+                      >Save my name, email, and website in this browser for the
+                      next time I comment.</label
+                    >
+                  </p>
+                  <p class="form-submit mt-40 mb-0">
+                    <button
+                      class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
+
     <!--site-main end-->
 
+    <!-- footer start -->
     <footer class="widget-footer bg-base-grey clearfix">
       <div class="second-footer prt-bgimage-yes bg-footer prt-bg">
         <div class="prt-row-wrapper-bg-layer prt-bg-layer"></div>
@@ -470,7 +576,7 @@
                     <a href="blog-right-sidebar.html"
                       ><img
                         class="img-fluid"
-                        src="images/blog/blog-80x80.jpg"
+                        src="../../assets/images/blog/blog-80x80.jpg"
                         alt="post-img"
                     /></a>
                     <div class="post-detail">
@@ -487,7 +593,7 @@
                     <a href="blog-right-sidebar.html"
                       ><img
                         class="img-fluid"
-                        src="images/blog/blog-1-80x80.jpg"
+                        src="../../assets/images/blog/blog-1-80x80.jpg"
                         alt="post-img"
                     /></a>
                     <div class="post-detail">
@@ -539,6 +645,7 @@
         </div>
       </div>
     </footer>
+    <!-- footer end -->
 
     <!--back-to-top start-->
     <a id="totop" href="#top">

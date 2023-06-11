@@ -117,15 +117,23 @@
                   <nav class="main-menu menu-mobile ms-auto" id="menu">
                     <ul class="menu">
                       <li class="mega-menu-item">
-                        <a routerLinkActive="/" class="mega-menu-link">Home</a>
+                        <a routerLink="" class="mega-menu-link">Home</a>
                       </li>
                       <li class="mega-menu-item">
                         <a class="mega-menu-link" routerLink="/map">Card</a>
                       </li>
                       <li class="mega-menu-item">
-                        <a class="mega-menu-link" routerLink="/search"
+                        <a class="mega-menu-link" routerLink="/searchStation"
                           >Advanced Search</a
                         >
+                      </li>
+                      <li class="mega-menu-item">
+                        <a class="mega-menu-link" routerLink="/UtilisateurBorne"
+                          >List</a
+                        >
+                      </li>
+                      <li class="mega-menu-item active">
+                        <a class="mega-menu-link">Plug's Details</a>
                       </li>
                       <li class="mega-menu-item">
                         <a class="mega-menu-link">Portfolio</a>
@@ -300,25 +308,74 @@
                       </div>
                     </div>
                   </div>
-                  <div class="prt-team-member-content-about">
-                    <h3>Description</h3>
-                    <p>
-                      {{ borne.description }}
-                    </p>
+                  <div class="pt-30 res-575-pl-15 res-575-pr-15">
+                    <h3>Description for our plug</h3>
+                    <p>{{ borne.description }}</p>
                   </div>
+                  <br />
                   <div *ngIf="disponibilite">
-                    <h2>Disponibilité</h2>
+                    <h3>Availibility</h3>
+                    <p>{{ disponibilite.etat }}</p>
+                    <div _ngcontent-lbp-c54="" class="prt-team-data">
+                      <div
+                        _ngcontent-lbp-c54=""
+                        class="prt-team-details-wrapper"
+                      >
+                        <div cass="col-md-6">
+                          <ul
+                            _ngcontent-lbp-c54=""
+                            class="prt-team-details-list clearfix"
+                          >
+                            <li _ngcontent-lbp-c54="">
+                              <div
+                                _ngcontent-lbp-c54=""
+                                class="prt-team-list-title"
+                              >
+                                FROM :
+                              </div>
+                              <div
+                                _ngcontent-lbp-c54=""
+                                class="prt-team-list-value ml-10"
+                              >
+                                <a
+                                  _ngcontent-lbp-c54=""
+                                  href="mailto:info@example.com"
+                                  tabindex="0"
+                                >
+                                  {{ disponibilite.dateDebut }}</a
+                                >
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
 
-                    <p>
-                      <strong>Date de début :</strong>
-                      {{ disponibilite.dateDebut }}
-                    </p>
-                    <p>
-                      <strong>Date de fin :</strong>
-                      {{ disponibilite.dateFin }}
-                    </p>
-                    <p><strong>État :</strong> {{ disponibilite.etat }}</p>
-                    <p></p>
+                        <ul
+                          _ngcontent-lbp-c54=""
+                          class="prt-team-details-list clearfix"
+                        >
+                          <li _ngcontent-lbp-c54="">
+                            <div
+                              _ngcontent-lbp-c54=""
+                              class="prt-team-list-title"
+                            >
+                              TO :
+                            </div>
+                            <div
+                              _ngcontent-lbp-c54=""
+                              class="prt-team-list-value ml-10"
+                            >
+                              <a
+                                _ngcontent-lbp-c54=""
+                                href="mailto:info@example.com"
+                                tabindex="0"
+                              >
+                                {{ disponibilite.dateFin }}</a
+                              >
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="pt-30 pb-20">

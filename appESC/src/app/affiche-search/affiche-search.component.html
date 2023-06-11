@@ -1,8 +1,413 @@
-<div *ngIf="stations.length > 0">
-  <h2>Résultats de la recherche :</h2>
-  <div *ngFor="let station of stations">
-    <h3>{{ station.name }}</h3>
-    <p>{{ station.emplacement }}</p>
-    <!-- Affichez d'autres détails de la station selon vos besoins -->
+<body>
+  <!--page start-->
+  <div class="page">
+    <!--header start-->
+    <header id="masthead" class="header prt-header-style-01">
+      <!-- topbar -->
+      <div class="top_bar bg-base-dark clearfix">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="top_bar_contact_item">
+                    <div class="top_bar_icon">
+                      <i class="fa fa-map-marker"></i>
+                    </div>
+                    <div class="top_bar_content">24 Tech Roqad st Ny 10023</div>
+                  </div>
+                  <div class="top_bar_contact_item">
+                    <div class="top_bar_icon">
+                      <i class="flaticon-clock-1"></i>
+                    </div>
+                    <div class="top_bar_content">Mon-Sat: 9am to 6pm</div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="contact-info">
+                    <div class="top_bar_contact_item prt-highlight-right">
+                      <div class="top_bar_icon">
+                        <i class="fa fa-envelope-o"></i>
+                      </div>
+                      <div class="top_bar_content">
+                        <a href="mailto:info@gmail.com"
+                          >support@themetechmount.com</a
+                        >
+                      </div>
+                    </div>
+                    <div class="top_bar_content-main">Follow On :</div>
+                    <div
+                      class="top_bar_contact_item top_bar_social ml-auto p-0"
+                    >
+                      <ul class="social-icons d-flex">
+                        <li>
+                          <a
+                            class="prt-social-facebook"
+                            href="https://www.facebook.com/themetechMount18"
+                            rel="noopener"
+                            aria-label="facebook"
+                            ><i class="fa fa-facebook-f"></i
+                          ></a>
+                        </li>
+                        <li>
+                          <a
+                            class="prt-social-twitter"
+                            href="https://twitter.com/themetechmount"
+                            rel="noopener"
+                            aria-label="twitter"
+                            ><i class="fa fa-twitter"></i
+                          ></a>
+                        </li>
+                        <li>
+                          <a
+                            class="prt-social-linkedin"
+                            href="https://www.linkedin.com/company/themetech-mount/"
+                            rel="noopener"
+                            aria-label="google"
+                            ><i class="fa fa-linkedin"></i
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- topbar end -->
+      <!-- site-header-menu -->
+      <div id="site-header-menu" class="site-header-menu bg-base-white">
+        <div class="site-header-menu-inner prt-stickable-header">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <!--site-navigation -->
+                <div
+                  class="site-navigation d-flex flex-row justify-content-between align-items-center"
+                >
+                  <!-- site-branding -->
+                  <div class="site-branding">
+                    <h1>
+                      <a
+                        class="home-link"
+                        href="index.html"
+                        title="Elexio"
+                        rel="home"
+                      >
+                        <img
+                          id="logo-img"
+                          height="35"
+                          width="155"
+                          class="img-fluid auto_size"
+                          src="../../assets/images/logo-final-dark.svg"
+                          alt="logo-img"
+                        />
+                      </a>
+                    </h1>
+                  </div>
+                  <!-- site-branding end -->
+                  <div class="d-flex flex-row">
+                    <div class="btn-show-menu-mobile menubar menubar--squeeze">
+                      <span class="menubar-box">
+                        <span class="menubar-inner"></span>
+                      </span>
+                    </div>
+                    <!-- menu -->
+                    <nav class="main-menu menu-mobile ms-auto" id="menu">
+                      <ul class="menu">
+                        <li class="mega-menu-item">
+                          <a routerLink="" class="mega-menu-link">Home</a>
+                        </li>
+                        <li class="mega-menu-item">
+                          <a class="mega-menu-link" routerLink="/map">Card</a>
+                        </li>
+                        <li class="mega-menu-item">
+                          <a class="mega-menu-link" routerLink="/searchStation"
+                            >Advanced Search</a
+                          >
+                        </li>
+                        <li class="mega-menu-item">
+                          <a
+                            class="mega-menu-link"
+                            routerLink="/UtilisateurBorne"
+                            >List</a
+                          >
+                        </li>
+                        <li class="mega-menu-item active">
+                          <a class="mega-menu-link">Result</a>
+                        </li>
+                        <li class="mega-menu-item">
+                          <a class="mega-menu-link">Portfolio</a>
+                        </li>
+                        <li class="mega-menu-item">
+                          <a class="mega-menu-link">Blog</a>
+                        </li>
+                        <li class="mega-menu-item">
+                          <a class="mega-menu-link">Contact Us</a>
+                        </li>
+                      </ul>
+                    </nav>
+                    <!-- menu end -->
+                    <div class="d-flex flex-row">
+                      <div
+                        class="header_extra d-flex flex-row align-items-center justify-content-end"
+                      >
+                        <div class="header_btn">
+                          <a
+                            class="prt-btn prt-btn-size-sm prt-btn-shape-round prt-btn-style-fill prt-icon-btn-right prt-btn-color-skincolor mt-10 mr-2"
+                            s
+                            (click)="logout()"
+                            >Logout</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="widget_info d-flex flex-row align-items-center justify-content-end"
+                      >
+                        <div class="widget_icon text-base-skin">
+                          <i class="flaticon-phone-call"></i>
+                        </div>
+                        <div class="widget_content">
+                          <p class="widget_desc">Call Us</p>
+                          <h3 class="widget_title">+800 456 78 901</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- site-navigation end-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- site-header-menu end-->
+    </header>
+    <!--header end-->
+
+    <!-- page-title -->
+    <div class="prt-page-title-row-3">
+      <div class="prt-page-title-row-inner-3">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <div class="page-title-heading">
+                <h2 class="title">Search Result</h2>
+              </div>
+              <div class="breadcrumb-wrapper-main" style="top: 250%">
+                <div class="container">
+                  <div class="breadcrumb-wrapper-inner">
+                    <span>
+                      <a href="index.html" class="home">&nbsp;&nbsp;Home</a>
+                    </span>
+                    <span class="prt-bread-sep">&nbsp; - &nbsp;</span>
+                    <span>Result</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--site-main start-->
+    <div class="site-main">
+      <!--grid-section-->
+      <section class="prt-row grid-section clearfix">
+        <div class="container">
+          <!-- row -->
+          <div *ngIf="stations.length > 0">
+            <div class="row mb_15 mt_15">
+              <div
+                class="col-lg-4 col-md-4 col-sm-6"
+                *ngFor="let station of stations"
+              >
+                <!-- featured-imagebox-portfolio -->
+                <div
+                  class="featured-imagebox featured-imagebox-portfolio style2"
+                >
+                  <!-- prt-box-view-overlay -->
+                  <div
+                    class="prt-box-view-overlay prt-portfolio-box-view-overlay"
+                  >
+                    <!-- featured-thumbnail -->
+                    <div class="featured-thumbnail">
+                      <img
+                        class="img-fluid"
+                        src="../../assets/images/services/servives-6.jpg"
+                        alt="image"
+                      />
+                    </div>
+                    <!-- featured-thumbnail end-->
+                    <div class="prt-media-link">
+                      <a
+                        class="prt_prettyphoto prt_image"
+                        data-gal="prettyPhoto[gallery1]"
+                        title="Silk Fabric"
+                        href="images/portfolio/portfolio-2-1200x800.jpg"
+                        data-rel="prettyPhoto"
+                        tabindex="0"
+                      >
+                        <i class="fa fa-search"></i>
+                      </a>
+                      <a
+                        href="portfolio-single.html"
+                        class="prt_link"
+                        tabindex="0"
+                        ><i class="ti ti-link"></i
+                      ></a>
+                    </div>
+                  </div>
+                  <div class="featured-content">
+                    <div class="featured-title">
+                      <h3>
+                        <a (click)="getStationDetails(station.id)">{{
+                          station.name
+                        }}</a>
+                      </h3>
+                    </div>
+                    <div class="featured-desc">
+                      <p>
+                        {{ station.emplacement }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- featured-imagebox-portfolio end-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--grid-section end-->
+    </div>
+    <!--site-main end-->
+
+    <footer class="widget-footer bg-base-grey clearfix">
+      <div class="second-footer prt-bgimage-yes bg-footer prt-bg">
+        <div class="prt-row-wrapper-bg-layer prt-bg-layer"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-3 widget-area">
+              <div class="widget widget_text clearfix">
+                <h3 class="widget-title">About Elexio</h3>
+                <div class="textwidget widget-text pb-10">
+                  <p>
+                    A premium Html Template for Electric vehicle store and
+                    services websites. Get the latest UI/UX landing experience
+                  </p>
+                </div>
+                <div class="textwidget widget-text">
+                  <ul class="widget_contact_wrapper pl-0 res-575-pb-0">
+                    <li>
+                      <strong>Email:</strong>
+                      <a href="mailto:info@example.com">info@example.com</a>
+                    </li>
+                    <li>
+                      <strong>Address:</strong> 20 Prince St.New Roch, NY 10801
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-2 widget-area">
+              <div class="widget widget_nav_menu clearfix">
+                <h3 class="widget-title">Our Services</h3>
+                <ul id="menu-footer-quick-links">
+                  <li><a href="about-us.html">AC Charger Services</a></li>
+                  <li><a href="about-us-2.html">Charge Point Services</a></li>
+                  <li><a href="services-1.html">Building Services</a></li>
+                  <li><a href="services-2.html">DC Charger Services</a></li>
+                  <li><a href="faq.html">Vehicle Chargers</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3 widget-area">
+              <div class="widget widget-recent-post clearfix">
+                <h3 class="widget-title">Recent Posts</h3>
+                <ul class="widget-post prt-recent-post-list">
+                  <li>
+                    <a href="blog-right-sidebar.html"
+                      ><img
+                        class="img-fluid"
+                        src="images/blog/blog-80x80.jpg"
+                        alt="post-img"
+                    /></a>
+                    <div class="post-detail">
+                      <span class="post-date"
+                        >Aug 01,2022
+                        <span class="text-base-skin pl-5"> 03 Comment</span>
+                      </span>
+                      <a href="blog-right-sidebar.html"
+                        >Discover nearby locations to charge electric vehicle
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="blog-right-sidebar.html"
+                      ><img
+                        class="img-fluid"
+                        src="images/blog/blog-1-80x80.jpg"
+                        alt="post-img"
+                    /></a>
+                    <div class="post-detail">
+                      <span class="post-date"
+                        >Sep 09,2022
+                        <span class="text-base-skin pl-5">
+                          05 Comment</span
+                        ></span
+                      >
+                      <a href="blog-left-sidebar.html"
+                        >Tata Power is offering ev charging solutions</a
+                      >
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-4 widget-area">
+              <div class="widget widget_nav_menu clearfix">
+                <h3 class="widget-title">Useful Links</h3>
+                <ul id="menu-footer-quick-links-main">
+                  <li><a href="about-us.html">AC Charger Services</a></li>
+                  <li><a href="about-us-2.html">Charge Point Services</a></li>
+                  <li><a href="services-1.html">Building Services</a></li>
+                  <li><a href="services-2.html">DC Charger Services</a></li>
+                  <li><a href="faq.html">Home Charging</a></li>
+                  <li><a href="contact-us.html">AC Charger Services</a></li>
+                  <li><a href="about-us.html">Charge Point Services</a></li>
+                  <li><a href="about-us-2.html">Building Services</a></li>
+                  <li><a href="services-2.html">DC Charger Services</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-footer-text text-center text-base-white copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="justify-content-between">
+                <span class="cpy-text text-center"
+                  >Copyright © 2022 <a href="index.html"> Elexio </a>. All
+                  Rights Reserved.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!--back-to-top start-->
+    <a id="totop" href="#top" class="" style="display: none">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!--back-to-top end-->
   </div>
-</div>
+  <!-- page end -->
+</body>
