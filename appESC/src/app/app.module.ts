@@ -46,6 +46,8 @@ import { BdetailsComponent } from './bdetails/bdetails.component';
 
 import { SearchStationComponent } from './search-station/search-station.component';
 import { AfficheSearchComponent } from './affiche-search/affiche-search.component';
+import { BingMapModule } from './bing-map/bing-map.module';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -59,17 +61,19 @@ import { AfficheSearchComponent } from './affiche-search/affiche-search.componen
     BdetailsComponent,
 
     SearchStationComponent,
-     AfficheSearchComponent,
+    AfficheSearchComponent,
 
     /* LoginComponent,
     RegisterComponent,*/
   ],
   imports: [
     BrowserModule,
+    LeafletModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     RegisterModule,
+
     MapModule,
     BorneModule,
     SearchModule,
@@ -81,10 +85,10 @@ import { AfficheSearchComponent } from './affiche-search/affiche-search.componen
     BrowserAnimationsModule,
     ReactiveFormsModule,
     landingpageModule,
-
     ApprouvedBorneModule,
     ApprouvedStationModule,
     CommonModule,
+    BingMapModule,
   ],
 
   providers: [

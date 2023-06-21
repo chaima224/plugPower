@@ -445,85 +445,264 @@
           </div>
         </div>
       </section>
+    </div>
+    <div class="position-relative">
+      <article
+        class="post prt-blog-single bg-base-white box-shadow pt-20 pb-50 pl-40 pr-40 clearfix"
+      >
+        <div class="prt-blog-classic-box-comment clearfix mt-40">
+          <div id="comments" class="comments-area">
+            <div class="comment-respond">
+              <div class="row">
+                <div class="col-md-6">
+                  <h3 class="comment-reply-title">Leave a Comment</h3>
 
-      <div class="position-relative">
-        <article
-          class="post prt-blog-single bg-base-white box-shadow pt-20 pb-50 pl-40 pr-40 clearfix"
-        >
-          <div class="prt-blog-classic-box-comment clearfix mt-40">
-            <div id="comments" class="comments-area">
-              <div class="comment-respond">
-                <h3 class="comment-reply-title">Leave a Reply</h3>
-                <p class="comment-notes">
-                  Your Email Address Will Not Be Published. Required Fields Are
-                  Marked*
-                </p>
-                <form
-                  action="#"
-                  method="post"
-                  id="commentform"
-                  class="comment-form"
-                >
-                  <p class="comment-form-author">
-                    <input
-                      id="author"
-                      placeholder="Name (required)"
-                      name="author"
-                      type="text"
-                      value=""
-                      size="30"
-                      aria-required="true"
-                    />
-                  </p>
-                  <p class="comment-form-email">
-                    <input
-                      id="email"
-                      placeholder="Email (required)"
-                      name="email"
-                      type="text"
-                      value=""
-                      size="30"
-                      aria-required="true"
-                    />
-                  </p>
-                  <p class="comment-form-comment">
-                    <textarea
-                      id="comment"
-                      placeholder="Comment"
-                      name="comment"
-                      cols="45"
-                      rows="4"
-                      aria-required="true"
-                    ></textarea>
-                  </p>
+                  <form
+                    action="#"
+                    method="post"
+                    id="commentform"
+                    class="comment-form"
+                  >
+                    <p class="comment-form-comment">
+                      <textarea
+                        id="comment"
+                        placeholder="Comment"
+                        name="comment"
+                        cols="45"
+                        rows="4"
+                        aria-required="true"
+                        [(ngModel)]="evaluation.comment"
+                      ></textarea>
+                    </p>
 
-                  <p class="comment-cookies">
-                    <input
-                      id="comment-cookies-consent"
-                      name="comment-cookies-consent"
-                      type="checkbox"
-                      value="yes"
-                      class="me-1"
-                    />
-                    <label for="comment-cookies-consent"
-                      >Save my name, email, and website in this browser for the
-                      next time I comment.</label
-                    >
-                  </p>
-                  <p class="form-submit mt-40 mb-0">
-                    <button
-                      class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor"
-                      type="submit"
-                    >
-                      Submit
-                    </button>
-                  </p>
-                </form>
+                    <p class="form-submit mt-40 mb-0">
+                      <button
+                        class="prt-btn prt-btn-size-md prt-btn-shape-round prt-icon-btn-right prt-btn-style-fill prt-btn-color-skincolor"
+                        type="submit"
+                        (click)="addEvaluation()"
+                      >
+                        Comment
+                      </button>
+                    </p>
+                  </form>
+                </div>
+                <div class="col-md-6">
+                  <div class="container mt-5">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-md-8">
+                        <div
+                          class="headings d-flex justify-content-between align-items-center mb-3"
+                        >
+                          <h5>Unread comments(6)</h5>
+
+                          <div class="buttons">
+                            <span
+                              class="badge bg-white d-flex flex-row align-items-center"
+                            >
+                              <span class="text-primary">Comments "ON"</span>
+                              <div class="form-check form-switch">
+                                <input
+                                  class="form-check-input"
+                                  type="checkbox"
+                                  id="flexSwitchCheckChecked"
+                                  checked
+                                />
+                              </div>
+                            </span>
+                          </div>
+                        </div>
+
+                        <div
+                          class="card p-3"
+                          *ngFor="let evaluation of evaluations"
+                        >
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <div
+                              class="user d-flex flex-row align-items-center"
+                            >
+                              <img
+                                src="https://i.imgur.com/hczKIze.jpg"
+                                width="30"
+                                class="user-img rounded-circle mr-2"
+                              />
+                              <span
+                                ><small class="font-weight-bold text-primary">{{
+                                  evaluation.user.prenom
+                                }}</small>
+                              </span>
+                            </div>
+
+                            <small>{{ evaluation.timestamp }}</small>
+                          </div>
+
+                          <div
+                            class="action d-flex justify-content-between mt-2 align-items-center"
+                          >
+                            <div class="reply px-4">
+                              <small
+                                ><small class="font-weight-bold">
+                                  {{ evaluation.comment }}</small
+                                ></small
+                              >
+                            </div>
+
+                            <div class="icons align-items-center">
+                              <i class="fa fa-star text-warning"></i>
+                              <i class="fa fa-check-circle-o check-icon"></i>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="card p-3 mt-2">
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <div
+                              class="user d-flex flex-row align-items-center"
+                            >
+                              <img
+                                src="https://i.imgur.com/C4egmYM.jpg"
+                                width="30"
+                                class="user-img rounded-circle mr-2"
+                              />
+                              <span
+                                ><small class="font-weight-bold text-primary"
+                                  >olan_sams</small
+                                >
+                                <small class="font-weight-bold"
+                                  >Loving your work and profile!
+                                </small></span
+                              >
+                            </div>
+
+                            <small>3 days ago</small>
+                          </div>
+
+                          <div
+                            class="action d-flex justify-content-between mt-2 align-items-center"
+                          >
+                            <div class="reply px-4">
+                              <small>Remove</small>
+                              <span class="dots"></span>
+                              <small>Reply</small>
+                              <span class="dots"></span>
+                              <small>Translate</small>
+                            </div>
+
+                            <div class="icons align-items-center">
+                              <i
+                                class="fa fa-check-circle-o check-icon text-primary"
+                              ></i>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="card p-3 mt-2">
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <div
+                              class="user d-flex flex-row align-items-center"
+                            >
+                              <img
+                                src="https://i.imgur.com/0LKZQYM.jpg"
+                                width="30"
+                                class="user-img rounded-circle mr-2"
+                              />
+                              <span
+                                ><small class="font-weight-bold text-primary"
+                                  >rashida_jones</small
+                                >
+                                <small class="font-weight-bold"
+                                  >Really cool Which filter are you using?
+                                </small></span
+                              >
+                            </div>
+
+                            <small>3 days ago</small>
+                          </div>
+
+                          <div
+                            class="action d-flex justify-content-between mt-2 align-items-center"
+                          >
+                            <div class="reply px-4">
+                              <small>Remove</small>
+                              <span class="dots"></span>
+                              <small>Reply</small>
+                              <span class="dots"></span>
+                              <small>Translate</small>
+                            </div>
+
+                            <div class="icons align-items-center">
+                              <i class="fa fa-user-plus text-muted"></i>
+                              <i class="fa fa-star-o text-muted"></i>
+                              <i
+                                class="fa fa-check-circle-o check-icon text-primary"
+                              ></i>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="card p-3 mt-2">
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <div
+                              class="user d-flex flex-row align-items-center"
+                            >
+                              <img
+                                src="https://i.imgur.com/ZSkeqnd.jpg"
+                                width="30"
+                                class="user-img rounded-circle mr-2"
+                              />
+                              <span
+                                ><small class="font-weight-bold text-primary"
+                                  >simona_rnasi</small
+                                >
+                                <small class="font-weight-bold text-primary"
+                                  >@macky_lones</small
+                                >
+                                <small class="font-weight-bold text-primary"
+                                  >@rashida_jones</small
+                                >
+                                <small class="font-weight-bold"
+                                  >Thanks
+                                </small></span
+                              >
+                            </div>
+
+                            <small>3 days ago</small>
+                          </div>
+
+                          <div
+                            class="action d-flex justify-content-between mt-2 align-items-center"
+                          >
+                            <div class="reply px-4">
+                              <small>Remove</small>
+                              <span class="dots"></span>
+                              <small>Reply</small>
+                              <span class="dots"></span>
+                              <small>Translate</small>
+                            </div>
+
+                            <div class="icons align-items-center">
+                              <i
+                                class="fa fa-check-circle-o check-icon text-primary"
+                              ></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
     </div>
 
     <!--site-main end-->

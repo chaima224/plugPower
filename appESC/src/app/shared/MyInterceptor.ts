@@ -23,7 +23,7 @@ export class MyInterceptor implements HttpInterceptor {
 
       const modifiedRequest = httpRequest.clone({
         setHeaders: {
-          Authorization: authData.access_token,
+          Authorization: 'bearer ' + authData.access_token,
         },
       });
 

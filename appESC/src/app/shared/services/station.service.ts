@@ -49,4 +49,9 @@ export class StationService {
     }
     return this.http.get<Station[]>(url);
   }
+
+  getAllStationsCoordinates(): Observable<Station[]> {
+    const url = `${this.baseUrl}/coordinates`;
+    return this.http.get<Station[]>(url);
+  }
 }

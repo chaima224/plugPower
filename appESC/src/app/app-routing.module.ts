@@ -147,6 +147,11 @@ const routes: Routes = [
         (_) => _.ApprouvedStationModule
       ),
   },
+  {
+    path: 'Bing',
+    loadChildren: () =>
+      import('./bing-map/bing-map.module').then((_) => _.BingMapModule),
+  },
 ];
 
 @NgModule({
