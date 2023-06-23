@@ -15,7 +15,7 @@ import { AuthService } from '../shared/services/auth.service';
 import { BorneStationService } from '../shared/services/borneStation.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { error } from 'jquery';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-borne',
@@ -29,6 +29,10 @@ export class BorneComponent implements OnInit {
   isFormSubmitted: boolean = false;
   firstTabClicked = false;
   secondTabClicked = false;
+  private map!: L.Map;
+  private userMarker!: L.Marker;
+  private centroid: L.LatLngExpression = [34.016, 9.016]; // Tunisie
+  private userIcon!: L.Icon;
 
   //  nameInput: any;
 
@@ -38,9 +42,56 @@ export class BorneComponent implements OnInit {
     private authService: AuthService,
     private borneStationService: BorneStationService,
     private router: Router
-  ) {}
+  ) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
+    } else {
+      console.error(
+        "La géolocalisation n'est pas prise en charge par ce navigateur."
+      );
+    }
+  }
+  showPosition(position: GeolocationPosition) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
 
-  ngOnInit(): void {}
+    this.station.latitude = latitude;
+    this.station.longitude = longitude;
+
+    console.log('Latitude:', latitude);
+    console.log('Longitude:', longitude);
+
+    // Créer un marqueur pour la position de l'utilisateur
+    this.userMarker = L.marker([latitude, longitude], {
+      icon: this.userIcon,
+      draggable: true, // Rendre le marqueur déplaçable
+    }).addTo(this.map);
+
+    // Mettre à jour la position du marqueur lorsque déplacé
+    this.userMarker.on('dragend', (event) => {
+      const marker = event.target;
+      const newLatitude = marker.getLatLng().lat;
+      const newLongitude = marker.getLatLng().lng;
+
+      this.station.latitude = newLatitude;
+      this.station.longitude = newLongitude;
+
+      console.log('Nouvelle latitude:', newLatitude);
+      console.log('Nouvelle longitude:', newLongitude);
+
+      // Mettre à jour les coordonnées du marqueur
+
+      // Centrer la carte sur la nouvelle position
+      this.map.setView([newLatitude, newLongitude], 12);
+    });
+
+    // Utilisez les coordonnées pour centrer la carte sur la position de l'utilisateur
+    this.map.setView([latitude, longitude], 12);
+  }
+
+  ngOnInit(): void {
+    this.initMap();
+  }
   addStation() {
     this.station.nomBornes.push(this.borneInput);
     this.borneInput = '';
@@ -350,5 +401,68 @@ export class BorneComponent implements OnInit {
       // Exécutez votre logique pour le click de la troisième tab ici
       this.valideForm();
     }
+  }
+
+  private initMap(): void {
+    this.map = L.map('map', {
+      center: this.centroid,
+      zoom: 7,
+    });
+    this.userIcon = L.icon({
+      iconUrl: 'assets/images/Map-Marker.png',
+      iconSize: [32, 32], // taille de l'icône en pixels
+    });
+    const osmHotLayer = L.tileLayer(
+      'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+      {
+        maxZoom: 19,
+        attribution:
+          '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France',
+      }
+    );
+    const googleSatelliteLayer = L.tileLayer(
+      'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+      {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        attribution:
+          'Map data &copy; <a href="https://www.google.com/">Google</a>',
+      }
+    );
+
+    const cycloSMLayer = L.tileLayer(
+      'https://tiles.opencyclemap.org/cycle/{z}/{x}/{y}.png',
+      {
+        attribution: 'Map data © OpenStreetMap contributors | CycloSM',
+      }
+    );
+
+    const osmLayer = L.tileLayer(
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        maxZoom: 19,
+        attribution:
+          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      }
+    );
+
+    const stamenTerrainLayer = L.tileLayer(
+      'https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg',
+      {
+        maxZoom: 18,
+        attribution:
+          'Map tiles by <a href="https://stamen.com/">Stamen Design</a>, under <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. Data by <a href="https://openstreetmap.org/">OpenStreetMap</a>, under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY SA</a>.',
+      }
+    );
+
+    const baseMaps = {
+      'OSM Hot': osmHotLayer,
+      OpenStreetMap: osmLayer,
+      'Google Satellite': googleSatelliteLayer,
+      'Stamen Terrain': stamenTerrainLayer,
+    };
+
+    osmHotLayer.addTo(this.map); // Ajouter la couche OpenStreetMap par défaut
+    L.control.layers(baseMaps).addTo(this.map);
   }
 }

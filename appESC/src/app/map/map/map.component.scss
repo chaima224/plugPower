@@ -1,4 +1,4 @@
-.map-container {
+/*.map-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -59,8 +59,34 @@
 
 #map {
   height: 100%;
-}
+}*/
 
 /*.map-container {
   height: 400px;
 }*/
+
+.map-container {
+  width: 100%; /* Adjust the width as needed */
+  height: 500px; /* Adjust the height as needed */
+}
+
+.map-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.add-plug-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 999;
+  background-color: var(--base-skin);
+  border-radius: 5%;
+}

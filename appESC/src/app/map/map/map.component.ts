@@ -33,7 +33,7 @@ export class MapComponent implements OnInit {
     this.stations.forEach((station: Station) => {
       const latitude = station.latitude;
       const longitude = station.longitude;
-      const popupContent = `Popup de ${station.name}`;
+      const popupContent = ` ${station.name}`;
       this.addMarker(latitude, longitude, popupContent);
     });
   }
@@ -62,7 +62,14 @@ export class MapComponent implements OnInit {
       center: this.centroid,
       zoom: 7,
     });
-
+    const osmHotLayer = L.tileLayer(
+      'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+      {
+        maxZoom: 19,
+        attribution:
+          '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France',
+      }
+    );
     const googleSatelliteLayer = L.tileLayer(
       'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
       {
@@ -98,23 +105,14 @@ export class MapComponent implements OnInit {
       }
     );
 
-    const osmHotLayer = L.tileLayer(
-      'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-      {
-        maxZoom: 19,
-        attribution:
-          '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France',
-      }
-    );
-
     const baseMaps = {
+      'OSM Hot': osmHotLayer,
       OpenStreetMap: osmLayer,
       'Google Satellite': googleSatelliteLayer,
       'Stamen Terrain': stamenTerrainLayer,
-      'OSM Hot': osmHotLayer,
     };
 
-    osmLayer.addTo(this.map); // Ajouter la couche OpenStreetMap par défaut
+    osmHotLayer.addTo(this.map); // Ajouter la couche OpenStreetMap par défaut
     L.control.layers(baseMaps).addTo(this.map);
   }
 }

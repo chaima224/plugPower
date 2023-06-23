@@ -948,6 +948,121 @@
                                               </div>
                                             </div>
                                           </div>
+                                          <div class="row">
+                                            <div
+                                              class="col-xs-12 col-sm-6 checkbox-item"
+                                            >
+                                              <div
+                                                data-checkbox="connector-type"
+                                                class="checkbox customcheckbox hidden is-active"
+                                              >
+                                                <label
+                                                  class="customcheckbox-inner"
+                                                >
+                                                  <input
+                                                    class="connector-type-10"
+                                                    name="connector_type[]"
+                                                    type="checkbox"
+                                                    value="10"
+                                                  />
+                                                  <span
+                                                    class="customcheckbox-icon"
+                                                  >
+                                                    <img
+                                                      src="https://api.chargemap.com/medias/v2/connector_types/icon/original/10/t13.svg"
+                                                      alt="Type2_MENNEKES"
+                                                    />
+                                                  </span>
+                                                  <span
+                                                    class="customcheckbox-text"
+                                                    (click)="
+                                                      setValue(
+                                                        'Type2MENNEKES',
+                                                        'connecteur'
+                                                      )
+                                                    "
+                                                    >Type2MENNEKES</span
+                                                  >
+                                                </label>
+                                              </div>
+                                            </div>
+                                            <div
+                                              class="col-xs-12 col-sm-6 checkbox-item"
+                                            >
+                                              <div
+                                                data-checkbox="connector-type"
+                                                class="checkbox customcheckbox hidden is-active"
+                                              >
+                                                <label
+                                                  class="customcheckbox-inner"
+                                                >
+                                                  <input
+                                                    class="connector-type-23"
+                                                    name="connector_type[]"
+                                                    type="checkbox"
+                                                    value="23"
+                                                  />
+                                                  <span
+                                                    class="customcheckbox-icon"
+                                                  >
+                                                    <img
+                                                      src="https://api.chargemap.com/medias/v2/connector_types/icon/original/23/avcon.svg"
+                                                      alt="CEEBLUE"
+                                                    />
+                                                  </span>
+                                                  <span
+                                                    class="customcheckbox-text"
+                                                    (click)="
+                                                      setValue(
+                                                        'CEEBLUE',
+                                                        'connecteur'
+                                                      )
+                                                    "
+                                                    >CEEBLUE</span
+                                                  >
+                                                </label>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="row">
+                                            <div
+                                              class="col-xs-12 col-sm-6 checkbox-item"
+                                            >
+                                              <div
+                                                data-checkbox="connector-type"
+                                                class="checkbox customcheckbox hidden is-active"
+                                              >
+                                                <label
+                                                  class="customcheckbox-inner"
+                                                >
+                                                  <input
+                                                    class="connector-type-10"
+                                                    name="connector_type[]"
+                                                    type="checkbox"
+                                                    value="10"
+                                                  />
+                                                  <span
+                                                    class="customcheckbox-icon"
+                                                  >
+                                                    <img
+                                                      src="https://api.chargemap.com/medias/v2/connector_types/icon/original/10/t13.svg"
+                                                      alt="COMBOTYPE2"
+                                                    />
+                                                  </span>
+                                                  <span
+                                                    class="customcheckbox-text"
+                                                    (click)="
+                                                      setValue(
+                                                        'COMBOTYPE2',
+                                                        'connecteur'
+                                                      )
+                                                    "
+                                                    >COMBOTYPE2</span
+                                                  >
+                                                </label>
+                                              </div>
+                                            </div>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
@@ -1522,7 +1637,15 @@
                                 </p>
                               </div>
                             </div>
-
+                            <div class="row">
+                              <div class="col-xl-6 mb-2">
+                                <div class="map-container">
+                                  <div class="map-frame">
+                                    <div id="map"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                             <div class="col-xl-6 col-md-8 mb-5">
                               <p class="form-submit mt-40 mb-0">
                                 <button
