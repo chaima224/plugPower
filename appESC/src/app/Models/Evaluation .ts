@@ -7,4 +7,5 @@ export class Evaluation {
   user!: User;
   comment!: string;
   timestamp!: Date;
+  status!: string;
 }

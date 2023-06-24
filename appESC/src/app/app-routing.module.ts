@@ -17,6 +17,8 @@ import { AddDisponibiliteComponent } from './add-disponibilite/add-disponibilite
 import { BdetailsComponent } from './bdetails/bdetails.component';
 import { SearchStationComponent } from './search-station/search-station.component';
 import { AfficheSearchComponent } from './affiche-search/affiche-search.component';
+import { ListEvaluationComponent } from './list-evaluation/list-evaluation.component';
+import { ApprouvedEvaluationComponent } from './approuved-evaluation/approuved-evaluation.component';
 
 const routes: Routes = [
   // {path: '' ,
@@ -29,6 +31,10 @@ const routes: Routes = [
   {
     path: 'listborne',
     component: ListborneComponent,
+  },
+  {
+    path: 'listEvaluation',
+    component: ListEvaluationComponent,
   },
   {
     path: 'UtilisateurBorne',
@@ -54,6 +60,10 @@ const routes: Routes = [
   {
     path: 'resultSearch',
     component: AfficheSearchComponent,
+  },
+  {
+    path: 'ApprouvedEvaluation/:id',
+    component: ApprouvedEvaluationComponent,
   },
 
   {

@@ -48,6 +48,8 @@ import { SearchStationComponent } from './search-station/search-station.componen
 import { AfficheSearchComponent } from './affiche-search/affiche-search.component';
 import { BingMapModule } from './bing-map/bing-map.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { ListEvaluationComponent } from './list-evaluation/list-evaluation.component';
+import { ApprouvedEvaluationComponent } from './approuved-evaluation/approuved-evaluation.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
     SearchStationComponent,
     AfficheSearchComponent,
+    ListEvaluationComponent,
+    ApprouvedEvaluationComponent,
 
     /* LoginComponent,
     RegisterComponent,*/
