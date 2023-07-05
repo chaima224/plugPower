@@ -51,7 +51,12 @@ export class StationService {
   }
 
   getAllStationsCoordinates(): Observable<Station[]> {
-    const url = `${this.baseUrl}/coordinates`;
+    const url = `${this.baseUrl}/coordinate`;
+    return this.http.get<Station[]>(url);
+  }
+
+  getStationsByMode(mode: string): Observable<Station[]> {
+    const url = `${this.baseUrl}/mode/${mode}`;
     return this.http.get<Station[]>(url);
   }
 }

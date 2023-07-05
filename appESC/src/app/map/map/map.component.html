@@ -1,3 +1,22 @@
+<!-- Feuilles de style CSS de Leaflet -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+/>
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+<!-- Fichier JavaScript de Leaflet -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+
 <body>
   <div class="page">
     <div class="min-box">
@@ -141,9 +160,7 @@
                               >List</a
                             >
                           </li>
-                          <li class="mega-menu-item">
-                            <a class="mega-menu-link">Result</a>
-                          </li>
+
                           <li class="mega-menu-item">
                             <a class="mega-menu-link">Portfolio</a>
                           </li>
@@ -194,15 +211,99 @@
         <section class="prt-row grid-section clearfix mx-0">
           <div class="map-container mt-80" style="height: 785px">
             <div class="map-frame">
-              <div id="map"></div>
+              <div id="map">
+                <button
+                  (click)="openLegendModal()"
+                  class="legend-modal-button map-legend-button"
+                >
+                  Legend
+                </button>
+              </div>
               <button class="add-plug-button" routerLink="/borne">
                 ADD PLUG
               </button>
             </div>
           </div>
+          <!-- Formulaire de recherche -->
+          <input
+            type="text"
+            [(ngModel)]="startLocation"
+            placeholder="Start Point"
+          />
+
+          <input
+            type="text"
+            [(ngModel)]="endLocation"
+            placeholder="End Point "
+          />
+
+          <button (click)="searchRoute()" style="background-color: black">
+            Search
+          </button>
+          <!-- Légende -->
+          <div class="legend-modal">
+            <div *ngIf="legendModalOpened" class="modal" style="display: block">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-center">Legend</h5>
+                    <button
+                      type="button"
+                      class="close"
+                      (click)="legendModalOpened = false"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="legend-item">
+                      <img
+                        src="/assets/images/marker1.png"
+                        class="legend-marker small"
+                      />
+                      <div class="legend-label">Stations with SLOW Plugs</div>
+                    </div>
+                    <div class="legend-item">
+                      <img
+                        src="/assets/images/marker2.png"
+                        class="legend-marker small"
+                        style="height: 30px; width: 30px"
+                      />
+                      <div class="legend-label">Stations with FAST Plugs</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="legend-modal">
+            <div *ngIf="ModalOpened" class="modal" style="display: block">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-center">st</h5>
+                    <button
+                      type="button"
+                      class="close"
+                      (click)="ModalOpened = false"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <h2 class="title"></h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
+
         <!--grid-section end-->
       </div>
+      <!-- Recherche -->
+
       <!--site-main end-->
 
       <!--back-to-top start-->

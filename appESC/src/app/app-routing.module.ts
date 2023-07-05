@@ -19,6 +19,7 @@ import { SearchStationComponent } from './search-station/search-station.componen
 import { AfficheSearchComponent } from './affiche-search/affiche-search.component';
 import { ListEvaluationComponent } from './list-evaluation/list-evaluation.component';
 import { ApprouvedEvaluationComponent } from './approuved-evaluation/approuved-evaluation.component';
+import { ModalDetailsComponent } from './modal-details/modal-details.component';
 
 const routes: Routes = [
   // {path: '' ,
@@ -65,7 +66,10 @@ const routes: Routes = [
     path: 'ApprouvedEvaluation/:id',
     component: ApprouvedEvaluationComponent,
   },
-
+  {
+    path: 'modalDetails/:id',
+    component: ModalDetailsComponent,
+  },
   {
     path: '',
     loadChildren: () =>

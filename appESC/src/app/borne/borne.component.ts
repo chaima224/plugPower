@@ -415,7 +415,7 @@ export class BorneComponent implements OnInit {
     const osmHotLayer = L.tileLayer(
       'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
       {
-        maxZoom: 19,
+        maxZoom: 7,
         attribution:
           '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France',
       }

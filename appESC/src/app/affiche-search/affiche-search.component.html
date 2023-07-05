@@ -1,3 +1,22 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+  />
+  <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+  <!-- Fichier JavaScript de Leaflet -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+</head>
 <body>
   <!--page start-->
   <div class="page">
@@ -219,64 +238,118 @@
       <section class="prt-row grid-section clearfix">
         <div class="container">
           <!-- row -->
-          <div *ngIf="stations.length > 0">
-            <div class="row mb_15 mt_15">
-              <div
-                class="col-lg-4 col-md-4 col-sm-6"
-                *ngFor="let station of stations"
-              >
-                <!-- featured-imagebox-portfolio -->
-                <div
-                  class="featured-imagebox featured-imagebox-portfolio style2"
-                >
-                  <!-- prt-box-view-overlay -->
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <div *ngIf="stations.length > 0">
+                <div class="row mb_15 mt_15">
                   <div
-                    class="prt-box-view-overlay prt-portfolio-box-view-overlay"
+                    class="col-lg-4 col-md-4 col-sm-6"
+                    *ngFor="let station of stations"
                   >
-                    <!-- featured-thumbnail -->
-                    <div class="featured-thumbnail">
-                      <img
-                        class="img-fluid"
-                        src="../../assets/images/services/servives-6.jpg"
-                        alt="image"
-                      />
-                    </div>
-                    <!-- featured-thumbnail end-->
-                    <div class="prt-media-link">
-                      <a
-                        class="prt_prettyphoto prt_image"
-                        data-gal="prettyPhoto[gallery1]"
-                        title="Silk Fabric"
-                        href="images/portfolio/portfolio-2-1200x800.jpg"
-                        data-rel="prettyPhoto"
-                        tabindex="0"
+                    <!-- featured-imagebox-portfolio -->
+                    <div
+                      class="featured-imagebox featured-imagebox-portfolio style2"
+                    >
+                      <!-- prt-box-view-overlay -->
+                      <div
+                        class="prt-box-view-overlay prt-portfolio-box-view-overlay"
                       >
-                        <i class="fa fa-search"></i>
-                      </a>
-                      <a
-                        href="portfolio-single.html"
-                        class="prt_link"
-                        tabindex="0"
-                        ><i class="ti ti-link"></i
-                      ></a>
+                        <!-- featured-thumbnail -->
+                        <div class="featured-thumbnail">
+                          <img
+                            class="img-fluid"
+                            src="../../assets/images/services/servives-6.jpg"
+                            alt="image"
+                          />
+                        </div>
+                        <!-- featured-thumbnail end-->
+                        <div class="prt-media-link">
+                          <a
+                            class="prt_prettyphoto prt_image"
+                            data-gal="prettyPhoto[gallery1]"
+                            title="Silk Fabric"
+                            href="images/portfolio/portfolio-2-1200x800.jpg"
+                            data-rel="prettyPhoto"
+                            tabindex="0"
+                          >
+                            <i class="fa fa-search"></i>
+                          </a>
+                          <a
+                            href="portfolio-single.html"
+                            class="prt_link"
+                            tabindex="0"
+                            ><i class="ti ti-link"></i
+                          ></a>
+                        </div>
+                      </div>
+                      <div class="featured-content">
+                        <div class="featured-title">
+                          <h3>
+                            <a (click)="getStationDetails(station.id)">{{
+                              station.name
+                            }}</a>
+                          </h3>
+                        </div>
+                        <div class="featured-desc">
+                          <p>
+                            {{ station.emplacement }}
+                          </p>
+                        </div>
+                      </div>
                     </div>
+                    <!-- featured-imagebox-portfolio end-->
                   </div>
-                  <div class="featured-content">
-                    <div class="featured-title">
-                      <h3>
-                        <a (click)="getStationDetails(station.id)">{{
-                          station.name
-                        }}</a>
-                      </h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div class="map-container mt-80" style="height: 785px">
+                <div class="map-frame">
+                  <div id="map">
+                    <button
+                      (click)="openLegendModal()"
+                      class="legend-modal-button map-legend-button"
+                    >
+                      Legend
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Légende -->
+          <div class="legend-modal">
+            <div *ngIf="legendModalOpened" class="modal" style="display: block">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-center">Legend</h5>
+                    <button
+                      type="button"
+                      class="close"
+                      (click)="legendModalOpened = false"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="legend-item">
+                      <img
+                        src="/assets/images/marker1.png"
+                        class="legend-marker small"
+                      />
+                      <div class="legend-label">Stations with SLOW Plugs</div>
                     </div>
-                    <div class="featured-desc">
-                      <p>
-                        {{ station.emplacement }}
-                      </p>
+                    <div class="legend-item">
+                      <img
+                        src="/assets/images/marker2.png"
+                        class="legend-marker small"
+                        style="height: 30px; width: 30px"
+                      />
+                      <div class="legend-label">Stations with FAST Plugs</div>
                     </div>
                   </div>
                 </div>
-                <!-- featured-imagebox-portfolio end-->
               </div>
             </div>
           </div>

@@ -500,27 +500,24 @@
             </div>
           </div>
           <form>
-            <div class="form-group row">
-              <label class="col-sm-12 col-md-2 col-form-label"
-                >First Name</label
-              >
-              <div class="col-sm-12 col-md-10">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  placeholder="Name"
-                  [(ngModel)]="evaluation.user.prenom"
-                  name="name"
-                  disabled
-                />
-              </div>
-            </div>
-
-            <div class="row mt-2">
+            <div class="row">
               <div class="col-xl-6 col-md-12">
                 <div class="form-group">
-                  <label for="latitude">Last Name</label>
+                  <label for="name">First Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Name"
+                    [(ngModel)]="evaluation.user.prenom"
+                    name="name"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="col-xl-6 col-md-12">
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
                   <input
                     type="text"
                     class="form-control"
@@ -531,8 +528,12 @@
                   />
                 </div>
               </div>
+            </div>
+
+            <div class="row">
               <div class="col-xl-6 col-md-12">
                 <p class="comment-form-comment">
+                  <label for="comment" class="font-weight-bold"> Comment</label>
                   <textarea
                     id="comment"
                     placeholder="Comment"
@@ -541,23 +542,24 @@
                     rows="4"
                     aria-required="true"
                     [(ngModel)]="evaluation.comment"
-                    disable
+                    disabled
                   ></textarea>
                 </p>
               </div>
-            </div>
-
-            <div class="form-group">
-              <label for="ouverture"> Time</label>
-              <input
-                type="datetime-local"
-                class="form-control"
-                id="ouverture"
-                placeholder="Opening Time"
-                [(ngModel)]="evaluation.timestamp"
-                name="ouverture"
-                disabled
-              />
+              <div class="col-xl-6 col-md-12">
+                <div class="form-group">
+                  <label for="ouverture" class="font-weight-bold"> Time</label>
+                  <input
+                    type="datetime-local"
+                    class="form-control"
+                    id="ouverture"
+                    placeholder="Opening Time"
+                    [(ngModel)]="evaluation.timestamp"
+                    name="ouverture"
+                    disabled
+                  />
+                </div>
+              </div>
             </div>
 
             <button
