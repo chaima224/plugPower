@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
+import 'leaflet-routing-machine';
 
 @Component({
   selector: 'app-affiche-search',
@@ -28,14 +29,16 @@ export class AfficheSearchComponent implements OnInit {
   endLocation!: string;
   legendModalOpened = false;
   ModalOpened = false;
-
   puissance!: number;
   mode!: string;
   connecteur!: string;
+  startPoint: L.LatLng | undefined;
+  endPoint: L.LatLng | undefined;
+  startendData: any;
   constructor(
     private stationService: StationService,
     private http: HttpClient,
-    private activatedRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
   ) {
@@ -50,30 +53,28 @@ export class AfficheSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.stations = history.state.stations;
+    this.startendData = history.state.startendData;
 
     this.initMap();
 
     this.stationService.getAllStationsCoordinates().subscribe(
       (stations: Station[]) => {
         // Appeler la fonction searchStations() et passer les stations filtrées
-        this.searchStations();
+
         this.displayMarkers();
       },
       (error) => {
         console.error('Error retrieving stations:', error);
       }
     );
+    this.startPoint = L.latLng(this.startendData.sLat, this.startendData.sLng);
+    this.endPoint = L.latLng(this.startendData.eLat, this.startendData.eLng);
+
+    console.log('Start Point:', this.startPoint);
+    console.log('End Point:', this.endPoint);
+    this.showRoute(this.startPoint, this.endPoint);
   }
 
-  searchStations(): void {
-    this.stationService
-      .rechercheStations(this.puissance, this.mode, this.connecteur)
-      .subscribe((stations) => {
-        // Mettre à jour les stations filtrées
-        this.stations = stations;
-        console.log('Stations filtrées :', this.stations); // Afficher les stations filtrées dans la console
-      });
-  }
   getStationDetails(id: string) {
     this.router.navigate(['Station-details', id]);
   }
@@ -281,7 +282,7 @@ export class AfficheSearchComponent implements OnInit {
     osmHotLayer.addTo(this.map); // Ajouter la couche OpenStreetMap par défaut
     L.control.layers(baseMaps).addTo(this.map);
   }
-  searchRoute(): void {
+  /* searchRoute(): void {
     if (this.startLocation.trim() !== '' && this.endLocation.trim() !== '') {
       const startSearchUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
         this.startLocation
@@ -318,18 +319,25 @@ export class AfficheSearchComponent implements OnInit {
         })
         .catch((error) => console.error(error));
     }
-  }
+  }*/
+
   showRoute(startPoint: L.LatLng, endPoint: L.LatLng): void {
-    // Hide the user marker
-    this.userMarker.remove();
+    console.log('Show Route - Start Point:', startPoint);
+    console.log('Show Route - End Point:', endPoint);
+
+    const waypoints = [
+      startPoint, // Starting point
+      endPoint, // Destination
+    ];
 
     L.Routing.control({
-      waypoints: [
-        startPoint, // Point de départ
-        endPoint, // Destination
-      ],
+      waypoints: waypoints,
       routeWhileDragging: true,
-    }).addTo(this.map);
+    })
+      .on('routesfound', (e: any) => {
+        console.log('Routes Found:', e);
+      })
+      .addTo(this.map);
   }
   openLegendModal(): void {
     this.legendModalOpened = true;

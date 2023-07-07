@@ -44,7 +44,6 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     this.initMap();
-
     this.stationService.getAllStationsCoordinates().subscribe(
       (stations: Station[]) => {
         this.stations = stations;
@@ -109,6 +108,7 @@ export class MapComponent implements OnInit {
 
   displayMarkers(): void {
     this.stations.forEach((station: Station) => {
+      console.log(station.id);
       const latitude = station.latitude;
       const longitude = station.longitude;
       const popupContent = ` ${station.name}`;
@@ -116,12 +116,18 @@ export class MapComponent implements OnInit {
       if (station.bornes && station.bornes.length > 0) {
         station.bornes.forEach((borne: Borne) => {
           const mode = borne.mode;
-          this.addMarker(latitude, longitude, popupContent, mode);
+          this.addMarker(latitude, longitude, popupContent, mode, station.id);
         });
       } else {
         // Ajouter un marqueur avec un mode par défaut si aucune borne n'est disponible
         const defaultMode = 'DEFAULT';
-        this.addMarker(latitude, longitude, popupContent, defaultMode);
+        this.addMarker(
+          latitude,
+          longitude,
+          popupContent,
+          defaultMode,
+          station.id
+        );
       }
     });
   }
@@ -130,7 +136,8 @@ export class MapComponent implements OnInit {
     latitude: number,
     longitude: number,
     popupContent: string,
-    mode: string
+    mode: string,
+    id: string
   ): void {
     let markerIconUrl = '';
 
@@ -159,8 +166,7 @@ export class MapComponent implements OnInit {
     const marker = L.marker([latitude, longitude], { icon: markerIcon });
     marker.bindPopup(popupContent);
     marker.on('click', () => {
-      this.openModal(this.id); // Utilisez this.id pour accéder à la propriété de l'instance
-      this.getStationDetails(this.id);
+      this.openModal(id); // Utilisez this.id pour accéder à la propriété de l'instance
     });
 
     marker.addTo(this.map);
@@ -285,9 +291,16 @@ export class MapComponent implements OnInit {
 
   openModal(id: string): void {
     this.ModalOpened = true;
-    this.router.navigate(['/modalDetails', id]);
+    this.getStationDetails(id);
   }
   getStationDetails(id: string) {
-    this.router.navigate(['Station-details', id]);
+    this.stationService.getStationById(id).subscribe(
+      (data) => {
+        this.station = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }

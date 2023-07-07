@@ -103,6 +103,7 @@ import { ModalDetailsComponent } from './modal-details/modal-details.component';
     AuthService,
     StationService,
     AppRoutingModule,
+    AfficheSearchComponent,
     { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

@@ -240,7 +240,7 @@
           <!-- row -->
           <div class="row">
             <div class="col-lg-6 col-md-6">
-              <div *ngIf="stations.length > 0">
+              <div *ngIf="stations && stations.length > 0">
                 <div class="row mb_15 mt_15">
                   <div
                     class="col-lg-4 col-md-4 col-sm-6"
@@ -303,7 +303,7 @@
               </div>
             </div>
             <div class="col-lg-6 col-md-6">
-              <div class="map-container mt-80" style="height: 785px">
+              <div class="map-container" style="height: 785px">
                 <div class="map-frame">
                   <div id="map">
                     <button

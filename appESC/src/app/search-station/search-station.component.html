@@ -967,6 +967,20 @@
                                   <!-- featured-thumbnail end -->
                                 </div>
                               </div>
+                              <form #myForm="ngForm">
+                                <input
+                                  type="text"
+                                  [(ngModel)]="startLocation"
+                                  name="startLocation"
+                                  placeholder="Start Point"
+                                />
+                                <input
+                                  type="text"
+                                  [(ngModel)]="endLocation"
+                                  name="endLocation"
+                                  placeholder="End Point"
+                                />
+                              </form>
                             </div>
                             <!-- <div class="row">
                                 <div class="col-xl-6 col-md-12">

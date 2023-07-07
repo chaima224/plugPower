@@ -7,6 +7,9 @@ import { AuthService } from '../shared/services/auth.service';
 import { BorneService } from '../shared/services/borne.service';
 import { BorneStationService } from '../shared/services/borneStation.service';
 import { StationService } from '../shared/services/station.service';
+import * as L from 'leaflet';
+import 'leaflet-routing-machine';
+import { AfficheSearchComponent } from '../affiche-search/affiche-search.component';
 
 @Component({
   selector: 'app-search-station',
@@ -21,6 +24,11 @@ export class SearchStationComponent implements OnInit {
   isFormSubmitted: boolean = false;
   firstTabClicked = false;
   secondTabClicked = false;
+  private userMarker!: L.Marker;
+  startLocation: string = '';
+  endLocation: string = '';
+  private map!: L.Map;
+  startendData: any;
 
   //  nameInput: any;
 
@@ -29,7 +37,8 @@ export class SearchStationComponent implements OnInit {
     private borneService: BorneService,
     private authService: AuthService,
     private borneStationService: BorneStationService,
-    private router: Router
+    private router: Router,
+    private afficheSearchComponent: AfficheSearchComponent
   ) {}
 
   ngOnInit(): void {}
@@ -43,8 +52,10 @@ export class SearchStationComponent implements OnInit {
   goToStationList() {
     this.router.navigate(['/liststation']);
   }
-  goToStationsList(data: any) {
-    this.router.navigate(['/resultSearch'], { state: { stations: data } });
+  goToStationsList(data: any, startendData: any) {
+    this.router.navigate(['/resultSearch'], {
+      state: { stations: data, startendData: startendData },
+    });
   }
 
   changeTab(idTab: string) {
@@ -75,7 +86,7 @@ export class SearchStationComponent implements OnInit {
     });
   }*/
 
-  searchStations(): void {
+  searchStations() {
     this.stationService
       .rechercheStations(
         this.borne.puissance,
@@ -84,11 +95,14 @@ export class SearchStationComponent implements OnInit {
       )
       .subscribe((stations) => {
         this.stations = stations;
-        this.goToStationsList(stations);
+        this.searchRoute();
       });
   }
-  onSubmit() {
-    this.searchStations();
+  async onSubmit() {
+    await this.searchStations();
+
+    console.log(this.stations);
+    console.log(this.startendData);
   }
 
   logout(): void {
@@ -100,5 +114,57 @@ export class SearchStationComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['/']);
     // ...
+  }
+
+  searchRoute(): void {
+    console.log('searchRoute() called');
+    console.log('startLocation:', this.startLocation);
+    console.log('endLocation:', this.endLocation);
+
+    if (this.startLocation.trim() !== '' && this.endLocation.trim() !== '') {
+      const startSearchUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+        this.startLocation
+      )}&format=json&addressdetails=1&limit=1`;
+
+      const endSearchUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+        this.endLocation
+      )}&format=json&addressdetails=1&limit=1`;
+
+      Promise.all([fetch(startSearchUrl), fetch(endSearchUrl)])
+        .then((responses) => Promise.all(responses.map((res) => res.json())))
+        .then((data) => {
+          const startData = data[0];
+          const endData = data[1];
+
+          if (startData.length > 0 && endData.length > 0) {
+            const startResult = startData[0];
+            const endResult = endData[0];
+
+            const startLatitude = parseFloat(startResult.lat);
+            const startLongitude = parseFloat(startResult.lon);
+            const endLatitude = parseFloat(endResult.lat);
+            const endLongitude = parseFloat(endResult.lon);
+
+            const startPoint = L.latLng(startLatitude, startLongitude);
+            const endPoint = L.latLng(endLatitude, endLongitude);
+            this.startendData = {
+              sLat: startLatitude,
+              sLng: startLongitude,
+              eLat: endLatitude,
+              eLng: endLongitude,
+            };
+            this.goToStationsList(this.stations, this.startendData);
+          } else {
+            console.log(
+              'Aucun résultat trouvé pour le point de départ ou la destination.'
+            );
+          }
+        })
+        .catch((error) => console.error(error));
+    } else {
+      console.log(
+        'Veuillez entrer à la fois le point de départ et la destination.'
+      );
+    }
   }
 }

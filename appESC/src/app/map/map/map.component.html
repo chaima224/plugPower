@@ -282,7 +282,9 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title text-center">st</h5>
+                    <h5 class="modal-title text-center">
+                      Titre du composant cible
+                    </h5>
                     <button
                       type="button"
                       class="close"
@@ -292,7 +294,28 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <h2 class="title"></h2>
+                    <ul class="prt-pf-detailbox-list">
+                      <li>
+                        <span>Station name </span>
+                        <span class="prt-pf-right-details">
+                          {{ station.name }}</span
+                        >
+                      </li>
+                      <li>
+                        <span>Opening Hrs </span>
+                        <span class="prt-pf-right-details">{{
+                          station.ouverture
+                        }}</span>
+                      </li>
+                      <li>
+                        <span>Closing Hrs </span>
+                        <span class="prt-pf-right-details">{{
+                          station.fermeture
+                        }}</span>
+                      </li>
+                    </ul>
+
+                    <!-- Emplacement où le composant cible sera affiché -->
                   </div>
                 </div>
               </div>
