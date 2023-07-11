@@ -1,70 +1,3 @@
-/*.map-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 30px;
-}
-
-.map-frame {
-  border: 2px solid black;
-  height: 100%;
-}
-
-#map {
-  height: 100%;
-}
-
-.search-container {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
-  background-color: white;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-#search-input {
-  width: 70%;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  box-shadow: 0 0 5px gray;
-}
-
-#search-btn {
-  width: 25%;
-  padding: 5px;
-  border-radius: 5px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-}
-.map-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 30px;
-}
-
-.map-frame {
-  border: 2px solid black;
-  height: 100%;
-}
-
-#map {
-  height: 100%;
-}*/
-
-/*.map-container {
-  height: 400px;
-}*/
-
 .map-container {
   width: 100%; /* Adjust the width as needed */
   height: 500px; /* Adjust the height as needed */
@@ -89,6 +22,18 @@
   z-index: 999;
   background-color: var(--base-skin);
   border-radius: 5%;
+}
+.search-button {
+  position: absolute;
+  top: 13px;
+  right: 190px;
+  height: 45px;
+  border-color: darkgray;
+  background-color: white;
+  color: #000;
+  z-index: 999;
+  font-weight: normal;
+  font-size: 13px;
 }
 /* Styles pour la modal */
 .modal {
@@ -153,14 +98,10 @@
   font-weight: normal;
 }
 .legend-marker {
-  width: 20px; /* Définir la largeur souhaitée */
-  height: 20px; /* Définir la hauteur souhaitée */
+  width: 50px; /* Définir la largeur souhaitée */
+  height: 50px; /* Définir la hauteur souhaitée */
 }
 
-.small {
-  width: 20px; /* Définir une taille plus petite */
-  height: 20px; /* Définir une taille plus petite */
-}
 .map-legend-button {
   position: absolute;
   top: 13px;
@@ -169,4 +110,16 @@
   background-color: white;
   color: black;
   z-index: 999;
+}
+.modal-dialog-left {
+  left: 0;
+  width: auto;
+  max-height: 100%;
+  position: absolute;
+  top: 10;
+  bottom: 0;
+  height: 100%;
+}
+.modal-content {
+  height: 100%;
 }

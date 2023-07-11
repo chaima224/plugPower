@@ -51,7 +51,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ListEvaluationComponent } from './list-evaluation/list-evaluation.component';
 import { ApprouvedEvaluationComponent } from './approuved-evaluation/approuved-evaluation.component';
 import { Ng2CompleterModule } from 'ng2-completer';
-import { ModalDetailsComponent } from './modal-details/modal-details.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +67,6 @@ import { ModalDetailsComponent } from './modal-details/modal-details.component';
     AfficheSearchComponent,
     ListEvaluationComponent,
     ApprouvedEvaluationComponent,
-    ModalDetailsComponent,
 
     /* LoginComponent,
     RegisterComponent,*/

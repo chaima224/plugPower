@@ -146,13 +146,7 @@
                           <li class="mega-menu-item active">
                             <a class="mega-menu-link" routerLink="/map">Card</a>
                           </li>
-                          <li class="mega-menu-item">
-                            <a
-                              class="mega-menu-link"
-                              routerLink="/searchStation"
-                              >Advanced Search</a
-                            >
-                          </li>
+
                           <li class="mega-menu-item">
                             <a
                               class="mega-menu-link"
@@ -161,12 +155,6 @@
                             >
                           </li>
 
-                          <li class="mega-menu-item">
-                            <a class="mega-menu-link">Portfolio</a>
-                          </li>
-                          <li class="mega-menu-item">
-                            <a class="mega-menu-link">Blog</a>
-                          </li>
                           <li class="mega-menu-item">
                             <a class="mega-menu-link">Contact Us</a>
                           </li>
@@ -177,9 +165,9 @@
                         <div
                           class="header_extra d-flex flex-row align-items-center justify-content-end"
                         >
-                          <div class="header_btn mt-1">
+                          <div class="header_btn">
                             <a
-                              class="prt-btn prt-btn-size-sm prt-btn-shape-round prt-btn-style-fill prt-icon-btn-right prt-btn-color-skincolor mt-10 mr-2"
+                              class="prt-btn prt-btn-size-sm prt-btn-shape-round prt-btn-style-fill prt-icon-btn-right prt-btn-color-skincolor mr-2"
                               s
                               >Logout</a
                             >
@@ -209,7 +197,7 @@
       <div class="site-main">
         <!--grid-section-->
         <section class="prt-row grid-section clearfix mx-0">
-          <div class="map-container mt-80" style="height: 785px">
+          <div class="map-container mt-80" style="height: 790px">
             <div class="map-frame">
               <div id="map">
                 <button
@@ -221,6 +209,9 @@
               </div>
               <button class="add-plug-button" routerLink="/borne">
                 ADD PLUG
+              </button>
+              <button class="search-button" routerLink="/searchStation">
+                Search
               </button>
             </div>
           </div>
@@ -255,21 +246,34 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
-                    <div class="legend-item">
-                      <img
-                        src="/assets/images/marker1.png"
-                        class="legend-marker small"
-                      />
-                      <div class="legend-label">Stations with SLOW Plugs</div>
-                    </div>
-                    <div class="legend-item">
-                      <img
-                        src="/assets/images/marker2.png"
-                        class="legend-marker small"
-                        style="height: 30px; width: 30px"
-                      />
-                      <div class="legend-label">Stations with FAST Plugs</div>
+                  <div class="prt-pricing-plan">
+                    <div class="prt-p_table-head">
+                      <div class="prt-p_table-title">
+                        <div style="display: inline-block; margin-bottom: 15px">
+                          <img
+                            src="/assets/images/mauve.png"
+                            class="legend-marker small"
+                            style="
+                              display: inline-block;
+                              height: 50px;
+                              width: 50px;
+                            "
+                          />
+                          <h3 style="display: inline-block">SLOW Plugs</h3>
+                        </div>
+                        <div style="display: inline-block">
+                          <img
+                            src="/assets/images/vert.png"
+                            class="legend-marker small"
+                          />
+                          <h3 style="display: inline-block">FAST Plugs</h3>
+                        </div>
+                      </div>
+
+                      <div class="prt-p_table-amount"></div>
+                      <div class="prt-p_table-icon">
+                        <i class="flaticon-electric"></i>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -278,45 +282,140 @@
           </div>
 
           <div class="legend-modal">
-            <div *ngIf="ModalOpened" class="modal" style="display: block">
-              <div class="modal-dialog">
+            <div
+              *ngIf="ModalOpened"
+              class="modal modal-left"
+              style="display: block"
+            >
+              <div class="modal-dialog-left">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title text-center">
-                      Titre du composant cible
-                    </h5>
+                  <div class="modal-header"></div>
+                  <div class="modal-body mt-120 p-20">
                     <button
                       type="button"
                       class="close"
                       (click)="ModalOpened = false"
+                      style="margin-right: 15px"
                     >
                       <span aria-hidden="true">&times;</span>
                     </button>
-                  </div>
-                  <div class="modal-body">
-                    <ul class="prt-pf-detailbox-list">
-                      <li>
-                        <span>Station name </span>
-                        <span class="prt-pf-right-details">
-                          {{ station.name }}</span
+                    <!-- featured-imagebox -->
+                    <div
+                      class="featured-icon-box icon-align-before-content icon-ver_align-top"
+                    >
+                      <div class="featured-icon">
+                        <div
+                          class="prt-icon prt-icon_element-color-skincolor prt-icon_element-onlytxt prt-icon_element-size-lg prt-icon_element-style-rounded"
                         >
-                      </li>
-                      <li>
-                        <span>Opening Hrs </span>
-                        <span class="prt-pf-right-details">{{
-                          station.ouverture
-                        }}</span>
-                      </li>
-                      <li>
-                        <span>Closing Hrs </span>
-                        <span class="prt-pf-right-details">{{
-                          station.fermeture
-                        }}</span>
-                      </li>
-                    </ul>
+                          <i class="flaticon-route"></i>
+                        </div>
+                      </div>
+                      <div class="featured-content">
+                        <div class="featured-title">
+                          <h3>Location</h3>
+                        </div>
+                        <div class="featured-desc">
+                          <p>
+                            {{ station.name }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- featured-imagebox end-->
+                    <div
+                      class="prt-horizontal_sep width-100 mt-25 mb-20 mr-40 res-991-mr-0"
+                    ></div>
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div
+                          class="featured-icon-box icon-align-before-content icon-ver_align-top icon-flip-hover"
+                        >
+                          <div class="featured-icon">
+                            <div
+                              class="prt-icon prt-icon_element-onlytxt prt-icon_element-color-skincolor prt-icon_element-size-lg"
+                            >
+                              <i class="flaticon-clock"></i>
+                            </div>
+                          </div>
+                          <div class="featured-content">
+                            <div class="featured-title">
+                              <h3>Opening Hrs</h3>
+                            </div>
+                            <p>
+                              {{ station.ouverture }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div
+                          class="featured-icon-box icon-align-before-content icon-ver_align-top icon-flip-hover"
+                        >
+                          <div class="featured-icon">
+                            <div
+                              class="prt-icon prt-icon_element-onlytxt prt-icon_element-color-skincolor prt-icon_element-size-lg"
+                            >
+                              <i class="flaticon-clock" style="width: 35%"></i>
+                            </div>
+                          </div>
+                          <div class="featured-content">
+                            <div class="featured-title">
+                              <h3>closing Hrs</h3>
+                            </div>
+                            <p>
+                              {{ station.fermeture }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="featured-icon-box style7 icon-align-before-content"
+                    >
+                      <div class="featured-icon">
+                        <div
+                          class="prt-icon prt-icon_element-onlytxt prt-icon_element-color-skincolor prt-icon_element-size-lg"
+                        >
+                          <i class="flaticon-wireless-charging"></i>
+                        </div>
+                      </div>
+                      <div class="featured-content">
+                        <div class="featured-title">
+                          <h3>EV Charging</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="prt-team-details-wrapper">
+                      <ul
+                        class="prt-team-details-list clearfix"
+                        *ngFor="let br of station.bornes"
+                      >
+                        <li>
+                          <div class="prt-team-list-value">
+                            <a
+                              href="tel:(123)456-7890"
+                              (click)="getBorneDetails(br.id)"
+                            >
+                              {{ br.name }}</a
+                            >
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div>
+                        <a class="media-btn"> </a>
+                      </div>
 
-                    <!-- Emplacement où le composant cible sera affiché -->
+                      <div>
+                        <h3>
+                          <a></a>
+                        </h3>
+                      </div>
+                    </div>
                   </div>
+
+                  <!-- Emplacement où le composant cible sera affiché -->
                 </div>
               </div>
             </div>

@@ -1,3 +1,7 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+/>
 <body>
   <div class="header1">
     <div class="header1-left">
@@ -410,9 +414,11 @@
           </li>
 
           <li class="dropdown">
-            <a routerLink="/addstation" class="dropdown-toggle">
+            <a routerLink="/addstation" class="dropdown-toggle active">
               <span class="micon dw dw-right-arrow1"></span
-              ><span class="mtext">Add Station </span>
+              ><span class="mtext" style="color: var(--base-skin)"
+                >Add Station
+              </span>
             </a>
           </li>
           <li class="dropdown">
@@ -598,6 +604,15 @@
                     [(ngModel)]="station.longitude"
                     name="longitude"
                   />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-6 mb-2">
+                <div class="map-container">
+                  <div class="map-frame">
+                    <div id="map"></div>
+                  </div>
                 </div>
               </div>
             </div>

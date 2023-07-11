@@ -55,6 +55,9 @@ export class MapComponent implements OnInit {
       }
     );
   }
+  getBorneDetails(id: string) {
+    this.router.navigate(['/bornedetails', this.station.id, id]);
+  }
 
   showPosition(position: GeolocationPosition) {
     const latitude = position.coords.latitude;
@@ -175,7 +178,7 @@ export class MapComponent implements OnInit {
   private initMap(): void {
     this.map = L.map('map', {
       center: this.centroid,
-      zoom: 4,
+      zoom: 14,
     });
     this.userIcon = L.icon({
       iconUrl: 'assets/images/Map-Marker.png',
@@ -184,7 +187,7 @@ export class MapComponent implements OnInit {
     const osmHotLayer = L.tileLayer(
       'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
       {
-        maxZoom: 9,
+        maxZoom: 7,
         attribution:
           '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France',
       }

@@ -232,7 +232,7 @@ export class AfficheSearchComponent implements OnInit {
     const osmHotLayer = L.tileLayer(
       'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
       {
-        maxZoom: 7,
+        minZoom: 7,
         attribution:
           '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France',
       }
@@ -337,6 +337,7 @@ export class AfficheSearchComponent implements OnInit {
       .on('routesfound', (e: any) => {
         console.log('Routes Found:', e);
       })
+
       .addTo(this.map);
   }
   openLegendModal(): void {
