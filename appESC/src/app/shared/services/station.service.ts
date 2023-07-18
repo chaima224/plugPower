@@ -59,4 +59,8 @@ export class StationService {
     const url = `${this.baseUrl}/mode/${mode}`;
     return this.http.get<Station[]>(url);
   }
+  getStationsWithPendingStatus(): Observable<Station[]> {
+    const url = `${this.baseUrl}/pending`;
+    return this.http.get<Station[]>(url);
+  }
 }

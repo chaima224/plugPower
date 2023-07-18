@@ -5,6 +5,7 @@ import { BorneService } from '../shared/services/borne.service';
 import { DisponibiliteService } from '../shared/services/Disponibilite.service';
 import { DisBorne, DisStation, Disponibilite } from '../Models/Disponibilite';
 import { Station } from '../Models/Station';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-bdetails',
@@ -22,7 +23,8 @@ export class BdetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private borneService: BorneService,
     private disponibiliteService: DisponibiliteService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -52,11 +54,21 @@ export class BdetailsComponent implements OnInit {
       .subscribe(
         (data) => {
           // Faites quelque chose avec les données retournées
-          this.disponibilite = data;
+          this.disponibilite = data[data.length - 1];
         },
         (error) => {
           console.error(error);
         }
       );
+  }
+  logout(): void {
+    // Call the logout method from the authentication service
+    this.authService.logoutUser();
+
+    // Additional tasks (optional)
+    // Example: Clear local storage or reset user-related variables
+    localStorage.clear();
+    this.router.navigate(['/']);
+    // ...
   }
 }

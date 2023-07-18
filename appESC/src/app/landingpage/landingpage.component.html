@@ -128,20 +128,18 @@
                             <a href="#" class="mega-menu-link">Home</a>
                           </li>
                           <li class="mega-menu-item">
-                            <a href="#" class="mega-menu-link" routerLink="/map"
-                              >Card</a
-                            >
+                            <a routerLink="/map" class="mega-menu-link">Card</a>
                           </li>
                           <li class="mega-menu-item">
                             <a
                               class="mega-menu-link"
-                              routerLink="/searchStation"
+                              (click)="handleSearchClick()"
                               >Advanced Search</a
                             >
                           </li>
                           <li class="mega-menu-item">
                             <a
-                              routerLink="/UtilisateurBorne"
+                              (click)="handleListClick()"
                               class="mega-menu-link"
                               >List</a
                             >

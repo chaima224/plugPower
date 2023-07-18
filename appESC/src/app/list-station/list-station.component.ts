@@ -48,4 +48,15 @@ export class ListStationComponent implements OnInit {
       }
     });
   }
+  getStatusColor(status: string): string {
+    // Define the color based on the status value
+    if (status === 'pending') {
+      return 'orange';
+    } else if (status === 'approuved') {
+      return 'green';
+    } else {
+      // Return default color (black, for example)
+      return 'black';
+    }
+  }
 }

@@ -169,6 +169,7 @@
                             <a
                               class="prt-btn prt-btn-size-sm prt-btn-shape-round prt-btn-style-fill prt-icon-btn-right prt-btn-color-skincolor mr-2"
                               s
+                              (click)="logout()"
                               >Logout</a
                             >
                           </div>
@@ -207,10 +208,11 @@
                   Legend
                 </button>
               </div>
-              <button class="add-plug-button" routerLink="/borne">
+              <button class="add-plug-button" (click)="handleAddPlugClick()">
                 ADD PLUG
               </button>
-              <button class="search-button" routerLink="/searchStation">
+
+              <button class="search-button" (click)="handleSearchClick()">
                 Search
               </button>
             </div>

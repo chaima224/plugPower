@@ -546,7 +546,9 @@
                 <td>{{ ev.trajet }}</td>
                 <td>{{ ev.ouverture }}</td>
                 <td>{{ ev.fermeture }}</td>
-                <td>{{ ev.status }}</td>
+                <td [style.color]="getStatusColor(ev.status)">
+                  {{ ev.status }}
+                </td>
                 <td>
                   <i
                     style="font-size: 20px; margin-right: 10px"

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { StationService } from '../shared/services/station.service';
 import { error } from 'jquery';
 import { Router } from '@angular/router';
@@ -7,13 +7,14 @@ import { Emplacement } from '../Models/Emplacement';
 import { Trajet } from '../Models/Trajet';
 import { v4 as uuidv4 } from 'uuid';
 import * as L from 'leaflet';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-add-station',
   templateUrl: './add-station.component.html',
   styleUrls: ['./add-station.component.scss'],
 })
-export class AddStationComponent implements OnInit {
+export class AddStationComponent implements OnInit, OnDestroy {
   station: Station = new Station();
   borneInput: string = '';
   isFormSubmitted: boolean = false;
@@ -21,6 +22,8 @@ export class AddStationComponent implements OnInit {
   private userMarker!: L.Marker;
   private centroid: L.LatLngExpression = [34.016, 9.016]; // Tunisie
   private userIcon!: L.Icon;
+  stations: Station[] = [];
+  updateBadgeSubscription!: Subscription;
   constructor(private stationService: StationService, private router: Router) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
@@ -33,6 +36,9 @@ export class AddStationComponent implements OnInit {
 
   ngOnInit(): void {
     this.initMap();
+    this.updateBadgeSubscription = interval(1000).subscribe(() => {
+      this.getPendingStations();
+    });
   }
   showPosition(position: GeolocationPosition) {
     const latitude = position.coords.latitude;
@@ -305,5 +311,33 @@ export class AddStationComponent implements OnInit {
 
     osmHotLayer.addTo(this.map); // Ajouter la couche OpenStreetMap par défaut
     L.control.layers(baseMaps).addTo(this.map);
+  }
+
+  ngOnDestroy(): void {
+    if (this.updateBadgeSubscription) {
+      this.updateBadgeSubscription.unsubscribe();
+    }
+  }
+
+  getPendingStations(): void {
+    this.stationService.getStationsWithPendingStatus().subscribe(
+      (stations: Station[]) => {
+        this.stations = stations;
+        console.log('Stations with pending status:', this.stations);
+      },
+      (error) => {
+        console.log(
+          'Une erreur est survenue lors de la récupération des stations avec le statut "pending".',
+          error
+        );
+      }
+    );
+  }
+
+  getStationsLength(): number {
+    return this.stations.length;
+  }
+  approuveStation(id: string) {
+    this.router.navigate(['/ApprouvedStation', id]);
   }
 }

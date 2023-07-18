@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BorneService } from '../shared/services/borne.service';
 import { StationService } from '../shared/services/station.service';
 import { Station } from '../Models/Station';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-uiborne',
@@ -17,6 +18,7 @@ export class UIBorneComponent implements OnInit {
   constructor(
     private borneService: BorneService,
     private stationService: StationService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -52,5 +54,15 @@ export class UIBorneComponent implements OnInit {
         console.error(error); // Affichez les éventuelles erreurs dans la console
       }
     );
+  }
+  logout(): void {
+    // Call the logout method from the authentication service
+    this.authService.logoutUser();
+
+    // Additional tasks (optional)
+    // Example: Clear local storage or reset user-related variables
+    localStorage.clear();
+    this.router.navigate(['/']);
+    // ...
   }
 }

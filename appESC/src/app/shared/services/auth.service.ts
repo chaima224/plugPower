@@ -32,6 +32,7 @@ export class AuthService {
           username: decryptedUser.username,
           userid: decryptedUser.sub,
           tokenExpiration: decryptedUser.exp,
+          prenom: decryptedUser.prenom,
         };
 
         this.userInfo.next(data);

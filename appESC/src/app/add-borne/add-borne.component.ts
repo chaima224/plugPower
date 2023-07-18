@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Connecteur } from '../Models/Connecteur';
 import { Mode } from '../Models/Mode';
 
@@ -6,19 +6,60 @@ import { Borne } from '../Models/Borne';
 import { Router } from '@angular/router';
 import { BorneService } from '../shared/services/borne.service';
 import { v4 as uuidv4 } from 'uuid';
+import { Station } from '../Models/Station';
+import { Subscription, interval } from 'rxjs';
+import { StationService } from '../shared/services/station.service';
 
 @Component({
   selector: 'app-add-borne',
   templateUrl: './add-borne.component.html',
   styleUrls: ['./add-borne.component.scss'],
 })
-export class AddBorneComponent implements OnInit {
+export class AddBorneComponent implements OnInit, OnDestroy {
   borne: Borne = new Borne();
   isFormSubmitted: boolean = false;
+  stations: Station[] = [];
+  updateBadgeSubscription!: Subscription;
+  constructor(
+    private borneService: BorneService,
+    private router: Router,
+    private stationService: StationService
+  ) {}
 
-  constructor(private borneService: BorneService, private router: Router) {}
+  ngOnInit(): void {
+    this.updateBadgeSubscription = interval(1000).subscribe(() => {
+      this.getPendingStations();
+    });
+  }
 
-  ngOnInit(): void {}
+  ngOnDestroy(): void {
+    if (this.updateBadgeSubscription) {
+      this.updateBadgeSubscription.unsubscribe();
+    }
+  }
+
+  getPendingStations(): void {
+    this.stationService.getStationsWithPendingStatus().subscribe(
+      (stations: Station[]) => {
+        this.stations = stations;
+        console.log('Stations with pending status:', this.stations);
+      },
+      (error) => {
+        console.log(
+          'Une erreur est survenue lors de la récupération des stations avec le statut "pending".',
+          error
+        );
+      }
+    );
+  }
+
+  getStationsLength(): number {
+    return this.stations.length;
+  }
+  approuveStation(id: string) {
+    this.router.navigate(['/ApprouvedStation', id]);
+  }
+
   addBorne() {
     this.borneService.saveBorne(this.borne).subscribe((data) => {
       this.goToBorneList();

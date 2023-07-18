@@ -17,8 +17,8 @@ export class DisponibiliteService {
   getDisponibiliteByStationAndBorne(
     stationId: string,
     borneId: string
-  ): Observable<Disponibilite> {
+  ): Observable<Disponibilite[]> {
     const url = `${this.Url}/${stationId}/${borneId}`;
-    return this.http.get<Disponibilite>(url);
+    return this.http.get<Disponibilite[]>(url);
   }
 }

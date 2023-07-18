@@ -7,6 +7,8 @@ import 'leaflet-routing-machine';
 import { Borne } from 'src/app/Models/Borne';
 import 'leaflet-control-geocoder';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -27,10 +29,12 @@ export class MapComponent implements OnInit {
   ModalOpened = false;
   id!: string;
   station: Station = new Station();
+
   constructor(
     private stationService: StationService,
     private http: HttpClient,
     private activatedRoute: ActivatedRoute,
+    private authService: AuthService,
     private router: Router
   ) {
     if (navigator.geolocation) {
@@ -305,5 +309,52 @@ export class MapComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  handleAddPlugClick(): void {
+    const userData = this.authService.getData();
+    if (userData) {
+      // Utilisateur connecté, rediriger vers /borne
+      window.location.href = '/borne';
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Accès refusé',
+        text: 'Vous devez être connecté pour accéder à cette page.',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Rediriger vers la page de connexion
+          window.location.href = '/login';
+        }
+      });
+    }
+  }
+  handleSearchClick(): void {
+    const userData = this.authService.getData();
+    if (userData) {
+      // Utilisateur connecté, rediriger vers /borne
+      window.location.href = '/searchStation';
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Access denied.',
+        text: 'You must be logged in to access this page.',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Rediriger vers la page de connexion
+          window.location.href = '/login';
+        }
+      });
+    }
+  }
+  logout(): void {
+    // Call the logout method from the authentication service
+    this.authService.logoutUser();
+
+    // Additional tasks (optional)
+    // Example: Clear local storage or reset user-related variables
+    localStorage.clear();
+    this.router.navigate(['/']);
+    // ...
   }
 }

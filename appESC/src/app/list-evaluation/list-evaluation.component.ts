@@ -1,23 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EvaluationService } from '../shared/services/evaluation.service';
 import { Evaluation } from '../Models/Evaluation ';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Subscription, interval } from 'rxjs';
+import { Station } from '../Models/Station';
+import { StationService } from '../shared/services/station.service';
 
 @Component({
   selector: 'app-list-evaluation',
   templateUrl: './list-evaluation.component.html',
   styleUrls: ['./list-evaluation.component.scss'],
 })
-export class ListEvaluationComponent implements OnInit {
+export class ListEvaluationComponent implements OnInit, OnDestroy {
+  stations: Station[] = [];
+  updateBadgeSubscription!: Subscription;
   evaluation: Evaluation[] = [];
   constructor(
     private evaluationService: EvaluationService,
+    private stationService: StationService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getEvaluation();
+    this.updateBadgeSubscription = interval(1000).subscribe(() => {
+      this.getPendingStations();
+    });
   }
   getEvaluation() {
     this.evaluationService.getEvaluationList().subscribe((data) => {
@@ -47,5 +56,33 @@ export class ListEvaluationComponent implements OnInit {
         this.deleteEvaluation(evaluationId);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.updateBadgeSubscription) {
+      this.updateBadgeSubscription.unsubscribe();
+    }
+  }
+
+  getPendingStations(): void {
+    this.stationService.getStationsWithPendingStatus().subscribe(
+      (stations: Station[]) => {
+        this.stations = stations;
+        console.log('Stations with pending status:', this.stations);
+      },
+      (error) => {
+        console.log(
+          'Une erreur est survenue lors de la récupération des stations avec le statut "pending".',
+          error
+        );
+      }
+    );
+  }
+
+  getStationsLength(): number {
+    return this.stations.length;
+  }
+  approuveStation(id: string) {
+    this.router.navigate(['/ApprouvedStation', id]);
   }
 }
