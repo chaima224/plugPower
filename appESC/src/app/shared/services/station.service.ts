@@ -63,4 +63,8 @@ export class StationService {
     const url = `${this.baseUrl}/pending`;
     return this.http.get<Station[]>(url);
   }
+  getLatestApprovedStations(): Observable<Station[]> {
+    const url = `${this.baseUrl}/latest-approved-stations`;
+    return this.http.get<Station[]>(url);
+  }
 }
