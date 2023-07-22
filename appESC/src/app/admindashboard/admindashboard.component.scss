@@ -1,0 +1,78 @@
+/* Custom styles for the user-notification container */
+.user-notification {
+  position: relative;
+  display: inline-block; /* To make sure the dropdown menu is properly aligned */
+}
+
+/* Styles for the notification badge */
+.translate-middle {
+  position: absolute;
+  top: 0;
+  right: -6px;
+  background-color: #dc3545; /* Background color for the badge (red) */
+  color: #fff; /* Text color for the badge (white) */
+  font-size: 12px;
+  text-align: center;
+  line-height: 18px;
+  border-radius: 9px; /* Make it rounded */
+  width: 20px;
+  height: 18px;
+}
+
+.icon-copy {
+  margin-right: 5px; /* Adjust spacing between the icon and badge */
+}
+
+/* Styles for the notification list */
+.notification-list {
+  max-height: 350px; /* Set a maximum height for the notification list */
+  overflow-y: auto; /* Enable vertical scrolling for long lists */
+  padding: 10px; /* Add some padding to the notification list */
+}
+
+.notification-list ul {
+  list-style: none; /* Remove bullet points from the list items */
+  padding: 0;
+  margin: 0;
+}
+
+/* Styles for each notification item */
+.notification-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ebebeb; /* Add a separator between items */
+}
+
+.notification-list li:last-child {
+  border-bottom: none; /* Remove the separator from the last item */
+}
+
+/* Styles for the h3 and p elements inside each notification item */
+.notification-list h3 {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer; /* Show pointer cursor when hovering over the station name */
+}
+
+.notification-list p {
+  font-size: 14px;
+  margin: 5px 0 0;
+  padding: 0;
+  color: #666; /* Text color for the notification description */
+}
+
+/* Styles for the "View all" link at the bottom of the notification list */
+.notification-list a {
+  display: block;
+  text-align: center;
+  color: #007bff; /* Text color for the link (blue) */
+  text-decoration: none;
+  margin-top: 10px; /* Add some spacing between the list items and the link */
+}
+
+.notification-list a:hover {
+  text-decoration: underline; /* Add underline effect on hover */
+}
+.customscroll {
+  overflow-y: auto; /* Ajoutez une barre de défilement verticale si le contenu dépasse la hauteur maximale */
+}

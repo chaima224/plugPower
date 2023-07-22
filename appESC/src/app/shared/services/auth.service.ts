@@ -31,8 +31,9 @@ export class AuthService {
           refreshtoken: localStorage.getItem('refresh_token'),
           username: decryptedUser.username,
           userid: decryptedUser.sub,
-          tokenExpiration: decryptedUser.exp,
           prenom: decryptedUser.prenom,
+          nom: decryptedUser.nom,
+          tokenExpiration: decryptedUser.exp,
         };
 
         this.userInfo.next(data);

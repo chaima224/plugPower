@@ -25,13 +25,13 @@ export class ListborneComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getBorne();
+    this.updateBadgeSubscription = interval(1000).subscribe(() => {
+      this.getPendingStations();
+    });
   }
   getBorne() {
     this.borneService.getBorneList().subscribe((data) => {
       this.bornes = data;
-    });
-    this.updateBadgeSubscription = interval(1000).subscribe(() => {
-      this.getPendingStations();
     });
   }
   updateBorne(id: string) {

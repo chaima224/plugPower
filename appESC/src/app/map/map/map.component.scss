@@ -123,3 +123,75 @@
 .modal-content {
   height: 100%;
 }
+/*notification 
+/* Custom styles for the user-notification container */
+.user-notification {
+  position: relative;
+}
+.customscroll {
+  overflow-y: auto; /* Ajoutez une barre de défilement verticale si le contenu dépasse la hauteur maximale */
+}
+
+/* Styles for the notification badge */
+.translate-middle {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  background-color: #dc3545; /* Background color for the badge (red) */
+  color: #fff; /* Text color for the badge (white) */
+  font-size: 12px;
+  text-align: center;
+  line-height: 18px;
+  border-radius: 9px; /* Make it rounded */
+  padding: 0 6px; /* Adjust padding to fit the content */
+}
+
+/* Styles for the dropdown and its toggle button */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.icon-copy {
+  margin-right: 5px; /* Adjust spacing between the icon and badge */
+}
+
+/* Styles for the dropdown menu */
+.dropdown-menu {
+  min-width: 250px; /* Set a minimum width for the dropdown menu */
+}
+
+.notification-list {
+  max-height: 350px; /* Set a maximum height for the notification list */
+  overflow-y: auto; /* Enable vertical scrolling for long lists */
+}
+
+/* Styles for each notification item */
+.notification-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ebebeb; /* Add a separator between items */
+}
+
+.notification-list li:last-child {
+  border-bottom: none; /* Remove the separator from the last item */
+}
+
+/* Styles for the h3 and p elements inside each notification item */
+.notification-list h3 {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.notification-list p {
+  font-size: 14px;
+  margin: 5px 0 0;
+  padding: 0;
+  color: #666; /* Text color for the notification description */
+}

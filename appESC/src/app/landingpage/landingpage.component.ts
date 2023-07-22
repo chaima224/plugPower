@@ -14,7 +14,7 @@ import { Subscription, interval } from 'rxjs';
 export class LandingpageComponent implements OnInit, OnDestroy {
   stations: Station[] = [];
   updateBadgeSubscription!: Subscription;
-  showBadge: boolean = true;
+
   constructor(
     private authService: AuthService,
     private stationService: StationService

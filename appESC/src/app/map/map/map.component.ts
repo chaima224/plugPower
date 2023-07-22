@@ -9,6 +9,7 @@ import 'leaflet-control-geocoder';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import Swal from 'sweetalert2';
+import { Subscription, interval } from 'rxjs';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -29,7 +30,7 @@ export class MapComponent implements OnInit {
   ModalOpened = false;
   id!: string;
   station: Station = new Station();
-
+  updateBadgeSubscription!: Subscription;
   constructor(
     private stationService: StationService,
     private http: HttpClient,
@@ -58,6 +59,9 @@ export class MapComponent implements OnInit {
         console.error('Error retrieving stations:', error);
       }
     );
+    this.updateBadgeSubscription = interval(1000).subscribe(() => {
+      this.getLatestApprovedStations();
+    });
   }
   getBorneDetails(id: string) {
     this.router.navigate(['/bornedetails', this.station.id, id]);
@@ -356,5 +360,24 @@ export class MapComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['/']);
     // ...
+  }
+  ngOnDestroy(): void {
+    if (this.updateBadgeSubscription) {
+      this.updateBadgeSubscription.unsubscribe();
+    }
+  }
+
+  getLatestApprovedStations(): void {
+    this.stationService.getLatestApprovedStations().subscribe(
+      (data: Station[]) => {
+        this.stations = data;
+      },
+      (error) => {
+        console.error('Error fetching latest stations:', error);
+      }
+    );
+  }
+  getStationsLength(): number {
+    return this.stations.length;
   }
 }

@@ -26,6 +26,7 @@
     "autocomplete.js": "^0.38.1",
     "bingmaps": "^2.0.3",
     "bootstrap": "^5.2.3",
+    "chart.js": "^4.3.0",
     "core-js": "^3.31.0",
     "cors": "^2.8.5",
     "helmet": "^7.0.0",
