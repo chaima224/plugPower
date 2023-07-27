@@ -448,7 +448,7 @@
       <div class="row">
         <div class="col-xl-6 mb-30">
           <div class="card-box height-100-p pd-20">
-            <h2 class="h4 mb-20">Lead Target</h2>
+            <h2 class="h4 mb-20">Stations</h2>
             <div class="chart-container">
               <canvas id="Stationchart">{{ Stationchart }}</canvas>
             </div>
@@ -456,7 +456,7 @@
         </div>
         <div class="col-xl-6 mb-30">
           <div class="card-box height-100-p pd-20">
-            <h2 class="h4 mb-20">Lead Target</h2>
+            <h2 class="h4 mb-20">Connectors</h2>
             <div class="chart-container">
               <canvas id="ConnectorChart">{{ ConnectorChart }}</canvas>
             </div>
@@ -467,7 +467,7 @@
       <div class="row">
         <div class="col-xl-6 mb-30">
           <div class="card-box height-100-p pd-20">
-            <h2 class="h4 mb-20">Activity</h2>
+            <h2 class="h4 mb-20">Plugs</h2>
             <div class="chart-container">
               <canvas id="MyChart">{{ chart }}</canvas>
             </div>
@@ -475,7 +475,7 @@
         </div>
         <div class="col-xl-6 mb-30">
           <div class="card-box height-100-p pd-20">
-            <h2 class="h4 mb-20">Lead Target</h2>
+            <h2 class="h4 mb-20">Plug'S Mode</h2>
             <div class="chart-container">
               <canvas id="DonutChart">{{ DonutChart }}</canvas>
             </div>
@@ -483,7 +483,7 @@
         </div>
       </div>
       <div class="card-box mb-30">
-        <h2 class="h4 pd-20">Best Selling Products</h2>
+        <h2 class="h4 pd-20">Recents</h2>
         <table class="data-table table nowrap">
           <thead>
             <tr>
@@ -512,17 +512,12 @@
               <td>{{ ev.trajet }}</td>
               <td>{{ ev.ouverture }}</td>
               <td>{{ ev.fermeture }}</td>
-              <td>{{ ev.status }}</td>
+              <td style="color: orange">{{ ev.status }}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="footer-wrap pd-20 mb-20 card-box">
-        DeskApp - Bootstrap 4 Admin Template By
-        <a href="https://github.com/dropways" target="_blank"
-          >Ankit Hingarajiya</a
-        >
-      </div>
+      <div class="footer-wrap pd-20 mb-20 card-box"></div>
     </div>
   </div>
   <!--admin dashboard-->

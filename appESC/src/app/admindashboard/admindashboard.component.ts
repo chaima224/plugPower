@@ -44,7 +44,7 @@ export class AdmindashboardComponent implements OnInit, OnDestroy {
         this.user.username = value.username;
       }
     });
-    this.updateBadgeSubscription = interval(1000).subscribe(() => {
+    this.updateBadgeSubscription = interval(3000).subscribe(() => {
       this.getPendingStations();
     });
     this.getBorne();

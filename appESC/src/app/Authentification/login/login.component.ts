@@ -20,7 +20,13 @@ export class LoginComponent implements OnInit {
     this.authService.userLogin(this.loginData).subscribe(
       (value: boolean) => {
         if (value) {
-          this.route.navigate(['admin']);
+          this.authService.loadUserInfo();
+          console.log(this.authService.userInfo.getValue());
+          if (this.authService.userInfo.getValue().role == 'admin')
+            this.route.navigate(['admin']);
+          else {
+            this.route.navigate(['map']);
+          }
         } else {
           alert('failed');
         }

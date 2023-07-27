@@ -1,13 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthRouteGuard } from './shared/guards/auth.route.guard';
-import { LandingpageComponent } from './landingpage/landingpage.component';
-import { SearchComponent } from './search/search/search.component';
-import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
-import { AddStationComponent } from './add-station/add-station.component';
-import { UpdateStationComponent } from './update-station/update-station.component';
-import { AddBorneComponent } from './add-borne/add-borne.component';
-import { UpdateBorneComponent } from './update-borne/update-borne.component';
 import { ListStationComponent } from './list-station/list-station.component';
 import { ListborneComponent } from './listborne/listborne.component';
 import { UIBorneComponent } from './uiborne/uiborne.component';
@@ -19,6 +11,9 @@ import { SearchStationComponent } from './search-station/search-station.componen
 import { AfficheSearchComponent } from './affiche-search/affiche-search.component';
 import { ListEvaluationComponent } from './list-evaluation/list-evaluation.component';
 import { ApprouvedEvaluationComponent } from './approuved-evaluation/approuved-evaluation.component';
+import { UserGuard } from './shared/guards/user.guard';
+import { AdminGuard } from './shared/guards/admin.guard';
+import { GuestGuard } from './shared/guards/guest.guard';
 
 const routes: Routes = [
   // {path: '' ,
@@ -39,6 +34,7 @@ const routes: Routes = [
   {
     path: 'UtilisateurBorne',
     component: UIBorneComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'add-disponibilite',
@@ -80,6 +76,7 @@ const routes: Routes = [
       import('./Authentification/login/login.module').then(
         (_) => _.LoginModule
       ),
+    canActivate: [GuestGuard],
   },
 
   {
@@ -113,6 +110,7 @@ const routes: Routes = [
       import('./admindashboard/admindashboard.module').then(
         (_) => _.AdmindashboardModule
       ),
+    canActivate: [AdminGuard],
   },
   {
     path: 'addstation',

@@ -33,8 +33,10 @@ export class AuthService {
           userid: decryptedUser.sub,
           prenom: decryptedUser.prenom,
           nom: decryptedUser.nom,
+          role: decryptedUser.role,
           tokenExpiration: decryptedUser.exp,
         };
+        console.log(data);
 
         this.userInfo.next(data);
       }
@@ -55,12 +57,14 @@ export class AuthService {
 
             const decryptedUser = this.jwtHelper.decodeToken(value.accessToken);
             console.log(decryptedUser);
-
             const data = {
-              access_token: value.accessToken,
-              refreshtoken: value.refreshToken,
+              access_token: value.accesstoken,
+              refreshtoken: localStorage.getItem('refresh_token'),
               username: decryptedUser.username,
               userid: decryptedUser.sub,
+              prenom: decryptedUser.prenom,
+              nom: decryptedUser.nom,
+              role: decryptedUser.role,
               tokenExpiration: decryptedUser.exp,
             };
             this.userInfo.next(data);

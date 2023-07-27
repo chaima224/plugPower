@@ -491,14 +491,16 @@
             </div>
             <div class="form-group">
               <label for="nomBornes">Name of Borne</label>
-              <input
+              <select
                 type="text"
                 class="form-control"
                 id="nomBorneInput"
                 placeholder="Borne"
                 [(ngModel)]="borneInput"
                 name="nomBornes"
-              />
+              >
+                <option *ngFor="let br of bornes">{{ br.name }}</option>
+              </select>
             </div>
             <div class="form-group row">
               <label class="col-sm-12 col-md-2 col-form-label">Journey</label>

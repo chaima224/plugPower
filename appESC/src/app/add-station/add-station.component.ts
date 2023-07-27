@@ -8,6 +8,8 @@ import { Trajet } from '../Models/Trajet';
 import { v4 as uuidv4 } from 'uuid';
 import * as L from 'leaflet';
 import { Subscription, interval } from 'rxjs';
+import { Borne } from '../Models/Borne';
+import { BorneService } from '../shared/services/borne.service';
 
 @Component({
   selector: 'app-add-station',
@@ -23,8 +25,13 @@ export class AddStationComponent implements OnInit, OnDestroy {
   private centroid: L.LatLngExpression = [34.016, 9.016]; // Tunisie
   private userIcon!: L.Icon;
   stations: Station[] = [];
+  bornes: Borne[] = [];
   updateBadgeSubscription!: Subscription;
-  constructor(private stationService: StationService, private router: Router) {
+  constructor(
+    private stationService: StationService,
+    private borneService: BorneService,
+    private router: Router
+  ) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.showPosition.bind(this));
     } else {
@@ -36,6 +43,7 @@ export class AddStationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initMap();
+    this.getBorne();
     this.updateBadgeSubscription = interval(1000).subscribe(() => {
       this.getPendingStations();
     });
@@ -339,5 +347,10 @@ export class AddStationComponent implements OnInit, OnDestroy {
   }
   approuveStation(id: string) {
     this.router.navigate(['/ApprouvedStation', id]);
+  }
+  getBorne() {
+    this.borneService.getBorneList().subscribe((data) => {
+      this.bornes = data;
+    });
   }
 }

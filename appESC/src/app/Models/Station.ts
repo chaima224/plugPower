@@ -16,4 +16,5 @@ export class Station {
   distance!: number;
   moyNote?: number;
   status!: string;
+  isSeen!: boolean;
 }

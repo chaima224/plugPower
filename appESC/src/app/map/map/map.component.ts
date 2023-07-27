@@ -31,6 +31,7 @@ export class MapComponent implements OnInit {
   id!: string;
   station: Station = new Station();
   updateBadgeSubscription!: Subscription;
+
   constructor(
     private stationService: StationService,
     private http: HttpClient,
@@ -59,7 +60,7 @@ export class MapComponent implements OnInit {
         console.error('Error retrieving stations:', error);
       }
     );
-    this.updateBadgeSubscription = interval(1000).subscribe(() => {
+    this.updateBadgeSubscription = interval(2000).subscribe(() => {
       this.getLatestApprovedStations();
     });
   }
@@ -371,6 +372,7 @@ export class MapComponent implements OnInit {
     this.stationService.getLatestApprovedStations().subscribe(
       (data: Station[]) => {
         this.stations = data;
+        // Call the method to update the badge value based on the new data
       },
       (error) => {
         console.error('Error fetching latest stations:', error);
