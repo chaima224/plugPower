@@ -4,6 +4,7 @@ import { Borne } from '../Models/Borne';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BorneService } from '../shared/services/borne.service';
 import Swal from 'sweetalert2';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-update-borne',
@@ -17,6 +18,7 @@ export class UpdateBorneComponent implements OnInit {
   constructor(
     private borneService: BorneService,
     private route: ActivatedRoute,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -25,7 +27,20 @@ export class UpdateBorneComponent implements OnInit {
     this.borneService.getBorneById(this.id).subscribe((data) => {
       this.borne = data;
     });
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   onSubmit() {
     this.borneService.updateBorne(this.id, this.borne).subscribe((data) => {
       this.goToBorneList();

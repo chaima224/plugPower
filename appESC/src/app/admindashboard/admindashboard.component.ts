@@ -154,4 +154,14 @@ export class AdmindashboardComponent implements OnInit, OnDestroy {
       });
     });
   }
+  logout(): void {
+    // Call the logout method from the authentication service
+    this.authService.logoutUser();
+
+    // Additional tasks (optional)
+    // Example: Clear local storage or reset user-related variables
+    localStorage.clear();
+    this.router.navigate(['/']);
+    // ...
+  }
 }

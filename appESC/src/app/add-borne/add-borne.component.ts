@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Station } from '../Models/Station';
 import { Subscription, interval } from 'rxjs';
 import { StationService } from '../shared/services/station.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-add-borne',
@@ -22,6 +23,7 @@ export class AddBorneComponent implements OnInit, OnDestroy {
   updateBadgeSubscription!: Subscription;
   constructor(
     private borneService: BorneService,
+    private authService: AuthService,
     private router: Router,
     private stationService: StationService
   ) {}
@@ -30,6 +32,13 @@ export class AddBorneComponent implements OnInit, OnDestroy {
     this.updateBadgeSubscription = interval(1000).subscribe(() => {
       this.getPendingStations();
     });
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -37,7 +46,12 @@ export class AddBorneComponent implements OnInit, OnDestroy {
       this.updateBadgeSubscription.unsubscribe();
     }
   }
-
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   getPendingStations(): void {
     this.stationService.getStationsWithPendingStatus().subscribe(
       (stations: Station[]) => {

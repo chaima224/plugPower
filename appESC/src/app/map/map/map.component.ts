@@ -63,7 +63,20 @@ export class MapComponent implements OnInit {
     this.updateBadgeSubscription = interval(2000).subscribe(() => {
       this.getLatestApprovedStations();
     });
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   getBorneDetails(id: string) {
     this.router.navigate(['/bornedetails', this.station.id, id]);
   }
@@ -324,8 +337,8 @@ export class MapComponent implements OnInit {
     } else {
       Swal.fire({
         icon: 'error',
-        title: 'Accès refusé',
-        text: 'Vous devez être connecté pour accéder à cette page.',
+        title: 'Accès Denied',
+        text: 'You must be logged in to access this page..',
       }).then((result) => {
         if (result.isConfirmed) {
           // Rediriger vers la page de connexion

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Station } from '../Models/Station';
 import { StationService } from '../shared/services/station.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-approuved-station',
@@ -17,6 +18,7 @@ export class ApprouvedStationComponent implements OnInit {
   constructor(
     private stationService: StationService,
     private route: ActivatedRoute,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -25,7 +27,20 @@ export class ApprouvedStationComponent implements OnInit {
     this.stationService.getStationById(this.id).subscribe((data) => {
       this.station = data;
     });
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   getStation() {
     this.stationService.getStationList().subscribe((data) => {
       this.stations = data;

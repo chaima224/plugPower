@@ -137,28 +137,13 @@
             role="button"
             data-toggle="dropdown"
           >
-            <span class="user-icon">
-              <img
-                src="../../assets/assets/admin-dashboard/vendors/images/photo1.jpg"
-                alt=""
-              />
-            </span>
-            <span class="user-name">{{ user.prenom }} </span>
+            <span class="user-name mt-12">{{ user.prenom }} </span>
           </a>
           <div
             class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
           >
-            <a class="dropdown-item" href="profile.html"
-              ><i class="dw dw-user1"></i> Profile</a
-            >
-            <a class="dropdown-item" href="profile.html"
-              ><i class="dw dw-settings2"></i> Setting</a
-            >
-            <a class="dropdown-item" href="faq.html"
-              ><i class="dw dw-help"></i> Help</a
-            >
             <a class="dropdown-item" href="login.html"
-              ><i class="dw dw-logout"></i> Log Out</a
+              ><i class="dw dw-logout" (click)="logout()"></i> Log Out</a
             >
           </div>
         </div>
@@ -362,44 +347,43 @@
           <li class="dropdown">
             <a href="javascript:;" class="dropdown-toggle">
               <span class="micon dw dw-house-1"></span
-              ><span class="mtext">Home</span>
+              ><span class="mtext" style="color: yellowgreen">Home</span>
             </a>
           </li>
-
-          <li class="dropdown">
-            <a routerLink="/addstation" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
-              ><span class="mtext">Add Station </span>
-            </a>
-          </li>
-          <li class="dropdown">
-            <a routerLink="/liststation" class="dropdown-toggle">
-              <span class="micon dw dw-library"></span
-              ><span class="mtext">List of Stations</span>
-            </a>
-          </li>
-
           <li class="dropdown">
             <a routerLink="/addborne" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
+              <span class="micon dw dw-add"></span
               ><span class="mtext">Add Borne </span>
             </a>
           </li>
           <li class="dropdown">
             <a routerLink="/listborne" class="dropdown-toggle">
-              <span class="micon dw dw-library"></span
+              <span class="micon dw dw-list"></span
               ><span class="mtext">List of Bornes</span>
             </a>
           </li>
           <li class="dropdown">
+            <a routerLink="/addstation" class="dropdown-toggle">
+              <span class="micon dw dw-add"></span
+              ><span class="mtext">Add Station </span>
+            </a>
+          </li>
+          <li class="dropdown">
+            <a routerLink="/liststation" class="dropdown-toggle">
+              <span class="micon dw dw-list"></span
+              ><span class="mtext">List of Stations</span>
+            </a>
+          </li>
+
+          <li class="dropdown">
             <a routerLink="/add-disponibilite" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
+              <span class="micon dw dw-edit"></span
               ><span class="mtext">Disponibillity </span>
             </a>
           </li>
           <li class="dropdown">
             <a routerLink="/listEvaluation" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
+              <span class="micon dw dw-list"></span
               ><span class="mtext">Comments </span>
             </a>
           </li>
@@ -436,10 +420,9 @@
               </div>
             </h4>
             <p class="font-18 max-width-600">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde hic
-              non repellendus debitis iure, doloremque assumenda. Autem modi,
-              corrupti, nobis ea iure fugiat, veniam non quaerat mollitia animi
-              error corporis.
+              PlugPower is a Tool that allows you to find an electric vehicle
+              charging point nearby. You will also be able to map a route based
+              on the available public charging stations along your journey.
             </p>
           </div>
         </div>

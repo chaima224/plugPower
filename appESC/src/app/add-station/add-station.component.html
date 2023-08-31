@@ -121,13 +121,7 @@
             role="button"
             data-toggle="dropdown"
           >
-            <span class="user-icon">
-              <img
-                src="../../assets/assets/admin-dashboard/vendors/images/photo1.jpg"
-                alt=""
-              />
-            </span>
-            <span class="user-name">Ross C. Lopez</span>
+            <span class="user-name mt-12">{{ user.prenom }} </span>
           </a>
           <div
             class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
@@ -349,10 +343,22 @@
               ><span class="mtext">Home</span>
             </a>
           </li>
+          <li class="dropdown">
+            <a routerLink="/addborne" class="dropdown-toggle">
+              <span class="micon dw dw-add"></span
+              ><span class="mtext">Add Borne </span>
+            </a>
+          </li>
+          <li class="dropdown">
+            <a routerLink="/listborne" class="dropdown-toggle">
+              <span class="micon dw dw-list"></span
+              ><span class="mtext">List of Bornes</span>
+            </a>
+          </li>
 
           <li class="dropdown">
             <a routerLink="/addstation" class="dropdown-toggle active">
-              <span class="micon dw dw-right-arrow1"></span
+              <span class="micon dw dw-add"></span
               ><span class="mtext" style="color: var(--base-skin)"
                 >Add Station
               </span>
@@ -360,32 +366,20 @@
           </li>
           <li class="dropdown">
             <a routerLink="/liststation" class="dropdown-toggle">
-              <span class="micon dw dw-library"></span
+              <span class="micon dw dw-list"></span
               ><span class="mtext">List of Stations</span>
             </a>
           </li>
 
           <li class="dropdown">
-            <a routerLink="/addborne" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
-              ><span class="mtext">Add Borne </span>
-            </a>
-          </li>
-          <li class="dropdown">
-            <a routerLink="/listborne" class="dropdown-toggle">
-              <span class="micon dw dw-library"></span
-              ><span class="mtext">List of Bornes</span>
-            </a>
-          </li>
-          <li class="dropdown">
             <a routerLink="/add-disponibilite" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
+              <span class="micon dw dw-edit"></span
               ><span class="mtext">Disponibillity </span>
             </a>
           </li>
           <li class="dropdown">
             <a routerLink="/listEvaluation" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
+              <span class="micon dw dw-list"></span
               ><span class="mtext">Comments </span>
             </a>
           </li>
@@ -480,6 +474,7 @@
                   <option>Entreprise</option>
                   <option>Hôtel</option>
                   <option>Particulier</option>
+                  <option>Parking</option>
                   <option>Station-service</option>
                   <option>Restaurant</option>
                   <option>Ecole</option>
@@ -512,8 +507,8 @@
                   name="trajet"
                 >
                   <option>Select an option</option>
-                  <option>Avoid highways</option>
-                  <option>Avoid tolls</option>
+                  <option>Avoid Highways</option>
+                  <option>Avoid Tolls</option>
                 </select>
               </div>
             </div>

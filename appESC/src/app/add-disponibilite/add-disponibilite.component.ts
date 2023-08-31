@@ -7,6 +7,7 @@ import { Borne } from '../Models/Borne';
 import { DisBorne, DisStation, Disponibilite } from '../Models/Disponibilite';
 import { DisponibiliteService } from '../shared/services/Disponibilite.service';
 import Swal from 'sweetalert2';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-add-disponibilite',
@@ -26,6 +27,7 @@ export class AddDisponibiliteComponent implements OnInit {
     private stationService: StationService,
     private borneService: BorneService,
     private disponibiliteService: DisponibiliteService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -33,7 +35,20 @@ export class AddDisponibiliteComponent implements OnInit {
     this.disponibilite.borne = new DisBorne();
     this.disponibilite.station = new DisStation();
     this.getStation();
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   getStation() {
     this.stationService.getapprouvedStation().subscribe((data) => {
       this.station = data;

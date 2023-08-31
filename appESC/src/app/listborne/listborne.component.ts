@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { Station } from '../Models/Station';
 import { Subscription, interval } from 'rxjs';
 import { StationService } from '../shared/services/station.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-listborne',
@@ -20,6 +21,7 @@ export class ListborneComponent implements OnInit, OnDestroy {
   constructor(
     private borneService: BorneService,
     private stationService: StationService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -28,7 +30,20 @@ export class ListborneComponent implements OnInit, OnDestroy {
     this.updateBadgeSubscription = interval(1000).subscribe(() => {
       this.getPendingStations();
     });
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   getBorne() {
     this.borneService.getBorneList().subscribe((data) => {
       this.bornes = data;

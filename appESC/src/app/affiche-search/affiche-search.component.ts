@@ -7,6 +7,7 @@ import { AuthService } from '../shared/services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
 import 'leaflet-routing-machine';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-affiche-search',

@@ -10,6 +10,7 @@ import * as L from 'leaflet';
 import { Subscription, interval } from 'rxjs';
 import { Borne } from '../Models/Borne';
 import { BorneService } from '../shared/services/borne.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-add-station',
@@ -30,6 +31,7 @@ export class AddStationComponent implements OnInit, OnDestroy {
   constructor(
     private stationService: StationService,
     private borneService: BorneService,
+    private authService: AuthService,
     private router: Router
   ) {
     if (navigator.geolocation) {
@@ -47,7 +49,20 @@ export class AddStationComponent implements OnInit, OnDestroy {
     this.updateBadgeSubscription = interval(1000).subscribe(() => {
       this.getPendingStations();
     });
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   showPosition(position: GeolocationPosition) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;

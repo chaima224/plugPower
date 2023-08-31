@@ -3,6 +3,7 @@ import { Evaluation } from '../Models/Evaluation ';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EvaluationService } from '../shared/services/evaluation.service';
 import Swal from 'sweetalert2';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-approuved-evaluation',
@@ -16,6 +17,7 @@ export class ApprouvedEvaluationComponent implements OnInit {
   constructor(
     private evaluationService: EvaluationService,
     private route: ActivatedRoute,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -24,7 +26,20 @@ export class ApprouvedEvaluationComponent implements OnInit {
     this.evaluationService.getEvauationById(this.id).subscribe((data) => {
       this.evaluation = data;
     });
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   getEvaluation() {
     this.evaluationService.getEvaluationList().subscribe((data) => {
       this.evaluations = data;

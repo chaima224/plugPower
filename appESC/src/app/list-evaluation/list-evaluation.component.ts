@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
 import { Station } from '../Models/Station';
 import { StationService } from '../shared/services/station.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-list-evaluation',
@@ -19,6 +20,7 @@ export class ListEvaluationComponent implements OnInit, OnDestroy {
   constructor(
     private evaluationService: EvaluationService,
     private stationService: StationService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -27,7 +29,20 @@ export class ListEvaluationComponent implements OnInit, OnDestroy {
     this.updateBadgeSubscription = interval(1000).subscribe(() => {
       this.getPendingStations();
     });
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   getEvaluation() {
     this.evaluationService.getEvaluationList().subscribe((data) => {
       this.evaluation = data;
@@ -84,5 +99,16 @@ export class ListEvaluationComponent implements OnInit, OnDestroy {
   }
   approuveStation(id: string) {
     this.router.navigate(['/ApprouvedStation', id]);
+  }
+  getStatusColor(status: string): string {
+    // Define the color based on the status value
+    if (status === 'pending') {
+      return 'orange';
+    } else if (status === 'approuved') {
+      return 'green';
+    } else {
+      // Return default color (black, for example)
+      return 'black';
+    }
   }
 }

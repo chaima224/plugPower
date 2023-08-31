@@ -4,6 +4,7 @@ import { data } from 'jquery';
 import { Station } from '../Models/Station';
 import { Route, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-list-station',
@@ -12,11 +13,28 @@ import Swal from 'sweetalert2';
 })
 export class ListStationComponent implements OnInit {
   station: Station[] = [];
-  constructor(private stationService: StationService, private router: Router) {}
+  constructor(
+    private stationService: StationService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getStation();
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   getStation() {
     this.stationService.getStationList().subscribe((data) => {
       this.station = data;

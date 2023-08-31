@@ -52,10 +52,12 @@ const routes: Routes = [
   {
     path: 'searchStation',
     component: SearchStationComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'resultSearch',
     component: AfficheSearchComponent,
+    canActivate: [UserGuard],
   },
   {
     path: 'ApprouvedEvaluation/:id',
@@ -76,7 +78,7 @@ const routes: Routes = [
       import('./Authentification/login/login.module').then(
         (_) => _.LoginModule
       ),
-    canActivate: [GuestGuard],
+    //canActivate: [GuestGuard],
   },
 
   {
@@ -93,6 +95,7 @@ const routes: Routes = [
   {
     path: 'map',
     loadChildren: () => import('./map/map/map.module').then((_) => _.MapModule),
+    canActivate: [UserGuard],
   },
   {
     path: 'borne',

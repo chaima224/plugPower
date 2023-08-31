@@ -4,6 +4,7 @@ import { StationService } from '../shared/services/station.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
 import Swal from 'sweetalert2';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-update-station',
@@ -17,6 +18,7 @@ export class UpdateStationComponent implements OnInit {
   constructor(
     private stationService: StationService,
     private route: ActivatedRoute,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -25,7 +27,20 @@ export class UpdateStationComponent implements OnInit {
     this.stationService.getStationById(this.id).subscribe((data) => {
       this.station = data;
     });
+    this.authService.userInfo.subscribe((value) => {
+      if (value) {
+        this.user.id = value.userid;
+        this.user.prenom = value.prenom;
+        this.user.username = value.username;
+      }
+    });
   }
+  user = {
+    username: '',
+    id: '',
+    prenom: '',
+    nom: '',
+  };
   onSubmit() {
     this.stationService
       .updateStation(this.id, this.station)

@@ -124,26 +124,11 @@
             role="button"
             data-toggle="dropdown"
           >
-            <span class="user-icon">
-              <img
-                src="../../assets/assets/admin-dashboard/vendors/images/photo1.jpg"
-                alt=""
-              />
-            </span>
-            <span class="user-name">Ross C. Lopez</span>
+            <span class="user-name mt-10">{{ user.prenom }} </span>
           </a>
           <div
             class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
           >
-            <a class="dropdown-item" href="profile.html"
-              ><i class="dw dw-user1"></i> Profile</a
-            >
-            <a class="dropdown-item" href="profile.html"
-              ><i class="dw dw-settings2"></i> Setting</a
-            >
-            <a class="dropdown-item" href="faq.html"
-              ><i class="dw dw-help"></i> Help</a
-            >
             <a class="dropdown-item" href="login.html"
               ><i class="dw dw-logout"></i> Log Out</a
             >
@@ -352,41 +337,40 @@
               ><span class="mtext">Home</span>
             </a>
           </li>
-
-          <li class="dropdown">
-            <a routerLink="/addstation" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
-              ><span class="mtext">Add Station </span>
-            </a>
-          </li>
-          <li class="dropdown">
-            <a routerLink="/liststation" class="dropdown-toggle">
-              <span class="micon dw dw-library"></span
-              ><span class="mtext">List of Stations</span>
-            </a>
-          </li>
-
           <li class="dropdown">
             <a routerLink="/addborne" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
+              <span class="micon dw dw-add"></span
               ><span class="mtext">Add Borne </span>
             </a>
           </li>
           <li class="dropdown">
             <a routerLink="/listborne" class="dropdown-toggle">
-              <span class="micon dw dw-library"></span
+              <span class="micon dw dw-list"></span
               ><span class="mtext">List of Bornes</span>
             </a>
           </li>
           <li class="dropdown">
+            <a routerLink="/addstation" class="dropdown-toggle">
+              <span class="micon dw dw-add"></span
+              ><span class="mtext">Add Station </span>
+            </a>
+          </li>
+          <li class="dropdown">
+            <a routerLink="/liststation" class="dropdown-toggle">
+              <span class="micon dw dw-list"></span
+              ><span class="mtext">List of Stations</span>
+            </a>
+          </li>
+
+          <li class="dropdown">
             <a routerLink="/add-disponibilite" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
+              <span class="micon dw dw-edit"></span
               ><span class="mtext">Disponibillity </span>
             </a>
           </li>
           <li class="dropdown">
             <a routerLink="/add-disponibilite" class="dropdown-toggle">
-              <span class="micon dw dw-right-arrow1"></span
+              <span class="micon dw dw-list"></span
               ><span class="mtext" style="color: var(--base-skin)"
                 >Comments
               </span>
@@ -479,8 +463,9 @@
 
                 <td>{{ ev.comment }}</td>
                 <td>{{ ev.timestamp }}</td>
-
-                <td>{{ ev.status }}</td>
+                <td [style.color]="getStatusColor(ev.status)">
+                  {{ ev.status }}
+                </td>
                 <td>
                   <i
                     style="font-size: 20px; margin-right: 10px"
