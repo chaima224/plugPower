@@ -17,6 +17,10 @@ export class ListEvaluationComponent implements OnInit, OnDestroy {
   stations: Station[] = [];
   updateBadgeSubscription!: Subscription;
   evaluation: Evaluation[] = [];
+  pagedEvaluation: Evaluation[] = [];
+  autoHidePagination: boolean = true;
+  itemsPerPage: number = 6;
+  page: number = 1;
   constructor(
     private evaluationService: EvaluationService,
     private stationService: StationService,
@@ -46,6 +50,7 @@ export class ListEvaluationComponent implements OnInit, OnDestroy {
   getEvaluation() {
     this.evaluationService.getEvaluationList().subscribe((data) => {
       this.evaluation = data;
+      this.updatePagedEvaluation();
     });
   }
 
@@ -110,5 +115,39 @@ export class ListEvaluationComponent implements OnInit, OnDestroy {
       // Return default color (black, for example)
       return 'black';
     }
+  }
+  goToPreviousPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.updatePagedEvaluation();
+    }
+  }
+
+  goToNextPage() {
+    if (this.page < this.totalPages) {
+      this.page++;
+      this.updatePagedEvaluation();
+    }
+  }
+
+  updatePagedEvaluation() {
+    const startIndex = (this.page - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.pagedEvaluation = this.evaluation.slice(startIndex, endIndex);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.evaluation.length / this.itemsPerPage);
+  }
+
+  logout(): void {
+    // Call the logout method from the authentication service
+    this.authService.logoutUser();
+
+    // Additional tasks (optional)
+    // Example: Clear local storage or reset user-related variables
+    localStorage.clear();
+    this.router.navigate(['/']);
+    // ...
   }
 }

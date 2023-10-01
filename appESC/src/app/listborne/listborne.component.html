@@ -124,7 +124,9 @@
             role="button"
             data-toggle="dropdown"
           >
-            <span class="user-name mt-10">{{ user.prenom }} </span>
+            <span class="user-name mt-10"
+              >{{ user.prenom.toUpperCase() }}
+            </span>
           </a>
           <div
             class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
@@ -412,11 +414,12 @@
               <div class="dropdown">
                 <a
                   class="btn btn-secondary dropdown-toggle"
+                  style="background-color: grey; color: white"
                   href="#"
                   role="button"
                   data-toggle="dropdown"
                 >
-                  January 2018
+                  January 2023
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                   <a class="dropdown-item" href="#">Export List</a>
@@ -453,7 +456,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let borne of bornes">
+              <tr *ngFor="let borne of pagedBorne; let i = index">
                 <td class="table-plus">{{ borne.id }}</td>
                 <td>
                   <h5 class="font-16">{{ borne.name }}</h5>
@@ -483,6 +486,20 @@
               </tr>
             </tbody>
           </table>
+
+          <pagination-controls
+            (pageChange)="page = $event"
+            [autoHide]="autoHidePagination"
+          ></pagination-controls>
+          <div class="text-right">
+            <button class="btn btn-primary" (click)="goToPreviousPage()">
+              Prev
+            </button>
+
+            <button class="btn btn-primary" (click)="goToNextPage()">
+              Next
+            </button>
+          </div>
         </div>
 
         <div class="collapse collapse-box" id="basic-form1">

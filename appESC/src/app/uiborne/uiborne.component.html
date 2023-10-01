@@ -101,7 +101,7 @@
                           height="35"
                           width="155"
                           class="img-fluid auto_size"
-                          src="assets/images/logo-final-dark.svg"
+                          src="../../assets/images/logo-plugpower.png"
                           alt="logo-img"
                         />
                       </a>
@@ -204,7 +204,7 @@
         <div class="row">
           <div
             class="col-lg-4 col-md-6 col-12"
-            *ngFor="let station of stations"
+            *ngFor="let station of pagedStation; let i = index"
           >
             <div class="featured-imagebox featured-imagebox-team style1">
               <div class="prt-box-view-overlay">
@@ -261,6 +261,17 @@
             </div>
           </div>
         </div>
+        <pagination-controls
+          (pageChange)="page = $event"
+          [autoHide]="autoHidePagination"
+        ></pagination-controls>
+        <div class="text-right">
+          <button class="btn btn-primary" (click)="goToPreviousPage()">
+            Prev
+          </button>
+
+          <button class="btn btn-primary" (click)="goToNextPage()">Next</button>
+        </div>
       </div>
     </section>
     <!--site-main end-->
@@ -273,11 +284,12 @@
           <div class="row">
             <div class="col-xs-12 col-md-6 col-lg-3 widget-area">
               <div class="widget widget_text clearfix">
-                <h3 class="widget-title">About Elexio</h3>
+                <h3 class="widget-title">About PlugPower</h3>
                 <div class="textwidget widget-text pb-10">
                   <p>
-                    A premium Html Template for Electric vehicle store and
-                    services websites. Get the latest UI/UX landing experience
+                    An innovative system designed to meet the growing demand for
+                    electric vehicle (EV) charging in a convenient, efficient,
+                    and accessible manner
                   </p>
                 </div>
                 <div class="textwidget widget-text">
@@ -313,7 +325,7 @@
                     <a href="blog-right-sidebar.html"
                       ><img
                         class="img-fluid"
-                        src="images/blog/blog-80x80.jpg"
+                        src="assets/images/blog/blog-80x80.jpg"
                         alt="post-img"
                     /></a>
                     <div class="post-detail">
@@ -330,7 +342,7 @@
                     <a href="blog-right-sidebar.html"
                       ><img
                         class="img-fluid"
-                        src="images/blog/blog-1-80x80.jpg"
+                        src="assets/images/blog/blog-1-80x80.jpg"
                         alt="post-img"
                     /></a>
                     <div class="post-detail">
@@ -373,7 +385,7 @@
             <div class="col-lg-12">
               <div class="justify-content-between">
                 <span class="cpy-text text-center"
-                  >Copyright © 2022 <a href="index.html"> Elexio </a>. All
+                  >Copyright © 2023 <a href="index.html"> PlugPower </a>. All
                   Rights Reserved.</span
                 >
               </div>

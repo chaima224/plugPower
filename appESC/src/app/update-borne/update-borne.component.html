@@ -85,7 +85,9 @@
             role="button"
             data-toggle="dropdown"
           >
-            <span class="user-name mt-12">{{ user.prenom }} </span>
+            <span class="user-name mt-12"
+              >{{ user.prenom.toUpperCase() }}
+            </span>
           </a>
           <div
             class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
@@ -384,7 +386,7 @@
                   role="button"
                   data-toggle="dropdown"
                 >
-                  January 2018
+                  January 2023
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                   <a class="dropdown-item" href="#">Export List</a>
@@ -400,7 +402,7 @@
           <div class="clearfix">
             <div class="pull-left">
               <h4 class="text-blue h4">Plugs</h4>
-              <p class="mb-30">Udpdate your Electrical Terminal</p>
+              <p class="mb-30">Update your Electrical Terminal</p>
             </div>
           </div>
           <form>
@@ -481,12 +483,12 @@
                   <option>IEC309DC</option>
                   <option>Type3A</option>
                   <option>TypeD</option>
-                  <option>Tesla HPWC</option>
-                  <option>Type 3A</option>
-                  <option value="ChinaPart2">China Part 2</option>
-                  <option>Domestique UK</option>
+                  <option>TeslaHPWC</option>
+                  <option>Type3A</option>
+                  <option value="ChinaPart2">ChinaPart2</option>
+
                   <option>DomestiqueUK</option>
-                  <option>CCombo CCS USA</option>
+                  <option>Combo CCS USA</option>
                   <option>TeslaUSA</option>
                   <option>CHT25</option>
                   <option>DomestiqueIT</option>
@@ -495,6 +497,12 @@
                   <option>Type2MENNEKES</option>
                   <option>CEEBLUE</option>
                   <option>COMBOTYPE2</option>
+                  <option>TYPE1</option>
+                  <option>TYPE2</option>
+                  <option>Tesla Supercharger Euro</option>
+                  <option>Tesla Supercharger CCS</option>
+                  <option>ChinaPart2</option>
+                  <option>PriseAVCON</option>
                 </select>
               </div>
             </div>

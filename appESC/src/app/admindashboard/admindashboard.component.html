@@ -117,10 +117,7 @@
                   <h3 (click)="approuveStation(station.id)">
                     {{ station.name }}
                   </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed...
-                  </p>
+                  <p>A user add a new station.</p>
                 </li>
               </ul>
               <a routerLink="/liststation">View all</a>
@@ -137,7 +134,9 @@
             role="button"
             data-toggle="dropdown"
           >
-            <span class="user-name mt-12">{{ user.prenom }} </span>
+            <span class="user-name mt-12"
+              >{{ user.prenom.toUpperCase() }}
+            </span>
           </a>
           <div
             class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"

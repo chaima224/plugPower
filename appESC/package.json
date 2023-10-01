@@ -42,6 +42,8 @@
     "leaflet-search": "^3.0.9",
     "leaflet.awesome-markers": "^2.0.5",
     "ng2-completer": "^9.0.1",
+    "ngx-bootstrap": "^11.0.2",
+    "ngx-pagination": "^6.0.3",
     "revolution": "^1.0.0",
     "rs": "^0.0.1",
     "rxjs": "~7.5.0",

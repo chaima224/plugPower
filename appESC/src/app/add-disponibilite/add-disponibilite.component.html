@@ -84,7 +84,9 @@
             role="button"
             data-toggle="dropdown"
           >
-            <span class="user-name mt-12">{{ user.prenom }} </span>
+            <span class="user-name mt-12"
+              >{{ user.prenom.toUpperCase() }}
+            </span>
           </a>
           <div
             class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
@@ -381,7 +383,7 @@
                   role="button"
                   data-toggle="dropdown"
                 >
-                  January 2018
+                  January 2023
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                   <a class="dropdown-item" href="#">Export List</a>

@@ -18,6 +18,10 @@ export class ListborneComponent implements OnInit, OnDestroy {
   bornes: Borne[] = [];
   stations: Station[] = [];
   updateBadgeSubscription!: Subscription;
+  pagedBorne: Borne[] = [];
+  autoHidePagination: boolean = true;
+  itemsPerPage: number = 6;
+  page: number = 1;
   constructor(
     private borneService: BorneService,
     private stationService: StationService,
@@ -47,6 +51,7 @@ export class ListborneComponent implements OnInit, OnDestroy {
   getBorne() {
     this.borneService.getBorneList().subscribe((data) => {
       this.bornes = data;
+      this.updatePagedBorne();
     });
   }
   updateBorne(id: string) {
@@ -113,5 +118,29 @@ export class ListborneComponent implements OnInit, OnDestroy {
   }
   approuveStation(id: string) {
     this.router.navigate(['/ApprouvedStation', id]);
+  }
+
+  goToPreviousPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.updatePagedBorne();
+    }
+  }
+
+  goToNextPage() {
+    if (this.page < this.totalPages) {
+      this.page++;
+      this.updatePagedBorne();
+    }
+  }
+
+  updatePagedBorne() {
+    const startIndex = (this.page - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.pagedBorne = this.bornes.slice(startIndex, endIndex);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.bornes.length / this.itemsPerPage);
   }
 }

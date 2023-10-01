@@ -15,6 +15,10 @@ export class UIBorneComponent implements OnInit {
   bornes: Borne[] = [];
   stations: Station[] = [];
   borne: Borne = new Borne();
+  pagedStation: Station[] = [];
+  autoHidePagination: boolean = true;
+  itemsPerPage: number = 6;
+  page: number = 1;
   constructor(
     private borneService: BorneService,
     private stationService: StationService,
@@ -48,6 +52,7 @@ export class UIBorneComponent implements OnInit {
     this.stationService.getapprouvedStation().subscribe(
       (data) => {
         this.stations = data;
+        this.updatePagedStation();
         console.log(data); // Vérifiez si les données sont correctement récupérées dans la console
       },
       (error) => {
@@ -64,5 +69,28 @@ export class UIBorneComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['/']);
     // ...
+  }
+  goToPreviousPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.updatePagedStation();
+    }
+  }
+
+  goToNextPage() {
+    if (this.page < this.totalPages) {
+      this.page++;
+      this.updatePagedStation();
+    }
+  }
+
+  updatePagedStation() {
+    const startIndex = (this.page - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.pagedStation = this.stations.slice(startIndex, endIndex);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.stations.length / this.itemsPerPage);
   }
 }

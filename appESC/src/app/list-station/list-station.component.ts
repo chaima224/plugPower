@@ -13,6 +13,11 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class ListStationComponent implements OnInit {
   station: Station[] = [];
+  pagedStation: Station[] = [];
+  autoHidePagination: boolean = true;
+  itemsPerPage: number = 6;
+  page: number = 1;
+
   constructor(
     private stationService: StationService,
     private authService: AuthService,
@@ -38,8 +43,10 @@ export class ListStationComponent implements OnInit {
   getStation() {
     this.stationService.getStationList().subscribe((data) => {
       this.station = data;
+      this.updatePagedStation();
     });
   }
+
   updateStation(id: string) {
     this.router.navigate(['/updatestation', id]);
   }
@@ -76,5 +83,40 @@ export class ListStationComponent implements OnInit {
       // Return default color (black, for example)
       return 'black';
     }
+  }
+
+  goToPreviousPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.updatePagedStation();
+    }
+  }
+
+  goToNextPage() {
+    if (this.page < this.totalPages) {
+      this.page++;
+      this.updatePagedStation();
+    }
+  }
+
+  updatePagedStation() {
+    const startIndex = (this.page - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.pagedStation = this.station.slice(startIndex, endIndex);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.station.length / this.itemsPerPage);
+  }
+
+  logout(): void {
+    // Call the logout method from the authentication service
+    this.authService.logoutUser();
+
+    // Additional tasks (optional)
+    // Example: Clear local storage or reset user-related variables
+    localStorage.clear();
+    this.router.navigate(['/']);
+    // ...
   }
 }
